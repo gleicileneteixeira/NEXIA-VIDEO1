@@ -4,9 +4,32 @@ import { NextResponse, type NextRequest } from "next/server";
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
+  // API routes bypass auth check (they handle auth themselves)
+  if (request.nextUrl.pathname.startsWith("/api/")) {
+    return supabaseResponse;
+  }
+
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  // Rotas públicas (não precisam de auth)
+  const publicPaths = ["/", "/login", "/register"];
+  const isPublicPath = publicPaths.includes(request.nextUrl.pathname);
+
+  // Sem configuração do Supabase não é possível autenticar: evita erro 500
+  // e apenas mantém as rotas públicas acessíveis.
+  if (!supabaseUrl || !supabaseKey) {
+    if (isPublicPath) {
+      return supabaseResponse;
+    }
+    const url = request.nextUrl.clone();
+    url.pathname = "/login";
+    return NextResponse.redirect(url);
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseKey,
     {
       cookies: {
         getAll() {
@@ -28,15 +51,6 @@ export async function middleware(request: NextRequest) {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-
-  // API routes bypass auth check (they handle auth themselves)
-  if (request.nextUrl.pathname.startsWith("/api/")) {
-    return supabaseResponse;
-  }
-
-  // Rotas públicas (não precisam de auth)
-  const publicPaths = ["/", "/login", "/register"];
-  const isPublicPath = publicPaths.includes(request.nextUrl.pathname);
 
   // Se não está autenticado e tenta acessar rota protegida
   if (!user && !isPublicPath) {
