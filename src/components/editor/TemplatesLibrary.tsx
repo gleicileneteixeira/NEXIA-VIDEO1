@@ -452,7 +452,7 @@ const ALL_CATEGORIES: TemplateCategory[] = [...CATEGORIES, "podcast", "vlog", "g
 
 const TEMPLATE_COLORS: Record<string, { bg: string; title: string; sub: string; accent: string }> = {
   reels: { bg: "#12073a", title: "#ffffff", sub: "#f472b6", accent: "#8b5cf6" },
-  tiktok: { bg: "#0c0c14", title: "#ffffff", sub: "#22d3ee", accent: "#ec4899" },
+  tiktok: { bg: "#08080c", title: "#ffffff", sub: "#22d3ee", accent: "#ec4899" },
   youtube: { bg: "#1a0b0b", title: "#ffffff", sub: "#f87171", accent: "#ef4444" },
   stories: { bg: "#082032", title: "#ffffff", sub: "#38bdf8", accent: "#22d3ee" },
   promo: { bg: "#1c0a2e", title: "#ffffff", sub: "#f59e0b", accent: "#a855f7" },
@@ -620,10 +620,10 @@ function StarRating({ rating }: { rating: number }) {
         <Star
           key={star}
           size={10}
-          className={star <= Math.round(rating) ? "fill-yellow-400 text-yellow-400" : "text-gray-600"}
+          className={star <= Math.round(rating) ? "fill-yellow-400 text-yellow-400" : "text-slate-600"}
         />
       ))}
-      <span className="text-[10px] text-gray-500 ml-0.5">{rating.toFixed(1)}</span>
+      <span className="text-[10px] text-slate-500 ml-0.5">{rating.toFixed(1)}</span>
     </div>
   );
 }
@@ -678,37 +678,37 @@ export default function TemplatesLibrary() {
   };
 
   return (
-    <div className="h-full bg-[#0d0d16] border-r border-[#1e1e2e] flex flex-col">
-      <div className="px-4 py-3 border-b border-[#1e1e2e]">
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
+    <div className="h-full bg-[#0d0d16] border-r border-[#1e293b] flex flex-col">
+      <div className="px-4 py-3 border-b border-[#1e293b]">
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
           <Layout size={12} /> Templates
         </h3>
       </div>
 
-      <div className="px-3 py-2 border-b border-[#1e1e2e]">
+      <div className="px-3 py-2 border-b border-[#1e293b]">
         <div className="relative">
-          <Search size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-500" />
+          <Search size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-500" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar templates..."
-            className="w-full bg-[#13131f] border border-[#1e1e2e] rounded-lg pl-8 pr-3 py-1.5 text-xs text-gray-300 placeholder-gray-600 focus:outline-none focus:border-[#8b5cf6]/50"
+            className="w-full bg-[#13131f] border border-[#1e293b] rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-300 placeholder-slate-600 focus:outline-none focus:border-[#8b5cf6]/50"
           />
           {search && (
-            <button onClick={() => setSearch("")} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300">
+            <button onClick={() => setSearch("")} className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300">
               <X size={12} />
             </button>
           )}
         </div>
       </div>
 
-      <div className="px-3 py-2 border-b border-[#1e1e2e]">
+      <div className="px-3 py-2 border-b border-[#1e293b]">
         <div className="flex gap-1.5 overflow-x-auto pb-1 no-scrollbar">
           <button
             onClick={() => setActiveCategory("todos")}
             className={`px-2.5 py-1 rounded-full text-[10px] font-medium whitespace-nowrap transition-colors ${
-              activeCategory === "todos" ? "bg-[#8b5cf6] text-white" : "bg-[#1e1e2e] text-gray-400 hover:text-gray-300"
+              activeCategory === "todos" ? "bg-[#8b5cf6] text-white" : "bg-[#1e293b] text-slate-400 hover:text-slate-300"
             }`}
           >
             Todos
@@ -718,7 +718,7 @@ export default function TemplatesLibrary() {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={`px-2.5 py-1 rounded-full text-[10px] font-medium whitespace-nowrap transition-colors ${
-                activeCategory === cat ? "bg-[#8b5cf6] text-white" : "bg-[#1e1e2e] text-gray-400 hover:text-gray-300"
+                activeCategory === cat ? "bg-[#8b5cf6] text-white" : "bg-[#1e293b] text-slate-400 hover:text-slate-300"
               }`}
             >
               {CATEGORY_LABELS[cat]}
@@ -729,7 +729,7 @@ export default function TemplatesLibrary() {
 
       <div className="flex-1 overflow-y-auto p-3">
         {filteredTemplates.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full text-gray-600 text-xs gap-2">
+          <div className="flex flex-col items-center justify-center h-full text-slate-600 text-xs gap-2">
             <Filter size={20} />
             <span>Nenhum template encontrado</span>
           </div>
@@ -739,7 +739,7 @@ export default function TemplatesLibrary() {
               <div
                 key={template.id}
                 onClick={() => setSelectedTemplate(template)}
-                className="bg-[#13131f] border border-[#1e1e2e] rounded-lg overflow-hidden cursor-pointer hover:border-[#8b5cf6]/50 transition-colors group"
+                className="bg-[#13131f] border border-[#1e293b] rounded-lg overflow-hidden cursor-pointer hover:border-[#8b5cf6]/50 transition-colors group"
               >
                 <div
                   className="aspect-[9/16] relative"
@@ -764,20 +764,20 @@ export default function TemplatesLibrary() {
                     </span>
                   </div>
                   <div className="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-between">
-                    <span className="px-1.5 py-0.5 rounded bg-black/60 text-[9px] text-gray-300 flex items-center gap-1">
+                    <span className="px-1.5 py-0.5 rounded bg-black/60 text-[9px] text-slate-300 flex items-center gap-1">
                       <Clock size={8} />
                       {template.duration}s
                     </span>
-                    <span className="px-1.5 py-0.5 rounded bg-black/60 text-[9px] text-gray-300">
+                    <span className="px-1.5 py-0.5 rounded bg-black/60 text-[9px] text-slate-300">
                       {template.aspectRatio}
                     </span>
                   </div>
                 </div>
                 <div className="p-2 space-y-1.5">
-                  <h4 className="text-[11px] font-semibold text-gray-200 truncate">{template.name}</h4>
-                  <p className="text-[9px] text-gray-500 truncate">{template.author}</p>
+                  <h4 className="text-[11px] font-semibold text-slate-200 truncate">{template.name}</h4>
+                  <p className="text-[9px] text-slate-500 truncate">{template.author}</p>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1 text-[9px] text-gray-500">
+                    <div className="flex items-center gap-1 text-[9px] text-slate-500">
                       <Download size={8} />
                       {formatDownloads(template.downloads)}
                     </div>
@@ -785,7 +785,7 @@ export default function TemplatesLibrary() {
                   </div>
                   <div className="flex flex-wrap gap-0.5">
                     {template.tags.slice(0, 2).map((tag) => (
-                      <span key={tag} className="px-1.5 py-0.5 bg-[#1e1e2e] text-[8px] text-gray-500 rounded">
+                      <span key={tag} className="px-1.5 py-0.5 bg-[#1e293b] text-[8px] text-slate-500 rounded">
                         {tag}
                       </span>
                     ))}
@@ -800,12 +800,12 @@ export default function TemplatesLibrary() {
       {selectedTemplate && (
         <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4" onClick={() => setSelectedTemplate(null)}>
           <div
-            className="bg-[#0d0d16] border border-[#1e1e2e] rounded-xl max-w-md w-full max-h-[80vh] overflow-y-auto"
+            className="bg-[#0d0d16] border border-[#1e293b] rounded-xl max-w-md w-full max-h-[80vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-4 border-b border-[#1e1e2e] flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-gray-200">{selectedTemplate.name}</h3>
-              <button onClick={() => setSelectedTemplate(null)} className="text-gray-500 hover:text-gray-300">
+            <div className="p-4 border-b border-[#1e293b] flex items-center justify-between">
+              <h3 className="text-sm font-semibold text-slate-200">{selectedTemplate.name}</h3>
+              <button onClick={() => setSelectedTemplate(null)} className="text-slate-500 hover:text-slate-300">
                 <X size={16} />
               </button>
             </div>
@@ -826,29 +826,29 @@ export default function TemplatesLibrary() {
                 </div>
               </div>
 
-              <p className="text-xs text-gray-400">{selectedTemplate.description}</p>
+              <p className="text-xs text-slate-400">{selectedTemplate.description}</p>
 
               <div className="grid grid-cols-2 gap-2 text-[11px]">
                 <div className="bg-[#13131f] rounded-lg p-2">
-                  <span className="text-gray-500 block">Categoria</span>
-                  <span className="text-gray-300 font-medium">{CATEGORY_LABELS[selectedTemplate.category]}</span>
+                  <span className="text-slate-500 block">Categoria</span>
+                  <span className="text-slate-300 font-medium">{CATEGORY_LABELS[selectedTemplate.category]}</span>
                 </div>
                 <div className="bg-[#13131f] rounded-lg p-2">
-                  <span className="text-gray-500 block">Duração</span>
-                  <span className="text-gray-300 font-medium">{selectedTemplate.duration}s</span>
+                  <span className="text-slate-500 block">Duração</span>
+                  <span className="text-slate-300 font-medium">{selectedTemplate.duration}s</span>
                 </div>
                 <div className="bg-[#13131f] rounded-lg p-2">
-                  <span className="text-gray-500 block">Formato</span>
-                  <span className="text-gray-300 font-medium">{selectedTemplate.aspectRatio}</span>
+                  <span className="text-slate-500 block">Formato</span>
+                  <span className="text-slate-300 font-medium">{selectedTemplate.aspectRatio}</span>
                 </div>
                 <div className="bg-[#13131f] rounded-lg p-2">
-                  <span className="text-gray-500 block">Autor</span>
-                  <span className="text-gray-300 font-medium">{selectedTemplate.author}</span>
+                  <span className="text-slate-500 block">Autor</span>
+                  <span className="text-slate-300 font-medium">{selectedTemplate.author}</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 text-[11px]">
-                <div className="flex items-center gap-1 text-gray-400">
+                <div className="flex items-center gap-1 text-slate-400">
                   <Download size={12} />
                   {formatDownloads(selectedTemplate.downloads)} downloads
                 </div>
@@ -857,7 +857,7 @@ export default function TemplatesLibrary() {
 
               <div className="flex flex-wrap gap-1">
                 {selectedTemplate.tags.map((tag) => (
-                  <span key={tag} className="px-2 py-0.5 bg-[#1e1e2e] text-[10px] text-gray-400 rounded-full">
+                  <span key={tag} className="px-2 py-0.5 bg-[#1e293b] text-[10px] text-slate-400 rounded-full">
                     {tag}
                   </span>
                 ))}

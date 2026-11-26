@@ -349,7 +349,7 @@ export default function ScriptHistoryPanel({ refreshToken, onLoad }: ScriptHisto
                     <span>{p.variationsCount} roteiros</span>
                   </div>
                   {p.variations[0] && (
-                    <div className="mt-2 flex items-start gap-2 text-xs text-zinc-300/80 bg-black/20 rounded-[8px] px-3 py-2">
+                    <div className="mt-2 flex items-start gap-2 text-xs text-slate-300/80 bg-black/20 rounded-[8px] px-3 py-2">
                       <span className="font-bold text-pink-400 shrink-0">HOOK</span>
                       <span className="line-clamp-2">{p.variations[0].hook}</span>
                     </div>

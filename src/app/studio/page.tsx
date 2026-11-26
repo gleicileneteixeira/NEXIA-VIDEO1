@@ -41,14 +41,12 @@ export default function StudioPage() {
     (p) => p.id === activeProfileId
   );
 
-  // Se não há perfil ativo, cria o primeiro.
   useEffect(() => {
     if (profiles.length === 0) {
       addProfile();
     }
   }, [profiles.length, addProfile]);
 
-  // Re-hidrata as artes persistidas no IndexedDB ao reabrir.
   useEffect(() => {
     if (!activeProfileId) return;
     void useBusinessStore.getState().hydrateArts(activeProfileId);
@@ -56,7 +54,7 @@ export default function StudioPage() {
 
   if (!activeProfile) {
     return (
-      <div className="flex items-center justify-center py-20 text-gray-500 text-sm">
+      <div className="flex items-center justify-center py-20 text-slate-500 text-sm">
         <Loader2 className="w-5 h-5 animate-spin mr-2" /> Criando perfil...
       </div>
     );
@@ -70,20 +68,19 @@ export default function StudioPage() {
   const handleGenerate = async () => {
     const effectiveNiche = nicheInput.trim() || activeProfile.business.nicho?.trim() || "";
     if (!effectiveNiche) {
-      alert("Digite o seu nicho ou ramo de atuação no campo acima para gerar os 30 posts.");
+      alert("Digite o seu nicho ou ramo de atuacao no campo acima para gerar os 30 posts.");
       return;
     }
     setGenerating(true);
     setProgress(0);
     setPhotoError(false);
     try {
-      // Monta negócio e identidade com fallbacks seguros, sem bloquear a geração.
       const businessToUse = {
         ...activeProfile.business,
         nicho: effectiveNiche,
         servico: activeProfile.business.servico?.trim() || effectiveNiche,
         beneficio:
-          activeProfile.business.beneficio?.trim() || "Resultados Rápidos e Sem Burocracia",
+          activeProfile.business.beneficio?.trim() || "Resultados Rapidos e Sem Burocracia",
       };
 
       const brandToUse = {
@@ -94,7 +91,6 @@ export default function StudioPage() {
         handle: activeProfile.brand.handle?.trim() || "@meunegocio",
       };
 
-      // Persiste automaticamente o que foi usado na geração.
       updateBusiness(activeProfile.id, businessToUse);
       updateBrand(activeProfile.id, brandToUse);
 
@@ -140,60 +136,60 @@ export default function StudioPage() {
 
   const monthBadge =
     posts.length === 0
-      ? { label: "Sem calendário", cls: "bg-zinc-500/10 text-zinc-400 border-zinc-600/30" }
+      ? { label: "Sem calendario", cls: "bg-slate-500/10 text-slate-400 border-slate-600/30" }
       : posts.length < 30
-        ? { label: "Em produção", cls: "bg-amber-500/10 text-amber-400 border-amber-500/30" }
-        : { label: "Mês completo", cls: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" };
+        ? { label: "Em producao", cls: "bg-amber-500/10 text-amber-400 border-amber-500/30" }
+        : { label: "Mes completo", cls: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" };
 
   return (
     <div className="w-full max-w-7xl mx-auto px-2 md:px-4 space-y-8 py-2">
       {/* Top Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-zinc-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
         <div>
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
-            Fábrica de <span className="text-purple-400">Posts</span>
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+            Fabrica de <span className="text-purple-400">Posts</span>
           </h1>
-          <p className="text-sm text-zinc-400 mt-1">
-            Negócio + Identidade Visual + Calendário de 30 dias com arte diagramada e SEO.
+          <p className="text-sm text-slate-400 mt-1">
+            Negocio + Identidade Visual + Calendario de 30 dias com arte diagramada e SEO.
           </p>
         </div>
         <ProfileSelector />
       </div>
 
-      {/* Navegação por abas */}
+      {/* Navegacao por abas */}
       <StudioNav active={tab} onChange={setTab} />
 
-      {/* Aba Início */}
+      {/* Aba Inicio */}
       {tab === "inicio" && (
         <div className="space-y-8">
-          {/* Grid de Status Rápido */}
+          {/* Grid de Status Rapido */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {/* Card 1: Meu Negócio */}
-            <div className="bg-[#121218] border border-zinc-800/80 rounded-2xl p-6 shadow-xl flex flex-col">
+            {/* Card 1: Meu Negocio */}
+            <div className="bg-slate-900/90 border border-slate-800/80 rounded-2xl p-6 shadow-xl flex flex-col">
               <div className="flex items-start justify-between">
-                <div className="w-11 h-11 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20 flex items-center justify-center">
-                  <Briefcase className="w-5 h-5 text-[var(--primary)]" />
+                <div className="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
+                  <Briefcase className="w-5 h-5 text-purple-400" />
                 </div>
                 <button
                   onClick={() => setTab("negocio")}
-                  className="flex items-center gap-1 text-xs font-medium text-zinc-400 hover:text-[var(--primary)] transition-colors"
+                  className="flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-purple-400 transition-colors"
                 >
                   Editar <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
-              <p className="mt-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
-                Meu Negócio
+              <p className="mt-4 text-xs font-medium uppercase tracking-wider text-slate-500">
+                Meu Negocio
               </p>
-              <p className={`mt-1 text-sm font-semibold ${niche ? "text-emerald-400" : "text-zinc-500"}`}>
-                {niche ? "Configurado" : "Não configurado"}
+              <p className={`mt-1 text-sm font-semibold ${niche ? "text-emerald-400" : "text-slate-500"}`}>
+                {niche ? "Configurado" : "Nao configurado"}
               </p>
-              <p className="mt-1 text-xs text-zinc-500 flex-1">
+              <p className="mt-1 text-xs text-slate-500 flex-1">
                 {niche ? `Nicho: ${niche}` : "Defina o nicho para gerar artes e hashtags."}
               </p>
             </div>
 
             {/* Card 2: Identidade Visual */}
-            <div className="bg-[#121218] border border-zinc-800/80 rounded-2xl p-6 shadow-xl flex flex-col">
+            <div className="bg-slate-900/90 border border-slate-800/80 rounded-2xl p-6 shadow-xl flex flex-col">
               <div className="flex items-start justify-between">
                 <div className="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center overflow-hidden">
                   {brand.logoDataUrl ? (
@@ -208,12 +204,12 @@ export default function StudioPage() {
                 </div>
                 <button
                   onClick={() => setTab("identidade")}
-                  className="flex items-center gap-1 text-xs font-medium text-zinc-400 hover:text-[var(--primary)] transition-colors"
+                  className="flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-purple-400 transition-colors"
                 >
                   Editar <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
-              <p className="mt-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+              <p className="mt-4 text-xs font-medium uppercase tracking-wider text-slate-500">
                 Identidade Visual
               </p>
               <p className="mt-1 text-sm font-semibold text-white">
@@ -228,31 +224,31 @@ export default function StudioPage() {
                     style={{ background: c }}
                   />
                 ))}
-                <span className="ml-1 text-[11px] text-zinc-500 truncate">{brand.fontFamily}</span>
+                <span className="ml-1 text-[11px] text-slate-500 truncate">{brand.fontFamily}</span>
               </div>
             </div>
 
-            {/* Card 3: Métricas / Produção */}
-            <div className="bg-[#121218] border border-zinc-800/80 rounded-2xl p-6 shadow-xl flex flex-col">
+            {/* Card 3: Metricas / Producao */}
+            <div className="bg-slate-900/90 border border-slate-800/80 rounded-2xl p-6 shadow-xl flex flex-col">
               <div className="flex items-start justify-between">
                 <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
                   <TrendingUp className="w-5 h-5 text-emerald-400" />
                 </div>
                 <button
                   onClick={() => setTab("posts")}
-                  className="flex items-center gap-1 text-xs font-medium text-zinc-400 hover:text-[var(--primary)] transition-colors"
+                  className="flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-purple-400 transition-colors"
                 >
                   Ver posts <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
-              <p className="mt-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
-                Produção do Mês
+              <p className="mt-4 text-xs font-medium uppercase tracking-wider text-slate-500">
+                Producao do Mes
               </p>
               <p className="mt-1 text-2xl font-bold text-white">
                 {posts.length}
-                <span className="text-sm font-medium text-zinc-500">/30</span>
+                <span className="text-sm font-medium text-slate-500">/30</span>
               </p>
-              <div className="mt-3 h-1.5 rounded-full bg-zinc-800 overflow-hidden">
+              <div className="mt-3 h-1.5 rounded-full bg-slate-800 overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all"
                   style={{ width: `${pct}%` }}
@@ -266,16 +262,16 @@ export default function StudioPage() {
             </div>
           </div>
 
-          {/* Seção de Busca de Fotos + Gerador */}
-          <div className="bg-[#121218] border border-zinc-800/80 rounded-2xl p-6 shadow-xl space-y-6">
+          {/* Secao de Busca de Fotos + Gerador */}
+          <div className="bg-slate-900/90 border border-slate-800/80 rounded-2xl p-6 shadow-xl space-y-6">
             <div className="flex flex-col lg:flex-row lg:items-center gap-4">
               <div className="flex items-center gap-3 flex-1 min-w-0">
                 <div className="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shrink-0">
                   <ImageIcon className="w-5 h-5 text-purple-400" />
                 </div>
                 <div className="min-w-0">
-                  <h2 className="text-base font-semibold text-white">Nicho do seu negócio</h2>
-                  <p className="text-sm text-zinc-400 truncate">
+                  <h2 className="text-base font-semibold text-white">Nicho do seu negocio</h2>
+                  <p className="text-sm text-slate-400 truncate">
                     Usado na busca de fotos (Pexels/Openverse), hashtags e textos dos 30 posts.
                   </p>
                 </div>
@@ -284,13 +280,13 @@ export default function StudioPage() {
                 <input
                   value={nicheValue}
                   onChange={(e) => setNicheInput(e.target.value)}
-                  placeholder="Ex: imobiliária, advocacia, academia..."
-                  className="h-12 px-4 text-base bg-zinc-900 border border-zinc-700 rounded-xl text-zinc-300 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] w-full lg:w-80"
+                  placeholder="Ex: imobiliaria, advocacia, academia..."
+                  className="h-12 px-4 text-base bg-slate-900 border border-slate-700 rounded-xl text-slate-300 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 w-full lg:w-80"
                 />
                 <button
                   onClick={handleAutoSearchPhoto}
                   disabled={searchingPhoto || !nicheValue}
-                  className="flex items-center gap-2 h-12 px-5 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-sm font-medium text-zinc-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all shrink-0"
+                  className="flex items-center gap-2 h-12 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sm font-medium text-slate-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all shrink-0"
                 >
                   {searchingPhoto ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
@@ -304,7 +300,7 @@ export default function StudioPage() {
 
             {photoError && (
               <p className="text-xs text-red-400">
-                Não foi possível buscar a foto. Verifique sua conexão.
+                Nao foi possivel buscar a foto. Verifique sua conexao.
               </p>
             )}
 
@@ -313,10 +309,10 @@ export default function StudioPage() {
                 <img
                   src={brand.bgPhotoUrl}
                   alt="Foto de fundo"
-                  className="w-40 h-28 rounded-xl object-cover border border-zinc-700 shadow-lg shrink-0"
+                  className="w-40 h-28 rounded-xl object-cover border border-slate-700 shadow-lg shrink-0"
                 />
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs text-zinc-400 truncate">
+                  <p className="text-xs text-slate-400 truncate">
                     {brand.bgPhotoCredit || "Foto de fundo selecionada"}
                   </p>
                   <button
@@ -326,7 +322,7 @@ export default function StudioPage() {
                         bgPhotoCredit: undefined,
                       })
                     }
-                    className="mt-2 flex items-center gap-1.5 text-xs text-zinc-500 hover:text-red-400 transition-colors"
+                    className="mt-2 flex items-center gap-1.5 text-xs text-slate-500 hover:text-red-400 transition-colors"
                   >
                     <RefreshCw className="w-3.5 h-3.5" /> Trocar foto
                   </button>
@@ -334,8 +330,8 @@ export default function StudioPage() {
               </div>
             ) : (
               !nicheValue && (
-                <p className="text-xs text-zinc-500">
-                  Digite o nicho acima para buscar a foto de fundo e gerar o calendário.
+                <p className="text-xs text-slate-500">
+                  Digite o nicho acima para buscar a foto de fundo e gerar o calendario.
                 </p>
               )
             )}
@@ -353,13 +349,13 @@ export default function StudioPage() {
               ) : (
                 <>
                   <Wand2 className="w-5 h-5 transition-transform group-hover:scale-110 group-hover:rotate-12" />
-                  Gerar Calendário de 30 Dias
+                  Gerar Calendario de 30 Dias
                 </>
               )}
             </button>
 
             {generating && (
-              <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden">
+              <div className="h-1.5 rounded-full bg-slate-800 overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 transition-all"
                   style={{ width: `${progress}%` }}
@@ -370,19 +366,19 @@ export default function StudioPage() {
         </div>
       )}
 
-      {/* Aba Calendário */}
+      {/* Aba Calendario */}
       {tab === "calendario" && (
         <>
           {activeProfile.posts.length > 0 ? (
             <CalendarView posts={activeProfile.posts} />
           ) : (
-            <div className="bg-[#121218] border border-zinc-800/80 rounded-2xl p-10 text-center">
-              <p className="text-zinc-500 text-sm mb-4">
-                Nenhum calendário gerado ainda. Gere na aba Início.
+            <div className="bg-slate-900/90 border border-slate-800/80 rounded-2xl p-10 text-center">
+              <p className="text-slate-500 text-sm mb-4">
+                Nenhum calendario gerado ainda. Gere na aba Inicio.
               </p>
               <button
                 onClick={() => setTab("inicio")}
-                className="flex items-center gap-2 mx-auto px-4 py-2.5 rounded-lg bg-[var(--primary)] text-white text-sm font-semibold hover:opacity-90 transition-opacity"
+                className="flex items-center gap-2 mx-auto px-4 py-2.5 rounded-lg bg-purple-600 text-white text-sm font-semibold hover:opacity-90 transition-opacity"
               >
                 <Wand2 className="w-4 h-4" /> Ir para o gerador
               </button>
@@ -401,7 +397,7 @@ export default function StudioPage() {
         <BrandIdentityView key={activeProfile.id} profile={activeProfile} />
       )}
 
-      {/* Aba Meu Negócio */}
+      {/* Aba Meu Negocio */}
       {tab === "negocio" && (
         <>
           <BusinessProfileView key={activeProfile.id} profile={activeProfile} />
@@ -409,7 +405,7 @@ export default function StudioPage() {
             onClick={() => {
               void useBusinessStore.getState().resetProfile(activeProfile.id);
             }}
-            className="mt-6 flex items-center gap-2 text-sm text-gray-400 hover:text-red-400 transition-colors"
+            className="mt-6 flex items-center gap-2 text-sm text-slate-400 hover:text-red-400 transition-colors"
           >
             <RefreshCw className="w-4 h-4" /> Resetar este perfil
           </button>

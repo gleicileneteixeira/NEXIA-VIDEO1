@@ -298,13 +298,13 @@ export default function VoiceoverModal({ open, onClose }: { open: boolean; onClo
             <Mic size={16} className="text-[#f472b6]" />
             Gravar Narração
           </span>
-          <span className={`text-[10px] font-semibold ${recording ? "text-red-400 animate-pulse" : "text-gray-500"}`}>
+          <span className={`text-[10px] font-semibold ${recording ? "text-red-400 animate-pulse" : "text-slate-500"}`}>
             {recording ? "GRAVANDO" : micReady ? "Microfone pronto" : starting ? "Solicitando permissão..." : "Sem microfone"}
           </span>
           <button
             onClick={onClose}
             disabled={recording}
-            className="text-gray-400 hover:text-white transition-colors text-sm disabled:opacity-30"
+            className="text-slate-400 hover:text-white transition-colors text-sm disabled:opacity-30"
             title="Fechar"
           >
             <X size={16} />
@@ -314,8 +314,8 @@ export default function VoiceoverModal({ open, onClose }: { open: boolean; onClo
         {/* Medidor VU + tempo */}
         <div className="flex flex-col gap-1.5">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] text-gray-400 uppercase font-semibold">Nível de Áudio</span>
-            <span className={`font-mono font-semibold ${recording ? "text-[#f472b6]" : "text-gray-500"}`}>
+            <span className="text-[10px] text-slate-400 uppercase font-semibold">Nível de Áudio</span>
+            <span className={`font-mono font-semibold ${recording ? "text-[#f472b6]" : "text-slate-500"}`}>
               {recording ? formatElapsed(elapsedMs) : "00:00"}
             </span>
           </div>
@@ -366,7 +366,7 @@ export default function VoiceoverModal({ open, onClose }: { open: boolean; onClo
             {recording ? <Square size={22} fill="currentColor" /> : <Mic size={22} />}
             {recording && <span className="absolute inset-0 rounded-full border-2 border-red-400/60 animate-ping pointer-events-none" />}
           </button>
-          <span className="text-[11px] text-gray-400">
+          <span className="text-[11px] text-slate-400">
             {starting
               ? "Pedindo permissão do microfone…"
               : recording
@@ -379,7 +379,7 @@ export default function VoiceoverModal({ open, onClose }: { open: boolean; onClo
           </span>
 
           {/* Checkbox: silenciar vídeo durante a contagem e a gravação */}
-          <label className={`flex items-center gap-2 cursor-pointer select-none transition-colors ${inCountdown || recording ? "opacity-50 cursor-not-allowed text-gray-500" : "text-gray-300 hover:text-white"}`}>
+          <label className={`flex items-center gap-2 cursor-pointer select-none transition-colors ${inCountdown || recording ? "opacity-50 cursor-not-allowed text-slate-500" : "text-slate-300 hover:text-white"}`}>
             <button
               type="button"
               role="checkbox"
@@ -393,7 +393,7 @@ export default function VoiceoverModal({ open, onClose }: { open: boolean; onClo
               {muteWhileRecording && <span className="text-[10px] text-white font-bold">✓</span>}
             </button>
             <span className="flex items-center gap-1 text-[11px]">
-              {muteWhileRecording ? <VolumeX size={12} className="text-[#f472b6]" /> : <Volume2 size={12} className="text-gray-500" />}
+              {muteWhileRecording ? <VolumeX size={12} className="text-[#f472b6]" /> : <Volume2 size={12} className="text-slate-500" />}
               Silenciar vídeo durante a gravação
             </span>
           </label>

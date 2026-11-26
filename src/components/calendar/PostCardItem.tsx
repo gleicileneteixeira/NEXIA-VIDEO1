@@ -34,9 +34,9 @@ export default function PostCardItem({ post, onOpenVideo }: PostCardItemProps) {
   };
 
   return (
-    <div className="bg-[#1c1c28] border border-gray-800 rounded-2xl overflow-hidden flex flex-col">
+    <div className="bg-[#0f172a] border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
       {/* Cabeçalho: dia + pilar + tag de formato */}
-      <div className="px-5 py-3 border-b border-gray-800 flex items-center gap-3">
+      <div className="px-5 py-3 border-b border-slate-800 flex items-center gap-3">
         <div
           className="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
           style={{ backgroundColor: pillar.color }}
@@ -61,11 +61,11 @@ export default function PostCardItem({ post, onOpenVideo }: PostCardItemProps) {
           <img
             src={post.previewImageUrl}
             alt={`Arte do dia ${post.dayNumber} — ${post.pillarLabel}`}
-            className="rounded-xl w-full aspect-square object-cover border border-gray-800"
+            className="rounded-xl w-full aspect-square object-cover border border-slate-800"
           />
         ) : (
           <div
-            className="rounded-xl w-full aspect-square flex items-center justify-center text-gray-600 text-xs border border-gray-800"
+            className="rounded-xl w-full aspect-square flex items-center justify-center text-slate-600 text-xs border border-slate-800"
             style={{ backgroundColor: `${pillar.color}0d` }}
           >
             Gere os posts para visualizar a arte
@@ -77,16 +77,16 @@ export default function PostCardItem({ post, onOpenVideo }: PostCardItemProps) {
       <div className="px-5 py-4 flex-1">
         <button
           onClick={() => setExpanded(!expanded)}
-          className="w-full flex items-center justify-between gap-1 py-2 text-[11px] text-gray-400 hover:text-white transition-colors"
+          className="w-full flex items-center justify-between gap-1 py-2 text-[11px] text-slate-400 hover:text-white transition-colors"
         >
-          <span className="font-medium uppercase tracking-wider text-gray-500">
+          <span className="font-medium uppercase tracking-wider text-slate-500">
             Legenda com SEO ({post.caption.split("\n").pop()?.trim().split(" ").length ?? 0} hashtags)
           </span>
           {expanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
         </button>
 
         {expanded && (
-          <div className="p-3 rounded-xl bg-[#252535] border border-gray-800 text-xs text-gray-300 whitespace-pre-wrap max-h-56 overflow-y-auto">
+          <div className="p-3 rounded-xl bg-[#1e293b] border border-slate-800 text-xs text-slate-300 whitespace-pre-wrap max-h-56 overflow-y-auto">
             {post.caption}
           </div>
         )}
@@ -105,7 +105,7 @@ export default function PostCardItem({ post, onOpenVideo }: PostCardItemProps) {
         </button>
         <button
           onClick={copyCaption}
-          className="flex flex-col items-center justify-center gap-1 py-2.5 rounded-xl bg-[#1c1c28] border border-gray-700 text-gray-300 text-[11px] font-semibold hover:text-white hover:border-gray-500 transition-colors"
+          className="flex flex-col items-center justify-center gap-1 py-2.5 rounded-xl bg-[#0f172a] border border-slate-700 text-slate-300 text-[11px] font-semibold hover:text-white hover:border-slate-500 transition-colors"
           title="Copiar legenda completa com hashtags"
         >
           {copied === "caption" ? (
@@ -122,7 +122,7 @@ export default function PostCardItem({ post, onOpenVideo }: PostCardItemProps) {
         </button>
         <button
           onClick={() => onOpenVideo(post)}
-          className="flex flex-col items-center justify-center gap-1 py-2.5 rounded-xl bg-gray-700/30 border border-gray-700 text-gray-300 text-[11px] font-semibold hover:bg-[var(--accent-pink)]/20 hover:text-white transition-colors"
+          className="flex flex-col items-center justify-center gap-1 py-2.5 rounded-xl bg-slate-700/30 border border-slate-700 text-slate-300 text-[11px] font-semibold hover:bg-[var(--accent-pink)]/20 hover:text-white transition-colors"
           title="Abrir no editor com a imagem e o gancho inseridos"
         >
           <Video className="w-4 h-4" />

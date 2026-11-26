@@ -86,3 +86,78 @@ export const DEFAULT_FALLBACK_CONFIG: AIFallbackConfig = {
   maxRetriesPerProvider: 1,
   timeoutMs: 30000,
 };
+
+// ==========================================
+// OMNIROUTE / AI GATEWAY TYPES
+// ==========================================
+export type GatewayProvider = 'groq' | 'openrouter' | 'ollama';
+
+export interface GatewayModel {
+  id: string;
+  name: string;
+  provider: GatewayProvider;
+  isFree: boolean;
+  contextLength?: number;
+  tokensUsed: number;
+  callsCount: number;
+  status: 'online' | 'busy' | 'offline';
+  description?: string;
+  pricingPrompt?: string;
+  pricingCompletion?: string;
+  sourceConnectionId: string;
+  sourceConnectionName: string;
+}
+
+export interface GatewayConnection {
+  id: string;
+  name: string;
+  provider: GatewayProvider;
+  apiKey: string;
+  baseUrl?: string;
+  onlyFree: boolean;
+  connectedAt: string;
+  modelsCount: number;
+  models: GatewayModel[];
+  isActive: boolean;
+}
+
+export type RoutingStrategy = 
+  | 'ai_smart'          // A IA do sistema escolhe o melhor modelo para a tarefa
+  | 'least_used_tokens'  // Pega os modelos com mais tokens disponíveis / que usou menos
+  | 'round_robin'       // Rotativo contínuo: usa um, se acabar/der limite vai para o outro de forma contínua
+  | 'random'            // Distribuição aleatória equilibrada
+  | 'manual';           // Escolha fixa manual do usuário
+
+export interface GatewayConfig {
+  connections: GatewayConnection[];
+  activeStrategy: RoutingStrategy;
+  selectedModelId?: string;
+  autoFallbackOnError: boolean;
+  totalTokensProcessed: number;
+  totalCallsMade: number;
+}
+
+// ==========================================
+// API KEY POOL TYPES
+// ==========================================
+export interface ApiKeyItem {
+  id: string;
+  name: string;
+  key: string;
+  provider: 'groq' | 'openrouter';
+  isActive: boolean;
+  addedAt: string;
+  lastUsedAt?: string;
+  status?: 'active' | 'rate_limited' | 'invalid' | 'unknown';
+  lastLatencyMs?: number;
+  lastError?: string;
+}
+
+export interface ApiKeysConfig {
+  groqApiKey?: string; // backwards compatibility single key
+  openRouterApiKey?: string; // backwards compatibility single key
+  groqKeyPool: ApiKeyItem[];
+  openRouterKeyPool: ApiKeyItem[];
+  autoRotateOnRateLimit: boolean;
+  prioritizeGroq: boolean;
+}

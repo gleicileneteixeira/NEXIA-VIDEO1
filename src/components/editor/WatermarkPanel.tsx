@@ -65,9 +65,9 @@ export default function WatermarkPanel() {
   };
 
   return (
-    <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col overflow-y-auto">
-      <div className="px-4 py-3 border-b border-[#1e1e2e]">
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
+    <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col overflow-y-auto">
+      <div className="px-4 py-3 border-b border-[#1e293b]">
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
           <Move size={12} /> Marca d&apos;água
         </h3>
       </div>
@@ -91,7 +91,7 @@ export default function WatermarkPanel() {
               className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 text-[10px] rounded border ${
                 mode === "image"
                   ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                  : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                  : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
               }`}
             >
               <Image size={10} />
@@ -102,7 +102,7 @@ export default function WatermarkPanel() {
               className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 text-[10px] rounded border ${
                 mode === "text"
                   ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                  : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                  : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
               }`}
             >
               <Type size={10} />
@@ -115,7 +115,7 @@ export default function WatermarkPanel() {
         {mode === "image" && (
           <div className="p-3 border-b border-[#1a1a28] space-y-2">
             <div
-              className="border-2 border-dashed border-[#1e1e2e] rounded-lg p-4 text-center cursor-pointer hover:border-[#8b5cf6] hover:bg-[#13131f] transition-colors"
+              className="border-2 border-dashed border-[#1e293b] rounded-lg p-4 text-center cursor-pointer hover:border-[#8b5cf6] hover:bg-[#13131f] transition-colors"
               onClick={() => fileInputRef.current?.click()}
             >
               <input
@@ -132,12 +132,12 @@ export default function WatermarkPanel() {
                     alt="Logo"
                     className="h-12 object-contain rounded"
                   />
-                  <span className="text-[10px] text-gray-500">Clique para trocar</span>
+                  <span className="text-[10px] text-slate-500">Clique para trocar</span>
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-2">
-                  <Upload size={20} className="text-gray-600" />
-                  <span className="text-[10px] text-gray-500">
+                  <Upload size={20} className="text-slate-600" />
+                  <span className="text-[10px] text-slate-500">
                     Clique para selecionar logo
                   </span>
                 </div>
@@ -159,13 +159,13 @@ export default function WatermarkPanel() {
         {mode === "text" && (
           <div className="p-3 border-b border-[#1a1a28] space-y-2">
             <div>
-              <label className="text-[10px] text-gray-500 block mb-1">Texto</label>
+              <label className="text-[10px] text-slate-500 block mb-1">Texto</label>
               <input
                 type="text"
                 value={wm.text || ""}
                 onChange={(e) => update({ text: e.target.value })}
                 placeholder="Marca d&apos;água"
-                className="w-full bg-[#13131f] border border-[#1e1e2e] rounded px-2 py-1.5 text-xs text-white placeholder:text-gray-600 focus:border-[#8b5cf6] focus:outline-none"
+                className="w-full bg-[#13131f] border border-[#1e293b] rounded px-2 py-1.5 text-xs text-white placeholder:text-slate-600 focus:border-[#8b5cf6] focus:outline-none"
               />
             </div>
             <Slider
@@ -178,9 +178,9 @@ export default function WatermarkPanel() {
               disabled
             />
             <div>
-              <label className="text-[10px] text-gray-500 block mb-1">Fonte</label>
+              <label className="text-[10px] text-slate-500 block mb-1">Fonte</label>
               <select
-                className="w-full bg-[#13131f] border border-[#1e1e2e] rounded px-2 py-1.5 text-xs text-white focus:border-[#8b5cf6] focus:outline-none"
+                className="w-full bg-[#13131f] border border-[#1e293b] rounded px-2 py-1.5 text-xs text-white focus:border-[#8b5cf6] focus:outline-none"
               >
                 <option value="Inter">Inter</option>
                 <option value="Arial">Arial</option>
@@ -202,13 +202,13 @@ export default function WatermarkPanel() {
                   className={`rounded-sm transition-colors ${
                     localPosition === pos
                       ? "bg-[#8b5cf6]"
-                      : "bg-[#1e1e2e] hover:bg-[#2a2a3e]"
+                      : "bg-[#1e293b] hover:bg-[#1e293b]"
                   }`}
                   title={pos}
                 />
               ))}
             </div>
-            <span className="text-[10px] text-gray-600">{localPosition}</span>
+            <span className="text-[10px] text-slate-600">{localPosition}</span>
           </div>
         </div>
 
@@ -285,13 +285,13 @@ export default function WatermarkPanel() {
                     {wm.text}
                   </span>
                 ) : (
-                  <span className="text-[10px] text-gray-600">
+                  <span className="text-[10px] text-slate-600">
                     {wm.imageUrl ? "Logo" : "Texto"}
                   </span>
                 )}
               </div>
             ) : (
-              <span className="text-[10px] text-gray-600">
+              <span className="text-[10px] text-slate-600">
                 Marca d&apos;água desativada
               </span>
             )}
@@ -308,8 +308,8 @@ function SectionHeader({ title, collapsed, onToggle }: { title: string; collapse
       onClick={onToggle}
       className="w-full flex items-center justify-between px-1 py-2 hover:bg-[#13131f] rounded"
     >
-      <span className="text-[10px] text-gray-500 uppercase tracking-wider">{title}</span>
-      <span className="text-[10px] text-gray-600">{collapsed ? "+" : "−"}</span>
+      <span className="text-[10px] text-slate-500 uppercase tracking-wider">{title}</span>
+      <span className="text-[10px] text-slate-600">{collapsed ? "+" : "−"}</span>
     </button>
   );
 }
@@ -336,8 +336,8 @@ function Slider({
   return (
     <div>
       <div className="flex items-center justify-between mb-0.5">
-        <label className="text-[10px] text-gray-500">{label}</label>
-        <span className="text-[10px] text-gray-600 font-mono">
+        <label className="text-[10px] text-slate-500">{label}</label>
+        <span className="text-[10px] text-slate-600 font-mono">
           {formatValue ? formatValue(value) : Math.round(value * 100) / 100}
         </span>
       </div>
@@ -349,7 +349,7 @@ function Slider({
         max={max}
         step={step}
         disabled={disabled}
-        className="w-full h-1 bg-[#1e1e2e] rounded-lg appearance-none cursor-pointer accent-[#8b5cf6] disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full h-1 bg-[#1e293b] rounded-lg appearance-none cursor-pointer accent-[#8b5cf6] disabled:opacity-50 disabled:cursor-not-allowed"
       />
     </div>
   );
@@ -358,10 +358,10 @@ function Slider({
 function ToggleRow({ label, value, onChange }: { label: string; value: boolean; onChange: (v: boolean) => void }) {
   return (
     <div className="flex items-center justify-between">
-      <label className="text-[10px] text-gray-500">{label}</label>
+      <label className="text-[10px] text-slate-500">{label}</label>
       <button
         onClick={() => onChange(!value)}
-        className={`w-8 h-4 rounded-full transition-colors ${value ? "bg-[#8b5cf6]" : "bg-[#1e1e2e]"}`}
+        className={`w-8 h-4 rounded-full transition-colors ${value ? "bg-[#8b5cf6]" : "bg-[#1e293b]"}`}
       >
         <div className={`w-3 h-3 rounded-full bg-white transition-transform ${value ? "translate-x-4" : "translate-x-0.5"}`} />
       </button>

@@ -136,12 +136,12 @@ export default function TTSPanel() {
     });
 
   return (
-    <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col overflow-y-auto">
-      <div className="px-4 py-3 border-b border-[#1e1e2e]">
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+    <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col overflow-y-auto">
+      <div className="px-4 py-3 border-b border-[#1e293b]">
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
           Texto para Voz
         </h3>
-        <p className="text-[10px] text-gray-600 mt-0.5">Gera narração a partir do texto · Clipchamp style</p>
+        <p className="text-[10px] text-slate-600 mt-0.5">Gera narração a partir do texto · Clipchamp style</p>
       </div>
 
       <div className="p-3 space-y-3">
@@ -150,15 +150,15 @@ export default function TTSPanel() {
           onChange={(e) => setText(e.target.value)}
           placeholder="Digite o texto da narração..."
           rows={5}
-          className="w-full bg-[#13131f] border border-[#1e1e2e] rounded-lg p-2 text-xs text-gray-300 outline-none focus:border-[#8b5cf6] resize-none"
+          className="w-full bg-[#13131f] border border-[#1e293b] rounded-lg p-2 text-xs text-slate-300 outline-none focus:border-[#8b5cf6] resize-none"
         />
 
         <div>
-          <label className="text-[10px] text-gray-500 uppercase tracking-wider">Idioma / Voz</label>
+          <label className="text-[10px] text-slate-500 uppercase tracking-wider">Idioma / Voz</label>
           <select
             value={lang}
             onChange={(e) => setLang(e.target.value)}
-            className="w-full mt-1 bg-[#13131f] border border-[#1e1e2e] rounded-lg px-2 py-1.5 text-xs text-gray-300 outline-none focus:border-[#8b5cf6]"
+            className="w-full mt-1 bg-[#13131f] border border-[#1e293b] rounded-lg px-2 py-1.5 text-xs text-slate-300 outline-none focus:border-[#8b5cf6]"
           >
             {LANGUAGES.map((l) => (
               <option key={l.code} value={l.code}>
@@ -174,7 +174,7 @@ export default function TTSPanel() {
           <button
             onClick={preview}
             disabled={!text.trim() || generating}
-            className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#1e1e2e] text-gray-300 text-xs hover:bg-[#2a2a3a] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#1e293b] text-slate-300 text-xs hover:bg-[#2a2a3a] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <Play size={12} /> Ouvir
           </button>
@@ -189,7 +189,7 @@ export default function TTSPanel() {
         </div>
 
         {playUrl && (
-          <div className="bg-[#13131f] border border-[#1e1e2e] rounded-lg p-2">
+          <div className="bg-[#13131f] border border-[#1e293b] rounded-lg p-2">
             <audio src={playUrl} controls autoPlay className="w-full h-8" />
           </div>
         )}

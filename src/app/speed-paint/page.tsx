@@ -2004,7 +2004,7 @@ export default function SpeedPaintPage() {
       <div className="flex-1 flex flex-col gap-5">
         
         {/* Canvas Display */}
-        <div className="glass-card rounded-[var(--radius-lg)] overflow-hidden flex flex-col flex-1 relative bg-[#09090e] border border-[var(--border)] shadow-2xl">
+        <div className="glass-card rounded-[var(--radius-lg)] overflow-hidden flex flex-col flex-1 relative bg-[#08080c] border border-[var(--border)] shadow-2xl">
           <div className="p-3 border-b border-[var(--border)] bg-[var(--surface)] flex items-center justify-between">
             <span className="text-xs font-bold text-[var(--text-secondary)] flex items-center gap-1.5">
               <Tv className="w-3.5 h-3.5 text-[var(--primary)]" />

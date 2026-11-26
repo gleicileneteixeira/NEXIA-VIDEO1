@@ -25,15 +25,21 @@ export default function TransitionsPanel() {
   const { selectedIds } = useUIStore();
 
   return (
-    <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col overflow-y-auto">
-      <div className="px-4 py-3 border-b border-[#1e1e2e]">
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
+    <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col overflow-y-auto">
+      <div className="px-4 py-3 border-b border-[#1e293b]">
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
           <Zap size={12} /> Transições
         </h3>
       </div>
 
       <div className="p-3 space-y-3">
-        <p className="text-[10px] text-gray-500 leading-relaxed">
+        {project.timeline.transitions.length > 0 && (
+          <div className="bg-amber-900/30 border border-amber-500/40 rounded px-3 py-2 text-xs text-amber-200">
+            ⚠️ <strong>Modelo mais demorado:</strong> transição ativa renderiza frame a frame. Com muitos vídeos pode levar muito tempo.
+          </div>
+        )}
+
+        <p className="text-[10px] text-slate-500 leading-relaxed">
           Selecione dois clips adjacentes na timeline para aplicar uma transição entre eles.
         </p>
 
@@ -46,7 +52,7 @@ export default function TransitionsPanel() {
               <div
                 key={t.id}
                 className={`bg-[#13131f] border rounded px-3 py-2 text-xs cursor-default ${
-                  isActive ? "border-[#8b5cf6] text-white" : "border-[#1e1e2e] text-gray-400"
+                  isActive ? "border-[#8b5cf6] text-white" : "border-[#1e293b] text-slate-400"
                 }`}
               >
                 {t.label}
@@ -57,12 +63,12 @@ export default function TransitionsPanel() {
 
         {project.timeline.transitions.length > 0 && (
           <div className="mt-3">
-            <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Aplicadas</div>
+            <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Aplicadas</div>
             <div className="space-y-1">
               {project.timeline.transitions.map((tr) => (
-                <div key={tr.id} className="bg-[#13131f] border border-[#1e1e2e] rounded px-2 py-1.5 text-[10px] text-gray-300 flex items-center justify-between">
+                <div key={tr.id} className="bg-[#13131f] border border-[#1e293b] rounded px-2 py-1.5 text-[10px] text-slate-300 flex items-center justify-between">
                   <span>{TRANSITIONS.find((t) => t.id === tr.type)?.label || tr.type}</span>
-                  <span className="text-gray-600">{tr.durationInFrames}f</span>
+                  <span className="text-slate-600">{tr.durationInFrames}f</span>
                 </div>
               ))}
             </div>

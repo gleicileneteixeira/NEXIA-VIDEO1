@@ -388,15 +388,15 @@ export default function EditorPage() {
 
   return (
     <div className="h-screen bg-[#08080c] flex flex-col overflow-hidden">
-      <header className="flex items-center h-10 bg-[#101018] border-b border-zinc-800/80 px-3 flex-shrink-0">
+      <header className="flex items-center h-10 bg-[#0f172a] border-b border-slate-800/80 px-3 flex-shrink-0">
         <div className="flex items-center gap-2">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-1 hover:bg-[#1e1e2e] rounded text-gray-400"
+            className="p-1 hover:bg-[#1e293b] rounded text-slate-400"
           >
             {sidebarOpen ? <PanelLeftClose size={14} /> : <PanelLeftOpen size={14} />}
           </button>
-          <div className="w-px h-5 bg-[#1e1e2e]" />
+          <div className="w-px h-5 bg-[#1e293b]" />
         </div>
 
         <div className="flex items-center gap-2 flex-1">
@@ -406,17 +406,17 @@ export default function EditorPage() {
             onChange={(e) => updateProjectName(e.target.value)}
             className="bg-transparent text-sm text-white font-medium border-none outline-none focus:bg-[#13131f] focus:px-2 focus:rounded transition-all"
           />
-          <span className="text-[10px] text-gray-600">|</span>
-          <span className="text-[10px] text-gray-500">{timeline.fps}fps</span>
-          <span className="text-[10px] text-gray-600">|</span>
-          <span className="text-[10px] text-gray-500">{timeline.width}x{timeline.height}</span>
+          <span className="text-[10px] text-slate-600">|</span>
+          <span className="text-[10px] text-slate-500">{timeline.fps}fps</span>
+          <span className="text-[10px] text-slate-600">|</span>
+          <span className="text-[10px] text-slate-500">{timeline.width}x{timeline.height}</span>
         </div>
 
         <div className="flex items-center gap-1">
           <button
             onClick={undo}
             disabled={!canUndo()}
-            className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400 disabled:opacity-30"
+            className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400 disabled:opacity-30"
             title="Desfazer (Ctrl+Z)"
           >
             <Undo2 size={14} />
@@ -424,15 +424,15 @@ export default function EditorPage() {
           <button
             onClick={redo}
             disabled={!canRedo()}
-            className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400 disabled:opacity-30"
+            className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400 disabled:opacity-30"
             title="Refazer (Ctrl+Shift+Z)"
           >
             <Redo2 size={14} />
           </button>
-          <div className="w-px h-5 bg-[#1e1e2e] mx-1" />
+          <div className="w-px h-5 bg-[#1e293b] mx-1" />
           <button
             onClick={() => setProjectsOpen(true)}
-            className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400"
+            className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400"
             title="Meus projetos (rascunhos)"
           >
             📁
@@ -442,7 +442,7 @@ export default function EditorPage() {
               const p = useProjectStore.getState().project;
               useProjectsStore.getState().saveCurrent(p, { name: p.name, currentTime: usePlaybackStore.getState().currentTime });
             }}
-            className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400"
+            className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400"
             title="Salvar agora"
           >
             <Save size={14} />
@@ -453,7 +453,7 @@ export default function EditorPage() {
       <div className="flex flex-1 overflow-hidden min-h-0">
         {sidebarOpen && (
           <div className="flex flex-shrink-0">
-            <div className="w-[72px] bg-[#101018] border-r border-zinc-800/80 flex flex-col items-center py-2 gap-0.5 overflow-y-auto">
+            <div className="w-[72px] bg-[#0f172a] border-r border-slate-800/80 flex flex-col items-center py-2 gap-0.5 overflow-y-auto">
               {sidebarItems.map((item) => {
                 const active = sidebarTab === item.id && sidebarOpen;
                 return (
@@ -465,7 +465,7 @@ export default function EditorPage() {
                     className={`w-full flex flex-col items-center gap-0.5 px-1 py-1.5 rounded-lg transition-colors ${
                       active
                         ? "bg-[#8b5cf6]/15 text-[#8b5cf6] shadow-[inset_0_0_0_1px_rgba(139,92,246,0.35)]"
-                        : "text-gray-500 hover:bg-[#1a1a28] hover:text-gray-300"
+                        : "text-slate-500 hover:bg-[#1a1a28] hover:text-slate-300"
                     }`}
                     title={item.label}
                   >
@@ -478,14 +478,14 @@ export default function EditorPage() {
               })}
             </div>
 
-            <div className="w-[300px] bg-[#101018] border-r border-zinc-800/80 flex flex-col overflow-hidden">
-              <div className="flex-shrink-0 flex items-center justify-between px-2 h-7 bg-[#0c0c14] border-b border-zinc-800/80">
-                <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
+            <div className="w-[300px] bg-[#0f172a] border-r border-slate-800/80 flex flex-col overflow-hidden">
+              <div className="flex-shrink-0 flex items-center justify-between px-2 h-7 bg-[#08080c] border-b border-slate-800/80">
+                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
                   {sidebarItems.find((i) => i.id === sidebarTab)?.label}
                 </span>
                 <button
                   onClick={() => setSidebarOpen(false)}
-                  className="p-1 rounded hover:bg-[#1e1e2e] text-gray-500 hover:text-gray-300 flex items-center gap-1"
+                  className="p-1 rounded hover:bg-[#1e293b] text-slate-500 hover:text-slate-300 flex items-center gap-1"
                   title="Recolher painel"
                 >
                   <PanelLeftClose size={12} />
@@ -533,7 +533,7 @@ export default function EditorPage() {
 
       {/* Alça horizontal: puxar para cima aumenta a timeline (min 220px → max 65vh). */}
       <div
-        className="group h-1.5 flex-shrink-0 bg-[#101018] hover:bg-emerald-500/70 active:bg-emerald-400 cursor-row-resize touch-none transition-colors z-30 flex items-center justify-center"
+        className="group h-1.5 flex-shrink-0 bg-[#0f172a] hover:bg-emerald-500/70 active:bg-emerald-400 cursor-row-resize touch-none transition-colors z-30 flex items-center justify-center"
         title="Redimensionar a timeline"
         onPointerDown={handleTimelineResizeStart}
         onPointerMove={handleTimelineResizeMove}

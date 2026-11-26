@@ -17,12 +17,10 @@ export default function RootLayout({
 
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className="h-screen w-screen overflow-hidden bg-[#08080c]">
+      <body className="min-h-screen bg-slate-950 font-sans text-slate-100 flex flex-col pl-[72px] selection:bg-purple-500/30 selection:text-purple-200">
         {isPublicPage ? (
-          // Layout para páginas públicas (login/register)
           <>{children}</>
         ) : (
-          // Layout para páginas autenticadas
           <div className="flex h-full">
             <Sidebar />
             <main className="flex-1 flex flex-col min-w-0 overflow-hidden">

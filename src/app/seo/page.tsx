@@ -332,7 +332,7 @@ export default function SEOPage() {
               <p className="text-green-700 text-sm mb-1">
                 www.youtube.com/watch?v=...
               </p>
-              <p className="text-gray-600 text-sm line-clamp-2">
+              <p className="text-slate-600 text-sm line-clamp-2">
                 {description
                   ? description.substring(0, 160) + "..."
                   : "Sua descrição otimizada aparecerá aqui..."}

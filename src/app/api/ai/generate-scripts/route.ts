@@ -126,7 +126,38 @@ lote se refiram a essa MESMA regiao.
   para acolher TANTO estatisticas altas QUANTO baixas (ex: "Mesmo com esses numeros, a verdade e
   que muita gente continua reprovando por..."). Nunca amarre a Dor a um numero especifico do Gancho.
 - VALIDACAO DE COESAO: o SLOT 2 NAO pode contradizer a premissa levantada no SLOT 1. Se o Gancho
-  cita uma regiao/estatistica, a Dor deve ser compativel, sem citar outra regiao conflitante.`;
+  cita uma regiao/estatistica, a Dor deve ser compativel, sem citar outra regiao conflitante.
+
+CONECTORES PADRONIZADOS DE TRANSICAO INTER-BLOCOS:
+Para garantir que QUALQUER combinacao de Gancho[X] + Dor[Y] + Solucao[Z] + CTA[W] soe como texto
+continuo e fluido, TODOS os blocos DEVEM iniciar com os conectores obrigatorios abaixo:
+
+TRANSICAO GANCHO -> DOR/DESEJO/DUVIDA:
+- O Gancho DEVE encerrar com interrogacao ou afirmacao completa.
+- A Dor/DESEJO DEVE iniciar OBRIGATORIAMENTE com um dos conectores:
+  * "Voce sabia que..."
+  * "A grande questao e que..."
+  * "O real problema que ninguem te conta e que..."
+  * "A verdade e que..."
+
+TRANSICAO DOR/DESEJO/DUVIDA -> SOLUCAO:
+- A Dor/DESEJO apresenta frustracao sem citar produto/servico.
+- A Solucao DEVE iniciar OBRIGATORIAMENTE com um dos conectores:
+  * "E e exatamente por isso que..."
+  * "O segredo para resolver isso de forma simples e..."
+  * "A forma mais rapida de virar essa chave e..."
+  * "Para acabar com isso, a solucao e..."
+
+TRANSICAO SOLUCAO -> CTA:
+- A Solucao evidencia resultado ou beneficio do metodo.
+- O CTA DEVE iniciar OBRIGATORIAMENTE com um dos conectores:
+  * "Entao faz o seguinte:..."
+  * "Se voce quer ter acesso a isso hoje,..."
+  * "Quer aprender isso na pratica?..."
+  * "Toca no botao aqui embaixo e..."
+
+REQUISITO: Todos os blocos num mesmo lote DEVEM adotar conectores equivalentes nas fronteiras
+para que qualquer combinacao cruzada soe fluida.`;
 
 const RECOMMENDED_FREE_MODELS = [
   "google/gemini-2.5-flash:free",

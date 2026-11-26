@@ -232,7 +232,7 @@ Gere ${videoCount > 1 ? `${videoCount} variações de roteiro` : "o roteiro"} no
             Gerador de <span className="gradient-text">Conteúdo</span>
           </h1>
         </div>
-        <p className="text-gray-400">
+        <p className="text-slate-400">
           Defina sua ideia e gere roteiros completos com IA
         </p>
       </div>
@@ -241,40 +241,40 @@ Gere ${videoCount > 1 ? `${videoCount} variações de roteiro` : "o roteiro"} no
         {/* Left - Form */}
         <div className="lg:col-span-2 space-y-4">
           {/* Ideia Central - CAMPO PRINCIPAL */}
-          <div className="bg-[#1c1c28] border border-gray-800 rounded-2xl p-6">
+          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-4">
               <Lightbulb className="w-5 h-5 text-yellow-400" />
               <h2 className="text-lg font-bold text-white">Ideia Central do Vídeo</h2>
-              <span className="text-xs text-gray-500 ml-auto">*Obrigatório</span>
+              <span className="text-xs text-slate-500 ml-auto">*Obrigatório</span>
             </div>
             <textarea
               value={centralIdea}
               onChange={(e) => setCentralIdea(e.target.value)}
               placeholder="Ex: Dicas para passar no exame prático da CNH de primeira..."
-              className="w-full h-32 px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] outline-none transition-all resize-none"
+              className="w-full h-32 px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] outline-none transition-all resize-none"
             />
             <div className="flex items-center gap-4 mt-3">
               <div className="flex items-center gap-2">
-                <FileText className="w-4 h-4 text-gray-400" />
-                <span className="text-sm text-gray-400">Qtd. de vídeos:</span>
+                <FileText className="w-4 h-4 text-slate-400" />
+                <span className="text-sm text-slate-400">Qtd. de vídeos:</span>
                 <input
                   type="number"
                   min={1}
                   max={10}
                   value={videoCount}
                   onChange={(e) => setVideoCount(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-16 px-2 py-1 rounded-lg bg-[#252535] border border-gray-700 text-white text-center text-sm focus:border-[var(--primary)] outline-none"
+                  className="w-16 px-2 py-1 rounded-lg bg-[#1e293b] border border-slate-700 text-white text-center text-sm focus:border-[var(--primary)] outline-none"
                 />
               </div>
             </div>
           </div>
 
           {/* Modelo de IA */}
-          <div className="bg-[#1c1c28] border border-gray-800 rounded-2xl p-6">
+          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-4">
               <Cpu className="w-5 h-5 text-[var(--primary)]" />
               <h2 className="text-lg font-bold text-white">Modelo de IA</h2>
-              <span className="text-xs text-gray-500 ml-auto">
+              <span className="text-xs text-slate-500 ml-auto">
                 Padrão: {defaultModel}
               </span>
             </div>
@@ -284,7 +284,7 @@ Gere ${videoCount > 1 ? `${videoCount} variações de roteiro` : "o roteiro"} no
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
                 placeholder="Cole sua API Key do OpenRouter (opcional)..."
-                className="w-full px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] outline-none transition-all"
               />
               <div className="relative">
                 <input
@@ -292,10 +292,10 @@ Gere ${videoCount > 1 ? `${videoCount} variações de roteiro` : "o roteiro"} no
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Buscar modelo (ex: gemini, free, claude)..."
-                  className="w-full px-4 py-2 pl-8 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] outline-none transition-all text-sm"
+                  className="w-full px-4 py-2 pl-8 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] outline-none transition-all text-sm"
                 />
                 <svg
-                  className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-500"
+                  className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -309,7 +309,7 @@ Gere ${videoCount > 1 ? `${videoCount} variações de roteiro` : "o roteiro"} no
                 </svg>
               </div>
               {isLoadingModels ? (
-                <div className="flex items-center justify-center py-4 gap-2 text-gray-400 text-sm">
+                <div className="flex items-center justify-center py-4 gap-2 text-slate-400 text-sm">
                   <Loader2 className="w-4 h-4 animate-spin" />
                   Carregando modelos...
                 </div>
@@ -317,7 +317,7 @@ Gere ${videoCount > 1 ? `${videoCount} variações de roteiro` : "o roteiro"} no
                 <select
                   value={selectedModel}
                   onChange={(e) => setSelectedModel(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white focus:border-[var(--primary)] outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white focus:border-[var(--primary)] outline-none transition-all"
                 >
                   {models.map((model) => (
                     <option key={model.id} value={model.id}>
@@ -334,11 +334,11 @@ Gere ${videoCount > 1 ? `${videoCount} variações de roteiro` : "o roteiro"} no
           </div>
 
           {/* Objetivo do Vídeo */}
-          <div className="bg-[#1c1c28] border border-gray-800 rounded-2xl p-6">
+          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-4">
               <Target className="w-5 h-5 text-[var(--primary)]" />
               <h2 className="text-lg font-bold text-white">Objetivo do Vídeo</h2>
-              <span className="text-xs text-gray-500 ml-auto">Opcional</span>
+              <span className="text-xs text-slate-500 ml-auto">Opcional</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {objectives.map((obj) => (
@@ -348,11 +348,11 @@ Gere ${videoCount > 1 ? `${videoCount} variações de roteiro` : "o roteiro"} no
                   className={`text-left p-3 rounded-xl border transition-all ${
                     videoObjective === obj.value
                       ? "bg-[var(--primary)]/10 border-[var(--primary)]/30 text-white"
-                      : "bg-[#252535] border-gray-700 text-gray-400 hover:border-gray-600"
+                      : "bg-[#1e293b] border-slate-700 text-slate-400 hover:border-slate-600"
                   }`}
                 >
                   <p className="text-sm font-medium">{obj.label}</p>
-                  <p className="text-xs text-gray-500">{obj.description}</p>
+                  <p className="text-xs text-slate-500">{obj.description}</p>
                 </button>
               ))}
             </div>
@@ -362,58 +362,58 @@ Gere ${videoCount > 1 ? `${videoCount} variações de roteiro` : "o roteiro"} no
                 value={customObjective}
                 onChange={(e) => setCustomObjective(e.target.value)}
                 placeholder="Descreva seu objetivo..."
-                className="w-full mt-3 px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] outline-none transition-all"
+                className="w-full mt-3 px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] outline-none transition-all"
               />
             )}
           </div>
 
           {/* Campos Opcionais - Collapsible */}
-          <div className="bg-[#1c1c28] border border-gray-800 rounded-2xl overflow-hidden">
+          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl overflow-hidden">
             <button
               onClick={() => setShowOptionalFields(!showOptionalFields)}
-              className="w-full flex items-center justify-between p-4 hover:bg-[#252535] transition-colors"
+              className="w-full flex items-center justify-between p-4 hover:bg-[#1e293b] transition-colors"
             >
               <div className="flex items-center gap-2">
-                <User className="w-5 h-5 text-gray-400" />
+                <User className="w-5 h-5 text-slate-400" />
                 <span className="text-white font-medium">Mais Opções Opcionais</span>
-                <span className="text-xs text-gray-500">(seu perfil)</span>
+                <span className="text-xs text-slate-500">(seu perfil)</span>
               </div>
               {showOptionalFields ? (
-                <ChevronUp className="w-5 h-5 text-gray-400" />
+                <ChevronUp className="w-5 h-5 text-slate-400" />
               ) : (
-                <ChevronDown className="w-5 h-5 text-gray-400" />
+                <ChevronDown className="w-5 h-5 text-slate-400" />
               )}
             </button>
             {showOptionalFields && (
-              <div className="p-4 pt-0 space-y-4 border-t border-gray-800">
+              <div className="p-4 pt-0 space-y-4 border-t border-slate-800">
                 <div className="pt-4">
-                  <label className="block text-sm text-gray-400 mb-1">Nicho</label>
+                  <label className="block text-sm text-slate-400 mb-1">Nicho</label>
                   <input
                     type="text"
                     value={profile.nicho}
                     onChange={(e) => setProfile({ ...profile, nicho: e.target.value })}
                     placeholder="Ex: Saúde, Finanças, Fitness, Culinária..."
-                    className="w-full px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] outline-none transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-400 mb-1">Público-Alvo</label>
+                  <label className="block text-sm text-slate-400 mb-1">Público-Alvo</label>
                   <input
                     type="text"
                     value={profile.publico_alvo}
                     onChange={(e) => setProfile({ ...profile, publico_alvo: e.target.value })}
                     placeholder="Ex: Pessoas tirando a 1ª carteira ou maiores de 18 anos"
-                    className="w-full px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] outline-none transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-400 mb-1">Produto / Serviço</label>
+                  <label className="block text-sm text-slate-400 mb-1">Produto / Serviço</label>
                   <input
                     type="text"
                     value={profile.produto_servico}
                     onChange={(e) => setProfile({ ...profile, produto_servico: e.target.value })}
                     placeholder="Ex: Curso online, E-book, Consultoria, App..."
-                    className="w-full px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] outline-none transition-all"
                   />
                 </div>
                 <button
@@ -454,7 +454,7 @@ Gere ${videoCount > 1 ? `${videoCount} variações de roteiro` : "o roteiro"} no
 
         {/* Right - Preview */}
         <div className="lg:col-span-1">
-          <div className="bg-[#1c1c28] border border-gray-800 rounded-2xl p-6 sticky top-6">
+          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl p-6 sticky top-6">
             <div className="flex items-center gap-2 mb-4">
               <Megaphone className="w-5 h-5 text-[var(--accent-pink)]" />
               <h2 className="text-lg font-bold text-white">Resultado</h2>
@@ -464,10 +464,10 @@ Gere ${videoCount > 1 ? `${videoCount} variações de roteiro` : "o roteiro"} no
               <div className="space-y-4">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-gray-400 font-medium">GANCHO</span>
+                    <span className="text-xs text-slate-400 font-medium">GANCHO</span>
                     <button
                       onClick={() => handleCopy(hook)}
-                      className="text-gray-400 hover:text-white transition-colors"
+                      className="text-slate-400 hover:text-white transition-colors"
                     >
                       <Copy className="w-4 h-4" />
                     </button>
@@ -479,15 +479,15 @@ Gere ${videoCount > 1 ? `${videoCount} variações de roteiro` : "o roteiro"} no
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-gray-400 font-medium">ROTEIRO COMPLETO</span>
+                    <span className="text-xs text-slate-400 font-medium">ROTEIRO COMPLETO</span>
                     <button
                       onClick={() => handleCopy(generatedScript)}
-                      className="text-gray-400 hover:text-white transition-colors"
+                      className="text-slate-400 hover:text-white transition-colors"
                     >
                       <Copy className="w-4 h-4" />
                     </button>
                   </div>
-                  <div className="p-3 rounded-xl bg-[#252535] text-sm text-gray-300 whitespace-pre-wrap max-h-[500px] overflow-y-auto">
+                  <div className="p-3 rounded-xl bg-[#1e293b] text-sm text-slate-300 whitespace-pre-wrap max-h-[500px] overflow-y-auto">
                     {generatedScript}
                   </div>
                 </div>
@@ -497,14 +497,14 @@ Gere ${videoCount > 1 ? `${videoCount} variações de roteiro` : "o roteiro"} no
                     setGeneratedScript("");
                     setHook("");
                   }}
-                  className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+                  className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
                 >
                   <RefreshCw className="w-4 h-4" />
                   Gerar novo roteiro
                 </button>
               </div>
             ) : (
-              <div className="text-center py-12 text-gray-500">
+              <div className="text-center py-12 text-slate-500">
                 <Sparkles className="w-12 h-12 mx-auto mb-3 opacity-30" />
                 <p className="text-sm">Preencha a ideia central e clique em gerar</p>
               </div>

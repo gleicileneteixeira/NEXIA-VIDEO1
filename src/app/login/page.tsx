@@ -90,7 +90,7 @@ export default function LoginPage() {
           <h1 className="text-3xl font-bold text-white mb-2">
             {isRegister ? "Criar Conta" : "Bem-vindo de volta"}
           </h1>
-          <p className="text-gray-400">
+          <p className="text-slate-400">
             {isRegister
               ? "Comece a criar conteúdo em massa"
               : "Entre na sua conta para continuar"}
@@ -98,7 +98,7 @@ export default function LoginPage() {
         </div>
 
         {/* Form Card */}
-        <div className="bg-[#1c1c28] border border-gray-800 rounded-2xl p-8">
+        <div className="bg-[#0f172a] border border-slate-800 rounded-2xl p-8">
           <form onSubmit={handleSubmit} className="space-y-5">
             {error && (
               <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
@@ -107,7 +107,7 @@ export default function LoginPage() {
             )}
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-slate-300 mb-2">
                 Email
               </label>
               <input
@@ -115,13 +115,13 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] outline-none transition-all"
                 placeholder="seu@email.com"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-slate-300 mb-2">
                 Senha
               </label>
               <div className="relative">
@@ -131,13 +131,13 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   minLength={6}
-                  className="w-full px-4 py-3 pr-12 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] outline-none transition-all"
+                  className="w-full px-4 py-3 pr-12 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] outline-none transition-all"
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors"
                 >
                   {showPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -169,7 +169,7 @@ export default function LoginPage() {
                 setIsRegister(!isRegister);
                 setError("");
               }}
-              className="text-sm text-gray-400 hover:text-[var(--primary)] transition-colors block"
+              className="text-sm text-slate-400 hover:text-[var(--primary)] transition-colors block"
             >
               {isRegister
                 ? "Já tem conta? Faça login"

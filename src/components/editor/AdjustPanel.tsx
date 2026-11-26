@@ -29,8 +29,8 @@ export default function AdjustPanel() {
   }) => (
     <div className="space-y-1">
       <div className="flex justify-between">
-        <span className="text-[10px] text-gray-400">{label}</span>
-        <span className="text-[10px] text-gray-500">{value.toFixed(1)}{unit}</span>
+        <span className="text-[10px] text-slate-400">{label}</span>
+        <span className="text-[10px] text-slate-500">{value.toFixed(1)}{unit}</span>
       </div>
       <input
         type="range"
@@ -39,18 +39,18 @@ export default function AdjustPanel() {
         step="0.1"
         value={value}
         onChange={(e) => onChange(parseFloat(e.target.value))}
-        className="w-full h-1 bg-[#1e1e2e] rounded-full appearance-none accent-[#8b5cf6]"
+        className="w-full h-1 bg-[#1e293b] rounded-full appearance-none accent-[#8b5cf6]"
       />
     </div>
   );
 
   if (!selectedItem) {
     return (
-      <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col">
-        <div className="px-4 py-3 border-b border-[#1e1e2e]">
-          <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Ajuste</h3>
+      <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col">
+        <div className="px-4 py-3 border-b border-[#1e293b]">
+          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Ajuste</h3>
         </div>
-        <div className="flex-1 flex items-center justify-center text-gray-600 text-xs">
+        <div className="flex-1 flex items-center justify-center text-slate-600 text-xs">
           Selecione um clipe para ajustar
         </div>
       </div>
@@ -58,14 +58,14 @@ export default function AdjustPanel() {
   }
 
   return (
-    <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col">
-      <div className="px-4 py-3 border-b border-[#1e1e2e]">
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Ajuste</h3>
+    <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col">
+      <div className="px-4 py-3 border-b border-[#1e293b]">
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Ajuste</h3>
       </div>
 
       <div className="flex-1 overflow-y-auto p-3 space-y-4">
         <div>
-          <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Imagem</div>
+          <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Imagem</div>
           <div className="space-y-3">
             <Slider
               label="Brilho"
@@ -128,7 +128,7 @@ export default function AdjustPanel() {
         </div>
 
         <div>
-          <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Efeitos de Lente</div>
+          <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Efeitos de Lente</div>
           <div className="space-y-3">
             <Slider
               label="Vignette"

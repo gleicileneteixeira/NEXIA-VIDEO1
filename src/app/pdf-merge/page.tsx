@@ -431,7 +431,7 @@ export default function PDFMergePage() {
                   </div>
 
                   {/* Thumbnail Cover Area */}
-                  <div className="aspect-[3/4] bg-[#0c0c14] flex items-center justify-center overflow-hidden border-b border-[var(--border)] relative">
+                  <div className="aspect-[3/4] bg-[#08080c] flex items-center justify-center overflow-hidden border-b border-[var(--border)] relative">
                     {item.coverUrl ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img

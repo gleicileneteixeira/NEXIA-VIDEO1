@@ -1913,7 +1913,7 @@ export default function Preview() {
             />
           ))
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center text-gray-600 text-sm">
+          <div className="absolute inset-0 flex items-center justify-center text-slate-600 text-sm">
             Arraste um vídeo para a timeline
           </div>
         )}
@@ -1975,7 +1975,7 @@ export default function Preview() {
 
                 <div className="absolute top-[-24px] left-1/2 -translate-x-1/2 w-0.5 h-6 bg-[#8b5cf6]" />
                 <div
-                  className="absolute top-[-32px] left-1/2 -translate-x-1/2 w-5 h-5 bg-white border-2 border-[#8b5cf6] rounded-full cursor-grab active:cursor-grabbing flex items-center justify-center shadow hover:bg-gray-100"
+                  className="absolute top-[-32px] left-1/2 -translate-x-1/2 w-5 h-5 bg-white border-2 border-[#8b5cf6] rounded-full cursor-grab active:cursor-grabbing flex items-center justify-center shadow hover:bg-slate-100"
                   onMouseDown={(e) => { e.stopPropagation(); handleMouseDown(e, "rotate"); }}
                   title="Girar"
                 >

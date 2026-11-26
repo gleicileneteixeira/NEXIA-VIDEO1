@@ -74,21 +74,21 @@ export default function PostItemCard({ profileId, post }: { profileId: string; p
   const displayCaption = variation ?? post.caption;
 
   return (
-    <div className="bg-[#1c1c28] border border-gray-800 rounded-2xl overflow-hidden flex flex-col">
+    <div className="bg-[#0f172a] border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
       {/* Cabeçalho: dia + status + favorito */}
-      <div className="px-4 py-3 border-b border-gray-800 flex items-center gap-3">
+      <div className="px-4 py-3 border-b border-slate-800 flex items-center gap-3">
         <div className="w-8 h-8 rounded-lg bg-[var(--primary)]/15 text-[var(--primary)] flex items-center justify-center text-sm font-bold flex-shrink-0">
           {post.dayNumber}
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-[10px] text-gray-500">{post.scheduledDate}</p>
+          <p className="text-[10px] text-slate-500">{post.scheduledDate}</p>
           <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1 bg-[var(--primary)]/10 text-[var(--primary)]">
             {post.pillarLabel} · {post.format}
           </span>
         </div>
         <button
           onClick={() => updatePost(profileId, post.id, { favorite: !post.favorite })}
-          className="p-1.5 rounded-lg text-gray-500 hover:text-yellow-400 transition-colors"
+          className="p-1.5 rounded-lg text-slate-500 hover:text-yellow-400 transition-colors"
           title="Favoritar"
         >
           <Star className={`w-4 h-4 ${post.favorite ? "fill-yellow-400 text-yellow-400" : ""}`} />
@@ -101,10 +101,10 @@ export default function PostItemCard({ profileId, post }: { profileId: string; p
           <img
             src={post.previewImageUrl}
             alt={`Arte do dia ${post.dayNumber}`}
-            className="rounded-xl w-full aspect-square object-cover border border-gray-800"
+            className="rounded-xl w-full aspect-square object-cover border border-slate-800"
           />
         ) : (
-          <div className="rounded-xl w-full aspect-square bg-[#252535] border border-gray-800 flex items-center justify-center text-gray-600 text-xs">
+          <div className="rounded-xl w-full aspect-square bg-[#1e293b] border border-slate-800 flex items-center justify-center text-slate-600 text-xs">
             Gere o calendário para ver a arte
           </div>
         )}
@@ -115,13 +115,13 @@ export default function PostItemCard({ profileId, post }: { profileId: string; p
         <p className="text-sm font-medium text-white mb-2 line-clamp-2">{post.hook}</p>
         <button
           onClick={() => setExpanded(!expanded)}
-          className="w-full flex items-center justify-between text-[11px] text-gray-400 hover:text-white transition-colors py-1"
+          className="w-full flex items-center justify-between text-[11px] text-slate-400 hover:text-white transition-colors py-1"
         >
           <span>{expanded ? "Recolher legenda" : "Ver mais"}</span>
           {expanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
         </button>
         {expanded && (
-          <div className="p-3 rounded-xl bg-[#252535] border border-gray-800 text-xs text-gray-300 whitespace-pre-wrap max-h-56 overflow-y-auto">
+          <div className="p-3 rounded-xl bg-[#1e293b] border border-slate-800 text-xs text-slate-300 whitespace-pre-wrap max-h-56 overflow-y-auto">
             {displayCaption}
           </div>
         )}
@@ -138,7 +138,7 @@ export default function PostItemCard({ profileId, post }: { profileId: string; p
         </button>
         <button
           onClick={() => copy(displayCaption, "caption")}
-          className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-[#1c1c28] border border-gray-700 text-gray-300 text-[11px] font-semibold hover:text-white hover:border-gray-500 transition-colors"
+          className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-[#0f172a] border border-slate-700 text-slate-300 text-[11px] font-semibold hover:text-white hover:border-slate-500 transition-colors"
         >
           {copied === "caption" ? (
             <>
@@ -152,13 +152,13 @@ export default function PostItemCard({ profileId, post }: { profileId: string; p
         </button>
         <button
           onClick={newVariation}
-          className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-[#1c1c28] border border-gray-700 text-gray-300 text-[11px] font-semibold hover:text-white hover:border-gray-500 transition-colors"
+          className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-[#0f172a] border border-slate-700 text-slate-300 text-[11px] font-semibold hover:text-white hover:border-slate-500 transition-colors"
         >
           <RefreshCw className="w-3.5 h-3.5" /> Gerar Nova Legenda
         </button>
         <button
           onClick={openInEditor}
-          className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-gray-700/30 border border-gray-700 text-gray-300 text-[11px] font-semibold hover:bg-[var(--accent-pink)]/20 hover:text-white transition-colors"
+          className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-slate-700/30 border border-slate-700 text-slate-300 text-[11px] font-semibold hover:bg-[var(--accent-pink)]/20 hover:text-white transition-colors"
         >
           <Video className="w-3.5 h-3.5" /> Criar Vídeo
         </button>
@@ -168,7 +168,7 @@ export default function PostItemCard({ profileId, post }: { profileId: string; p
       <div className="px-4 pb-4">
         <button
           onClick={cycleStatus}
-          className="w-full flex items-center justify-center gap-2 py-2 rounded-xl border border-gray-700 text-[11px] text-gray-400 hover:text-white hover:border-gray-500 transition-colors"
+          className="w-full flex items-center justify-center gap-2 py-2 rounded-xl border border-slate-700 text-[11px] text-slate-400 hover:text-white hover:border-slate-500 transition-colors"
           title="Clique para alternar o status"
         >
           <CalendarClock className="w-3.5 h-3.5" />

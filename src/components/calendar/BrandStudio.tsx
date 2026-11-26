@@ -234,74 +234,74 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
   const artCount = Object.keys(arts).filter((id) => arts[id]).length;
 
   return (
-    <div className="bg-[#1c1c28] border border-gray-800 rounded-2xl p-6 space-y-6">
+    <div className="bg-[#0f172a] border border-slate-800 rounded-2xl p-6 space-y-6">
       {/* Cabeçalho */}
       <div className="flex items-center gap-2">
         <Palette className="w-5 h-5 text-[var(--accent-pink)]" />
         <h2 className="text-lg font-bold text-white">Marca &amp; Artes Visuais</h2>
-        <span className="text-[11px] text-gray-500 ml-auto">
+        <span className="text-[11px] text-slate-500 ml-auto">
           Identidade + capas prontas + legendas com SEO
         </span>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Cores da marca */}
-        <div className="bg-[#252535] border border-gray-800 rounded-xl p-4 space-y-3">
+        <div className="bg-[#1e293b] border border-slate-800 rounded-xl p-4 space-y-3">
           <p className="text-sm font-medium text-white flex items-center gap-2">
             <Palette className="w-4 h-4 text-[var(--primary)]" /> Cores da marca
           </p>
           <div className="flex items-center gap-2">
             <label className="flex-1">
-              <span className="block text-[11px] text-gray-400 mb-1">Primária</span>
+              <span className="block text-[11px] text-slate-400 mb-1">Primária</span>
               <div className="flex items-center gap-2">
                 <input
                   type="color"
                   value={primary}
                   onChange={(e) => setBrandColors({ primary: e.target.value })}
-                  className="w-9 h-9 rounded-lg border border-gray-700 cursor-pointer bg-transparent"
+                  className="w-9 h-9 rounded-lg border border-slate-700 cursor-pointer bg-transparent"
                 />
-                <span className="text-[11px] text-gray-300 font-mono uppercase">{primary}</span>
+                <span className="text-[11px] text-slate-300 font-mono uppercase">{primary}</span>
               </div>
             </label>
             <label className="flex-1">
-              <span className="block text-[11px] text-gray-400 mb-1">Secundária</span>
+              <span className="block text-[11px] text-slate-400 mb-1">Secundária</span>
               <div className="flex items-center gap-2">
                 <input
                   type="color"
                   value={secondary}
                   onChange={(e) => setBrandColors({ secondary: e.target.value })}
-                  className="w-9 h-9 rounded-lg border border-gray-700 cursor-pointer bg-transparent"
+                  className="w-9 h-9 rounded-lg border border-slate-700 cursor-pointer bg-transparent"
                 />
-                <span className="text-[11px] text-gray-300 font-mono uppercase">{secondary}</span>
+                <span className="text-[11px] text-slate-300 font-mono uppercase">{secondary}</span>
               </div>
             </label>
             <label className="flex-1">
-              <span className="block text-[11px] text-gray-400 mb-1">Destaque</span>
+              <span className="block text-[11px] text-slate-400 mb-1">Destaque</span>
               <div className="flex items-center gap-2">
                 <input
                   type="color"
                   value={accent}
                   onChange={(e) => setBrandColors({ accent: e.target.value })}
-                  className="w-9 h-9 rounded-lg border border-gray-700 cursor-pointer bg-transparent"
+                  className="w-9 h-9 rounded-lg border border-slate-700 cursor-pointer bg-transparent"
                 />
-                <span className="text-[11px] text-gray-300 font-mono uppercase">{accent}</span>
+                <span className="text-[11px] text-slate-300 font-mono uppercase">{accent}</span>
               </div>
             </label>
           </div>
           <label className="block">
-            <span className="block text-[11px] text-gray-400 mb-1">@ da marca (rodapé da arte 1:1)</span>
+            <span className="block text-[11px] text-slate-400 mb-1">@ da marca (rodapé da arte 1:1)</span>
             <input
               type="text"
               value={handle}
               onChange={(e) => setHandle(e.target.value)}
               placeholder="@seumarca"
-              className="w-full px-3 py-2 rounded-lg bg-[#1c1c28] border border-gray-700 text-white text-xs placeholder-gray-500 focus:border-[var(--primary)] outline-none"
+              className="w-full px-3 py-2 rounded-lg bg-[#0f172a] border border-slate-700 text-white text-xs placeholder-slate-500 focus:border-[var(--primary)] outline-none"
             />
           </label>
         </div>
 
         {/* Logo com remoção de fundo */}
-        <div className="bg-[#252535] border border-gray-800 rounded-xl p-4 space-y-3">
+        <div className="bg-[#1e293b] border border-slate-800 rounded-xl p-4 space-y-3">
           <p className="text-sm font-medium text-white flex items-center gap-2">
             <Upload className="w-4 h-4 text-[var(--primary)]" /> Logo (fundo removido)
           </p>
@@ -313,7 +313,7 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
                 onChange={handleLogoUpload}
                 className="hidden"
               />
-              <span className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border border-dashed border-gray-600 text-xs text-gray-300 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors cursor-pointer">
+              <span className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border border-dashed border-slate-600 text-xs text-slate-300 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors cursor-pointer">
                 {busy === "logo" ? (
                   <>
                     <Loader2 className="w-3.5 h-3.5 animate-spin" /> Processando...
@@ -331,7 +331,7 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
                   resetBrand();
                   setDetectedColor(null);
                 }}
-                className="p-2 rounded-lg text-gray-500 hover:text-red-400 transition-colors"
+                className="p-2 rounded-lg text-slate-500 hover:text-red-400 transition-colors"
                 title="Remover logo"
               >
                 <Trash2 className="w-4 h-4" />
@@ -348,11 +348,11 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
                     alt="Logo original"
                     className="max-h-16 object-contain"
                   />
-                  <span className="text-[9px] text-gray-500">Original</span>
+                  <span className="text-[9px] text-slate-500">Original</span>
                 </div>
                 <div className="rounded-lg overflow-hidden bg-[repeating-conic-gradient(#1a1a2a_0%_25%,#0d0d16_0%_50%)] bg-[length:12px_12px] p-2 flex flex-col items-center gap-1">
                   <img src={logoUrl} alt="Logo sem fundo" className="max-h-16 object-contain" />
-                  <span className="text-[9px] text-gray-500">
+                  <span className="text-[9px] text-slate-500">
                     Sem fundo{" "}
                     {detectedColor ? (
                       <span className="inline-flex items-center gap-1">
@@ -367,7 +367,7 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
                 </div>
               </div>
               <div>
-                <label className="block text-[11px] text-gray-400 mb-1">
+                <label className="block text-[11px] text-slate-400 mb-1">
                   Tolerância do recorte: {tolerance}
                 </label>
                 <input
@@ -384,7 +384,7 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
         </div>
 
         {/* Foto de fundo */}
-        <div className="bg-[#252535] border border-gray-800 rounded-xl p-4 space-y-3">
+        <div className="bg-[#1e293b] border border-slate-800 rounded-xl p-4 space-y-3">
           <p className="text-sm font-medium text-white flex items-center gap-2">
             <ImageIcon className="w-4 h-4 text-[var(--primary)]" /> Foto de fundo
           </p>
@@ -394,7 +394,7 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
               value={photoQuery}
               onChange={(e) => setPhotoQuery(e.target.value)}
               placeholder={nicho || "Buscar fotos por tema..."}
-              className="flex-1 px-3 py-2 rounded-lg bg-[#1c1c28] border border-gray-700 text-white text-xs placeholder-gray-500 focus:border-[var(--primary)] outline-none"
+              className="flex-1 px-3 py-2 rounded-lg bg-[#0f172a] border border-slate-700 text-white text-xs placeholder-slate-500 focus:border-[var(--primary)] outline-none"
             />
             <button
               onClick={handleSearchPhotos}
@@ -416,7 +416,7 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
                 <button
                   key={r.id}
                   onClick={() => handleSelectPhoto(r)}
-                  className="relative aspect-square rounded-lg overflow-hidden border border-gray-700 hover:border-[var(--primary)] transition-colors group"
+                  className="relative aspect-square rounded-lg overflow-hidden border border-slate-700 hover:border-[var(--primary)] transition-colors group"
                   title={r.title}
                 >
                   <img
@@ -441,15 +441,15 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
               <img
                 src={photoUrl}
                 alt="Foto selecionada"
-                className="w-14 h-14 rounded-lg object-cover border border-gray-700"
+                className="w-14 h-14 rounded-lg object-cover border border-slate-700"
               />
               <div className="flex-1 min-w-0">
-                <p className="text-[10px] text-gray-400 truncate">
+                <p className="text-[10px] text-slate-400 truncate">
                   {photoCredit || "Foto selecionada"}
                 </p>
                 <button
                   onClick={() => setPhoto("", "")}
-                  className="text-[10px] text-gray-500 hover:text-red-400 transition-colors flex items-center gap-1"
+                  className="text-[10px] text-slate-500 hover:text-red-400 transition-colors flex items-center gap-1"
                 >
                   <Trash2 className="w-3 h-3" /> Remover
                 </button>
@@ -461,13 +461,13 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
 
       {/* Geração das artes */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-1 bg-[#252535] border border-gray-800 rounded-lg p-1">
+        <div className="flex items-center gap-1 bg-[#1e293b] border border-slate-800 rounded-lg p-1">
           {(Object.keys(ASPECT_SIZES) as Aspect[]).map((a) => (
             <button
               key={a}
               onClick={() => setAspect(a)}
               className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
-                aspect === a ? "bg-[var(--primary)] text-white" : "text-gray-400 hover:text-white"
+                aspect === a ? "bg-[var(--primary)] text-white" : "text-slate-400 hover:text-white"
               }`}
             >
               {a}
@@ -494,14 +494,14 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
         </button>
 
         {posts.length === 0 && (
-          <p className="text-[11px] text-gray-500 w-full">
+          <p className="text-[11px] text-slate-500 w-full">
             Gere o calendário acima para habilitar a criação das artes.
           </p>
         )}
       </div>
 
       {generating && (
-        <div className="h-2 rounded-full bg-[#252535] overflow-hidden">
+        <div className="h-2 rounded-full bg-[#1e293b] overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-[var(--primary)] to-[var(--accent-pink)] transition-all"
             style={{ width: `${progress}%` }}
@@ -514,7 +514,7 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
         <div>
           <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
             <p className="text-sm font-medium text-white">
-              Posts prontos <span className="text-gray-500">({artCount}/{posts.length})</span>
+              Posts prontos <span className="text-slate-500">({artCount}/{posts.length})</span>
             </p>
             <button
               onClick={() =>
@@ -523,7 +523,7 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
                   "copy-all-captions"
                 )
               }
-              className="text-[11px] text-gray-400 hover:text-white transition-colors flex items-center gap-1"
+              className="text-[11px] text-slate-400 hover:text-white transition-colors flex items-center gap-1"
               title="Copiar todas as legendas em sequência"
             >
               {copiedId === "copy-all-captions" ? (
@@ -544,7 +544,7 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
               return (
                 <div
                   key={post.id}
-                  className="bg-[#252535] border border-gray-800 rounded-xl overflow-hidden flex flex-col"
+                  className="bg-[#1e293b] border border-slate-800 rounded-xl overflow-hidden flex flex-col"
                 >
                   <img
                     src={dataUrl}
@@ -552,12 +552,12 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
                     className="w-full object-cover"
                   />
                   <div className="p-2.5 flex flex-col gap-2 flex-1">
-                    <span className="text-[10px] text-gray-400 font-semibold">
+                    <span className="text-[10px] text-slate-400 font-semibold">
                       Dia {post.dayNumber} · {post.pillarLabel}
                     </span>
                     <button
                       onClick={() => toggleCaption(post.id)}
-                      className="text-left text-[10px] leading-relaxed text-gray-300 whitespace-pre-wrap line-clamp-5 hover:text-white transition-colors"
+                      className="text-left text-[10px] leading-relaxed text-slate-300 whitespace-pre-wrap line-clamp-5 hover:text-white transition-colors"
                       title="Clique para ver a legenda completa"
                     >
                       {cut}
@@ -572,7 +572,7 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
                       </button>
                       <button
                         onClick={() => copyText(caption, `${post.id}-caption`)}
-                        className="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg bg-[#1c1c28] border border-gray-700 text-gray-300 text-[11px] font-semibold hover:text-white hover:border-gray-500 transition-colors"
+                        className="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg bg-[#0f172a] border border-slate-700 text-slate-300 text-[11px] font-semibold hover:text-white hover:border-slate-500 transition-colors"
                       >
                         {copiedId === `${post.id}-caption` ? (
                           <Check className="w-3.5 h-3.5 text-green-400" />
@@ -583,7 +583,7 @@ export default function BrandStudio({ posts, nicho }: BrandStudioProps) {
                       </button>
                       <button
                         onClick={() => router.push(`/editor?hook=${encodeURIComponent(post.hook)}`)}
-                        className="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg bg-gray-700/30 border border-gray-700 text-gray-300 text-[11px] font-semibold hover:bg-[var(--accent-pink)]/20 hover:text-white transition-colors"
+                        className="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-700/30 border border-slate-700 text-slate-300 text-[11px] font-semibold hover:bg-[var(--accent-pink)]/20 hover:text-white transition-colors"
                       >
                         <Video className="w-3.5 h-3.5" /> Criar Vídeo no Editor
                       </button>

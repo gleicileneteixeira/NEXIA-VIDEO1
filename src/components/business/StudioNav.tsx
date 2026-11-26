@@ -20,7 +20,7 @@ export default function StudioNav({
   onChange: (tab: StudioTab) => void;
 }) {
   return (
-    <div className="flex items-center gap-1 flex-wrap border-b border-zinc-800">
+    <div className="flex items-center gap-1 flex-wrap border-b border-slate-800">
       {TABS.map((tab) => {
         const isActive = active === tab.id;
         return (
@@ -29,8 +29,8 @@ export default function StudioNav({
             onClick={() => onChange(tab.id)}
             className={`flex items-center gap-2 px-5 py-3 text-sm font-semibold border-b-2 transition-colors ${
               isActive
-                ? "bg-zinc-800 text-white border-[var(--primary)]"
-                : "text-zinc-400 hover:text-white hover:bg-zinc-900/60 border-transparent"
+                ? "bg-slate-800 text-white border-[var(--primary)]"
+                : "text-slate-400 hover:text-white hover:bg-slate-900/60 border-transparent"
             }`}
           >
             <tab.icon className="w-4 h-4" />

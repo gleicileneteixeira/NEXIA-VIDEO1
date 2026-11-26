@@ -131,9 +131,9 @@ export default function MatchCut() {
   const sorted = [...markers].sort((a, b) => a.frame - b.frame);
 
   return (
-    <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col overflow-y-auto">
-      <div className="px-4 py-3 border-b border-[#1e1e2e]">
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex items-center gap-2">
+    <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col overflow-y-auto">
+      <div className="px-4 py-3 border-b border-[#1e293b]">
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
           <Music size={12} />
           Match Cut / Beat Marker
         </h3>
@@ -152,14 +152,14 @@ export default function MatchCut() {
           <Plus size={16} />
           Marcar Batida
         </button>
-        <p className="text-[10px] text-gray-600 text-center mt-1.5">
-          Pressione <kbd className="px-1 py-0.5 bg-[#1e1e2e] rounded text-gray-400 font-mono">M</kbd> para marcar
+        <p className="text-[10px] text-slate-600 text-center mt-1.5">
+          Pressione <kbd className="px-1 py-0.5 bg-[#1e293b] rounded text-slate-400 font-mono">M</kbd> para marcar
         </p>
       </div>
 
       {/* BPM Auto-Generate */}
       <div className="p-3 border-b border-[#1a1a28]">
-        <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+        <p className="text-[10px] text-slate-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
           <Zap size={10} />
           Auto BPM
         </p>
@@ -168,18 +168,18 @@ export default function MatchCut() {
             type="number"
             value={bpm}
             onChange={(e) => setBpm(Math.max(1, parseInt(e.target.value) || 1))}
-            className="flex-1 bg-[#13131f] border border-[#1e1e2e] rounded px-3 py-2 text-white text-xs focus:border-[#8b5cf6] focus:outline-none"
+            className="flex-1 bg-[#13131f] border border-[#1e293b] rounded px-3 py-2 text-white text-xs focus:border-[#8b5cf6] focus:outline-none"
             min={1}
             max={999}
           />
           <button
             onClick={handleGenerateFromBpm}
-            className="px-3 py-2 bg-[#13131f] border border-[#1e1e2e] rounded text-xs text-gray-300 hover:border-[#8b5cf6] hover:text-white transition-colors whitespace-nowrap"
+            className="px-3 py-2 bg-[#13131f] border border-[#1e293b] rounded text-xs text-slate-300 hover:border-[#8b5cf6] hover:text-white transition-colors whitespace-nowrap"
           >
             Gerar Marcadores
           </button>
         </div>
-        <p className="text-[9px] text-gray-600 mt-1">
+        <p className="text-[9px] text-slate-600 mt-1">
           {bpm} BPM = 1 batida a cada {((60 / bpm) * fps).toFixed(1)} frames
         </p>
       </div>
@@ -189,17 +189,17 @@ export default function MatchCut() {
         <button
           onClick={handlePrevMarker}
           disabled={sorted.length === 0}
-          className="p-1.5 rounded bg-[#13131f] border border-[#1e1e2e] text-gray-400 hover:text-white hover:border-[#8b5cf6] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          className="p-1.5 rounded bg-[#13131f] border border-[#1e293b] text-slate-400 hover:text-white hover:border-[#8b5cf6] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
         >
           <ChevronLeft size={14} />
         </button>
-        <span className="text-[10px] text-gray-500 font-mono">
+        <span className="text-[10px] text-slate-500 font-mono">
           {frameToTimecode(currentFrame)}
         </span>
         <button
           onClick={handleNextMarker}
           disabled={sorted.length === 0}
-          className="p-1.5 rounded bg-[#13131f] border border-[#1e1e2e] text-gray-400 hover:text-white hover:border-[#8b5cf6] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          className="p-1.5 rounded bg-[#13131f] border border-[#1e293b] text-slate-400 hover:text-white hover:border-[#8b5cf6] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
         >
           <ChevronRight size={14} />
         </button>
@@ -208,14 +208,14 @@ export default function MatchCut() {
       {/* Markers List */}
       <div className="px-3 py-2 border-b border-[#1a1a28]">
         <div className="flex items-center justify-between mb-2">
-          <p className="text-[10px] text-gray-500 uppercase tracking-wider">
+          <p className="text-[10px] text-slate-500 uppercase tracking-wider">
             Marcadores ({sorted.length})
           </p>
           {sorted.length > 0 && (
             <div className="flex gap-1">
               <button
                 onClick={handleExport}
-                className="px-2 py-1 text-[10px] bg-[#13131f] border border-[#1e1e2e] rounded text-gray-400 hover:text-white hover:border-[#8b5cf6] transition-colors"
+                className="px-2 py-1 text-[10px] bg-[#13131f] border border-[#1e293b] rounded text-slate-400 hover:text-white hover:border-[#8b5cf6] transition-colors"
               >
                 Exportar
               </button>
@@ -224,7 +224,7 @@ export default function MatchCut() {
                 className={`px-2 py-1 text-[10px] border rounded transition-colors ${
                   confirmClear
                     ? "bg-red-500 border-red-500 text-white"
-                    : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:text-red-400 hover:border-red-500"
+                    : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:text-red-400 hover:border-red-500"
                 }`}
               >
                 <Trash2 size={10} className="inline mr-1" />
@@ -235,22 +235,22 @@ export default function MatchCut() {
         </div>
 
         {sorted.length === 0 ? (
-          <div className="text-center py-6 text-gray-600 text-xs">
-            Nenhum marcador. Clique em &quot;Marcar Batida&quot; ou pressione <kbd className="px-1 py-0.5 bg-[#1e1e2e] rounded font-mono">M</kbd>.
+          <div className="text-center py-6 text-slate-600 text-xs">
+            Nenhum marcador. Clique em &quot;Marcar Batida&quot; ou pressione <kbd className="px-1 py-0.5 bg-[#1e293b] rounded font-mono">M</kbd>.
           </div>
         ) : (
           <div className="space-y-1 max-h-[300px] overflow-y-auto">
             {sorted.map((marker, i) => (
               <div
                 key={marker.id}
-                className="bg-[#13131f] border border-[#1e1e2e] rounded-lg p-2 flex items-center gap-2 hover:border-[#8b5cf6] transition-colors group"
+                className="bg-[#13131f] border border-[#1e293b] rounded-lg p-2 flex items-center gap-2 hover:border-[#8b5cf6] transition-colors group"
               >
-                <span className="w-5 h-5 flex items-center justify-center rounded bg-[#1e1e2e] text-[10px] text-gray-500 font-mono shrink-0">
+                <span className="w-5 h-5 flex items-center justify-center rounded bg-[#1e293b] text-[10px] text-slate-500 font-mono shrink-0">
                   {i + 1}
                 </span>
                 <button
                   onClick={() => handleSeekTo(marker.frame)}
-                  className="text-[10px] text-gray-400 font-mono hover:text-[#8b5cf6] transition-colors shrink-0"
+                  className="text-[10px] text-slate-400 font-mono hover:text-[#8b5cf6] transition-colors shrink-0"
                 >
                   {frameToTimecode(marker.frame)}
                 </button>
@@ -273,14 +273,14 @@ export default function MatchCut() {
                 ) : (
                   <button
                     onClick={() => handleStartEdit(marker)}
-                    className="flex-1 text-left text-[10px] text-gray-500 truncate hover:text-gray-300 transition-colors min-w-0"
+                    className="flex-1 text-left text-[10px] text-slate-500 truncate hover:text-slate-300 transition-colors min-w-0"
                   >
-                    {marker.label || <span className="italic text-gray-600">Adicionar label...</span>}
+                    {marker.label || <span className="italic text-slate-600">Adicionar label...</span>}
                   </button>
                 )}
                 <button
                   onClick={() => removeBeatMarker(marker.id)}
-                  className="p-1 rounded text-gray-600 hover:text-red-400 hover:bg-red-500/10 transition-colors shrink-0 opacity-0 group-hover:opacity-100"
+                  className="p-1 rounded text-slate-600 hover:text-red-400 hover:bg-red-500/10 transition-colors shrink-0 opacity-0 group-hover:opacity-100"
                 >
                   <Trash2 size={11} />
                 </button>
@@ -291,7 +291,7 @@ export default function MatchCut() {
       </div>
 
       {/* Legend */}
-      <div className="px-4 py-2 flex items-center gap-2 text-[9px] text-gray-600">
+      <div className="px-4 py-2 flex items-center gap-2 text-[9px] text-slate-600">
         <Volume2 size={10} />
         <span>Os marcadores aparecem como diamantes amarelos na timeline</span>
       </div>

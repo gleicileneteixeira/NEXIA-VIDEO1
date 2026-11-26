@@ -153,11 +153,11 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
   };
 
   return (
-    <div className="h-full bg-[#0d0d16] border-r border-[#1e1e2e] flex flex-col">
-      <div className="px-4 py-3 border-b border-[#1e1e2e] flex items-center justify-between">
+    <div className="h-full bg-[#0d0d16] border-r border-[#1e293b] flex flex-col">
+      <div className="px-4 py-3 border-b border-[#1e293b] flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Type size={14} className="text-[#8b5cf6]" />
-          <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Texto</h3>
+          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Texto</h3>
         </div>
         <div className="flex gap-1">
           <button
@@ -183,17 +183,17 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
 
         {/* Modelos pré-definidos */}
         <section>
-          <h4 className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Modelos</h4>
+          <h4 className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Modelos</h4>
           <div className="grid grid-cols-1 gap-1.5">
             {TEXT_TEMPLATES.map((t) => (
               <button
                 key={t.label}
                 onClick={() => addTextItem(t.overrides, t.name, t.durationSeconds)}
-                className="w-full text-left px-3 py-2 rounded-lg border border-[#1e1e2e] bg-[#13131f] hover:border-[#8b5cf6] transition-colors flex items-center justify-between gap-2"
+                className="w-full text-left px-3 py-2 rounded-lg border border-[#1e293b] bg-[#13131f] hover:border-[#8b5cf6] transition-colors flex items-center justify-between gap-2"
               >
                 <span className="min-w-0">
-                  <span className="block text-[11px] font-semibold text-gray-200">{t.label}</span>
-                  <span className="block text-[9px] text-gray-500 truncate">{t.description}</span>
+                  <span className="block text-[11px] font-semibold text-slate-200">{t.label}</span>
+                  <span className="block text-[9px] text-slate-500 truncate">{t.description}</span>
                 </span>
                 <Plus size={12} className="text-[#8b5cf6] flex-shrink-0" />
               </button>
@@ -203,10 +203,10 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
 
         {/* Legendas Automáticas */}
         <section>
-          <h4 className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Legendas Automáticas</h4>
+          <h4 className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Legendas Automáticas</h4>
           <button
             onClick={() => onNavigate?.("subtitles")}
-            className="w-full py-2 border border-[#1e1e2e] rounded-lg text-gray-400 text-[10px] hover:border-[#8b5cf6] hover:text-[#8b5cf6] transition-colors flex items-center justify-center gap-2"
+            className="w-full py-2 border border-[#1e293b] rounded-lg text-slate-400 text-[10px] hover:border-[#8b5cf6] hover:text-[#8b5cf6] transition-colors flex items-center justify-center gap-2"
           >
             <Captions size={12} />
             Gerar legendas automaticamente
@@ -221,14 +221,14 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                   className={`w-full flex items-center gap-2 px-2 py-1.5 rounded border transition-colors ${
                     selectedIds.has(item.id)
                       ? "border-[#8b5cf6] bg-[#8b5cf6]/10"
-                      : "border-[#1e1e2e] bg-[#13131f] hover:border-[#8b5cf6]"
+                      : "border-[#1e293b] bg-[#13131f] hover:border-[#8b5cf6]"
                   }`}
                 >
                   <Play size={10} className="text-[#8b5cf6] flex-shrink-0" />
-                  <span className="flex-1 text-left text-[11px] text-gray-300 truncate">
+                  <span className="flex-1 text-left text-[11px] text-slate-300 truncate">
                     {item.text?.content || item.name || "Texto"}
                   </span>
-                  <span className="text-[9px] text-gray-500 flex-shrink-0">
+                  <span className="text-[9px] text-slate-500 flex-shrink-0">
                     {formatFrameTime(item.startFrame)}
                   </span>
                 </button>
@@ -237,35 +237,35 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
           )}
         </section>
 
-        <div className="border-t border-[#1e1e2e]" />
+        <div className="border-t border-[#1e293b]" />
 
         {!selectedTextItem ? (
-          <div className="text-center text-gray-600 text-[11px] py-6">
+          <div className="text-center text-slate-600 text-[11px] py-6">
             Selecione um texto acima para editar detalhes, conteúdo e estilo.
           </div>
         ) : (
           <>
             {/* Conteúdo */}
             <section>
-              <h4 className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Conteúdo</h4>
+              <h4 className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Conteúdo</h4>
               <textarea
                 value={text.content}
                 onChange={(e) => handleUpdateText({ content: e.target.value })}
-                className="w-full h-20 px-2 py-1.5 bg-[#13131f] border border-[#1e1e2e] rounded-md text-xs text-gray-300 focus:outline-none focus:border-[#8b5cf6] resize-none"
+                className="w-full h-20 px-2 py-1.5 bg-[#13131f] border border-[#1e293b] rounded-md text-xs text-slate-300 focus:outline-none focus:border-[#8b5cf6] resize-none"
                 placeholder="Digite seu texto..."
               />
             </section>
 
             {/* Tipografia */}
             <section>
-              <h4 className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Tipografia</h4>
+              <h4 className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Tipografia</h4>
               <div className="space-y-2">
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Família</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Família</label>
                   <select
                     value={text.fontFamily}
                     onChange={(e) => handleUpdateText({ fontFamily: e.target.value })}
-                    className="w-full px-2 py-1.5 bg-[#13131f] border border-[#1e1e2e] rounded-md text-xs text-gray-300 focus:outline-none focus:border-[#8b5cf6]"
+                    className="w-full px-2 py-1.5 bg-[#13131f] border border-[#1e293b] rounded-md text-xs text-slate-300 focus:outline-none focus:border-[#8b5cf6]"
                   >
                     {fontFamily.map((font) => (
                       <option key={font} value={font}>{font.split(",")[0]}</option>
@@ -274,7 +274,7 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                 </div>
 
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Tamanho: {text.fontSize}px</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Tamanho: {text.fontSize}px</label>
                   <input
                     type="range"
                     min={8}
@@ -291,7 +291,7 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                     className={`flex-1 py-1.5 text-[10px] rounded border transition-colors ${
                       text.fontWeight === "bold"
                         ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                        : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                        : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
                     }`}
                   >
                     Bold
@@ -301,7 +301,7 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                     className={`flex-1 py-1.5 text-[10px] rounded border transition-colors ${
                       text.fontStyle === "italic"
                         ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                        : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                        : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
                     }`}
                   >
                     Italic
@@ -309,7 +309,7 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                 </div>
 
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Altura da Linha: {text.lineHeight}</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Altura da Linha: {text.lineHeight}</label>
                   <input
                     type="range"
                     min={0.5}
@@ -322,7 +322,7 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                 </div>
 
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Espaçamento: {text.letterSpacing}px</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Espaçamento: {text.letterSpacing}px</label>
                   <input
                     type="range"
                     min={-5}
@@ -338,46 +338,46 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
 
             {/* Cores */}
             <section>
-              <h4 className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Cores</h4>
+              <h4 className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Cores</h4>
               <div className="space-y-2">
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Cor do Texto</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Cor do Texto</label>
                   <div className="flex items-center gap-2">
                     <input
                       type="color"
                       value={text.color}
                       onChange={(e) => handleUpdateText({ color: e.target.value })}
-                      className="w-8 h-8 rounded border border-[#1e1e2e] cursor-pointer"
+                      className="w-8 h-8 rounded border border-[#1e293b] cursor-pointer"
                     />
                     <input
                       type="text"
                       value={text.color}
                       onChange={(e) => handleUpdateText({ color: e.target.value })}
-                      className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e1e2e] rounded-md text-[10px] text-gray-300 focus:outline-none focus:border-[#8b5cf6]"
+                      className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e293b] rounded-md text-[10px] text-slate-300 focus:outline-none focus:border-[#8b5cf6]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Cor de Fundo</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Cor de Fundo</label>
                   <div className="flex items-center gap-2">
                     <input
                       type="color"
                       value={text.backgroundColor === "transparent" ? "#000000" : text.backgroundColor}
                       onChange={(e) => handleUpdateText({ backgroundColor: e.target.value })}
-                      className="w-8 h-8 rounded border border-[#1e1e2e] cursor-pointer"
+                      className="w-8 h-8 rounded border border-[#1e293b] cursor-pointer"
                     />
                     <input
                       type="text"
                       value={text.backgroundColor}
                       onChange={(e) => handleUpdateText({ backgroundColor: e.target.value })}
-                      className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e1e2e] rounded-md text-[10px] text-gray-300 focus:outline-none focus:border-[#8b5cf6]"
+                      className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e293b] rounded-md text-[10px] text-slate-300 focus:outline-none focus:border-[#8b5cf6]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Opacidade do Fundo: {Math.round(text.backgroundOpacity * 100)}%</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Opacidade do Fundo: {Math.round(text.backgroundOpacity * 100)}%</label>
                   <input
                     type="range"
                     min={0}
@@ -390,7 +390,7 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                 </div>
 
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Alinhamento</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Alinhamento</label>
                   <div className="flex gap-1">
                     {(["left", "center", "right"] as const).map((align) => (
                       <button
@@ -399,7 +399,7 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                         className={`flex-1 py-1.5 text-[10px] rounded border transition-colors ${
                           text.textAlign === align
                             ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                            : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                            : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
                         }`}
                       >
                         {align === "left" ? "Esq" : align === "center" ? "Centro" : "Dir"}
@@ -412,10 +412,10 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
 
             {/* Contorno e Sombra */}
             <section>
-              <h4 className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Contorno e Sombra</h4>
+              <h4 className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Contorno e Sombra</h4>
               <div className="space-y-2">
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Largura do Contorno: {text.strokeWidth}px</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Largura do Contorno: {text.strokeWidth}px</label>
                   <input
                     type="range"
                     min={0}
@@ -429,7 +429,7 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                     className={`mt-1 w-full py-1 text-[10px] rounded border transition-colors ${
                       text.strokeEnabled
                         ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                        : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                        : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
                     }`}
                   >
                     {text.strokeEnabled ? "Contorno Ativo" : "Ativar Contorno"}
@@ -437,43 +437,43 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                 </div>
 
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Cor do Contorno</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Cor do Contorno</label>
                   <div className="flex items-center gap-2">
                     <input
                       type="color"
                       value={text.strokeColor}
                       onChange={(e) => handleUpdateText({ strokeColor: e.target.value })}
-                      className="w-8 h-8 rounded border border-[#1e1e2e] cursor-pointer"
+                      className="w-8 h-8 rounded border border-[#1e293b] cursor-pointer"
                     />
                     <input
                       type="text"
                       value={text.strokeColor}
                       onChange={(e) => handleUpdateText({ strokeColor: e.target.value })}
-                      className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e1e2e] rounded-md text-[10px] text-gray-300 focus:outline-none focus:border-[#8b5cf6]"
+                      className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e293b] rounded-md text-[10px] text-slate-300 focus:outline-none focus:border-[#8b5cf6]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Cor da Sombra</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Cor da Sombra</label>
                   <div className="flex items-center gap-2">
                     <input
                       type="color"
                       value={text.shadowColor}
                       onChange={(e) => handleUpdateText({ shadowColor: e.target.value })}
-                      className="w-8 h-8 rounded border border-[#1e1e2e] cursor-pointer"
+                      className="w-8 h-8 rounded border border-[#1e293b] cursor-pointer"
                     />
                     <input
                       type="text"
                       value={text.shadowColor}
                       onChange={(e) => handleUpdateText({ shadowColor: e.target.value })}
-                      className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e1e2e] rounded-md text-[10px] text-gray-300 focus:outline-none focus:border-[#8b5cf6]"
+                      className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e293b] rounded-md text-[10px] text-slate-300 focus:outline-none focus:border-[#8b5cf6]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Blur da Sombra: {text.shadowBlur}px</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Blur da Sombra: {text.shadowBlur}px</label>
                   <input
                     type="range"
                     min={0}
@@ -485,7 +485,7 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                 </div>
 
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Offset X: {text.shadowOffsetX}px</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Offset X: {text.shadowOffsetX}px</label>
                   <input
                     type="range"
                     min={-20}
@@ -497,7 +497,7 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                 </div>
 
                 <div>
-                  <label className="text-[9px] text-gray-600 block mb-1">Offset Y: {text.shadowOffsetY}px</label>
+                  <label className="text-[9px] text-slate-600 block mb-1">Offset Y: {text.shadowOffsetY}px</label>
                   <input
                     type="range"
                     min={-20}
@@ -512,7 +512,7 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
 
             {/* Estilos Pré-definidos */}
             <section>
-              <h4 className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Estilos Pré-definidos</h4>
+              <h4 className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Estilos Pré-definidos</h4>
               <div className="grid grid-cols-2 gap-1">
                 {TEXT_STYLE_PRESETS.map((preset) => (
                   <button
@@ -521,7 +521,7 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                     className={`px-2 py-2 text-[10px] rounded border transition-colors ${
                       text.stylePreset === preset.id
                         ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                        : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                        : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
                     }`}
                   >
                     {preset.label}
@@ -532,14 +532,14 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
 
             {/* Gradiente */}
             <section>
-              <h4 className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Gradiente</h4>
+              <h4 className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Gradiente</h4>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <label className="text-[9px] text-gray-600">Ativar Gradiente</label>
+                  <label className="text-[9px] text-slate-600">Ativar Gradiente</label>
                   <button
                     onClick={() => handleUpdateGradient({ enabled: !text.gradient.enabled })}
                     className={`w-10 h-5 rounded-full transition-colors ${
-                      text.gradient.enabled ? "bg-[#8b5cf6]" : "bg-[#1e1e2e]"
+                      text.gradient.enabled ? "bg-[#8b5cf6]" : "bg-[#1e293b]"
                     }`}
                   >
                     <div
@@ -553,43 +553,43 @@ export default function TextPanel({ onNavigate }: TextPanelProps) {
                 {text.gradient.enabled && (
                   <>
                     <div>
-                      <label className="text-[9px] text-gray-600 block mb-1">Cor 1</label>
+                      <label className="text-[9px] text-slate-600 block mb-1">Cor 1</label>
                       <div className="flex items-center gap-2">
                         <input
                           type="color"
                           value={text.gradient.color1}
                           onChange={(e) => handleUpdateGradient({ color1: e.target.value })}
-                          className="w-8 h-8 rounded border border-[#1e1e2e] cursor-pointer"
+                          className="w-8 h-8 rounded border border-[#1e293b] cursor-pointer"
                         />
                         <input
                           type="text"
                           value={text.gradient.color1}
                           onChange={(e) => handleUpdateGradient({ color1: e.target.value })}
-                          className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e1e2e] rounded-md text-[10px] text-gray-300 focus:outline-none focus:border-[#8b5cf6]"
+                          className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e293b] rounded-md text-[10px] text-slate-300 focus:outline-none focus:border-[#8b5cf6]"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="text-[9px] text-gray-600 block mb-1">Cor 2</label>
+                      <label className="text-[9px] text-slate-600 block mb-1">Cor 2</label>
                       <div className="flex items-center gap-2">
                         <input
                           type="color"
                           value={text.gradient.color2}
                           onChange={(e) => handleUpdateGradient({ color2: e.target.value })}
-                          className="w-8 h-8 rounded border border-[#1e1e2e] cursor-pointer"
+                          className="w-8 h-8 rounded border border-[#1e293b] cursor-pointer"
                         />
                         <input
                           type="text"
                           value={text.gradient.color2}
                           onChange={(e) => handleUpdateGradient({ color2: e.target.value })}
-                          className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e1e2e] rounded-md text-[10px] text-gray-300 focus:outline-none focus:border-[#8b5cf6]"
+                          className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e293b] rounded-md text-[10px] text-slate-300 focus:outline-none focus:border-[#8b5cf6]"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="text-[9px] text-gray-600 block mb-1">Ângulo: {text.gradient.angle}°</label>
+                      <label className="text-[9px] text-slate-600 block mb-1">Ângulo: {text.gradient.angle}°</label>
                       <input
                         type="range"
                         min={0}

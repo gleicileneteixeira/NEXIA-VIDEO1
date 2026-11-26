@@ -65,7 +65,7 @@ export default function CoverModal({ open, onClose }: { open: boolean; onClose: 
       >
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-semibold text-white">Capa do projeto</h2>
-          <button onClick={onClose} className="p-1 rounded hover:bg-white/10 text-gray-400">
+          <button onClick={onClose} className="p-1 rounded hover:bg-white/10 text-slate-400">
             <X size={16} />
           </button>
         </div>
@@ -75,7 +75,7 @@ export default function CoverModal({ open, onClose }: { open: boolean; onClose: 
           {project.thumbnail ? (
             <img src={project.thumbnail} alt="Capa" className="w-full h-full object-cover" />
           ) : (
-            <div className="flex flex-col items-center gap-2 text-gray-500">
+            <div className="flex flex-col items-center gap-2 text-slate-500">
               <ImageIcon size={28} />
               <span className="text-xs">Nenhuma capa definida</span>
             </div>

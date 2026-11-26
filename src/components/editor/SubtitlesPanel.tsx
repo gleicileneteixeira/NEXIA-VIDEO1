@@ -262,15 +262,15 @@ export default function SubtitlesPanel() {
   };
 
   return (
-    <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col">
-      <div className="px-4 py-3 border-b border-[#1e1e2e] flex items-center justify-between">
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Legendas</h3>
-        <span className="text-[10px] text-gray-600">{subtitles.length}</span>
+    <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col">
+      <div className="px-4 py-3 border-b border-[#1e293b] flex items-center justify-between">
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Legendas</h3>
+        <span className="text-[10px] text-slate-600">{subtitles.length}</span>
       </div>
 
       <div className="flex-1 overflow-y-auto p-3 space-y-3">
         <div>
-          <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Auto: fale para legendar</div>
+          <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Auto: fale para legendar</div>
           <button
             onClick={startListening}
             className={`w-full py-3 rounded-lg flex items-center justify-center gap-2 text-xs transition-colors ${
@@ -282,14 +282,14 @@ export default function SubtitlesPanel() {
             {isListening ? <MicOff size={14} /> : <Mic size={14} />}
             {isListening ? "Gravando… clique para parar" : "Capturar fala (gerar legendas)"}
           </button>
-          <p className="text-[9px] text-gray-600 mt-1">
+          <p className="text-[9px] text-slate-600 mt-1">
             Fale o roteiro enquanto o vídeo toca. Cada fala vira uma legenda na posição do playhead. Use Chrome/Edge.
           </p>
           {listenError && <p className="text-[10px] text-red-400 mt-1">{listenError}</p>}
         </div>
 
         <div>
-          <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Nova Legenda</div>
+          <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Nova Legenda</div>
           {showInput ? (
             <div className="space-y-2">
               <textarea
@@ -311,14 +311,14 @@ export default function SubtitlesPanel() {
                 <button
                   onClick={addSubtitles}
                   disabled={!text.trim()}
-                  className="flex-1 py-1 bg-[#1e1e2e] text-gray-300 text-[10px] rounded hover:bg-[#2a2a38] disabled:opacity-30"
+                  className="flex-1 py-1 bg-[#1e293b] text-slate-300 text-[10px] rounded hover:bg-[#2a2a38] disabled:opacity-30"
                   title="Insere no fim da trilha de texto"
                 >
                   Fim da trilha
                 </button>
                 <button
                   onClick={() => { setShowInput(false); setText(""); }}
-                  className="flex-1 py-1 bg-[#1e1e2e] text-gray-500 text-[10px] rounded hover:bg-[#2a2a38]"
+                  className="flex-1 py-1 bg-[#1e293b] text-slate-500 text-[10px] rounded hover:bg-[#2a2a38]"
                 >
                   Cancelar
                 </button>
@@ -327,7 +327,7 @@ export default function SubtitlesPanel() {
           ) : (
             <button
               onClick={() => setShowInput(true)}
-              className="w-full py-3 border-2 border-dashed border-[#1e1e2e] rounded-lg text-gray-500 hover:border-[#8b5cf6]/50 hover:text-[#8b5cf6] transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 border-2 border-dashed border-[#1e293b] rounded-lg text-slate-500 hover:border-[#8b5cf6]/50 hover:text-[#8b5cf6] transition-colors flex items-center justify-center gap-2"
             >
               <Plus size={12} /> Nova Legenda
             </button>
@@ -336,7 +336,7 @@ export default function SubtitlesPanel() {
 
         {subtitles.length > 0 && (
           <div>
-            <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1.5">Legendas da trilha</div>
+            <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-1.5">Legendas da trilha</div>
             <div className="space-y-1">
               {subtitles.map((sub, idx) => {
                 const startSec = sub.startFrame / fps;
@@ -352,14 +352,14 @@ export default function SubtitlesPanel() {
                         ? "bg-[#8b5cf6]/15 border-[#8b5cf6]/40"
                         : active
                           ? "bg-[#2a2a38]/60 border-[#33334a]"
-                          : "bg-[#13131f] border-[#1e1e2e] hover:border-[#33334a]"
+                          : "bg-[#13131f] border-[#1e293b] hover:border-[#33334a]"
                     }`}
                   >
-                    <span className="text-[9px] text-gray-600 w-4">{idx + 1}</span>
-                    <span className="text-[9px] text-gray-400 font-mono whitespace-nowrap">
+                    <span className="text-[9px] text-slate-600 w-4">{idx + 1}</span>
+                    <span className="text-[9px] text-slate-400 font-mono whitespace-nowrap">
                       {secToStr(startSec)} → {secToStr(endSec)}
                     </span>
-                    <span className="flex-1 text-[10px] text-gray-300 truncate min-w-0">
+                    <span className="flex-1 text-[10px] text-slate-300 truncate min-w-0">
                       {(sub.text?.content || sub.name).replace(/\n/g, " ")}
                     </span>
                     <button
@@ -368,7 +368,7 @@ export default function SubtitlesPanel() {
                         seekTo(sub.startFrame);
                         window.dispatchEvent(new Event("timeline-user-seek"));
                       }}
-                      className="opacity-0 group-hover:opacity-100 p-1 text-gray-500 hover:text-white transition-opacity"
+                      className="opacity-0 group-hover:opacity-100 p-1 text-slate-500 hover:text-white transition-opacity"
                       title="Ir para o início da legenda"
                     >
                       <SkipForward size={11} />
@@ -378,7 +378,7 @@ export default function SubtitlesPanel() {
                         e.stopPropagation();
                         removeSubtitle(sub.id);
                       }}
-                      className="opacity-0 group-hover:opacity-100 p-1 text-gray-500 hover:text-red-400 transition-opacity"
+                      className="opacity-0 group-hover:opacity-100 p-1 text-slate-500 hover:text-red-400 transition-opacity"
                       title="Excluir legenda"
                     >
                       <Trash2 size={11} />
@@ -391,8 +391,8 @@ export default function SubtitlesPanel() {
         )}
 
         {selectedItem?.kind === "text" && (
-          <div className="bg-[#13131f] border border-[#1e1e2e] rounded-lg p-2.5 space-y-2.5">
-            <div className="text-[10px] text-gray-500 uppercase tracking-wider">Editar Legenda</div>
+          <div className="bg-[#13131f] border border-[#1e293b] rounded-lg p-2.5 space-y-2.5">
+            <div className="text-[10px] text-slate-500 uppercase tracking-wider">Editar Legenda</div>
             <textarea
               value={selectedItem.text?.content || ""}
               onChange={(e) => {
@@ -406,7 +406,7 @@ export default function SubtitlesPanel() {
 
             <div className="space-y-1.5">
               <div className="flex items-center justify-between gap-2">
-                <span className="text-[10px] text-gray-400">Início</span>
+                <span className="text-[10px] text-slate-400">Início</span>
                 <div className="flex items-center gap-1">
                   <TimeInput
                     key={`${selectedItem.id}-start`}
@@ -415,7 +415,7 @@ export default function SubtitlesPanel() {
                   />
                   <button
                     onClick={markStartAtPlayhead}
-                    className="px-1.5 py-1 rounded bg-[#1a1a28] border border-[#1e1e2e] text-gray-400 hover:text-white text-[10px] flex items-center gap-1"
+                    className="px-1.5 py-1 rounded bg-[#1a1a28] border border-[#1e293b] text-slate-400 hover:text-white text-[10px] flex items-center gap-1"
                     title="Marcar início na posição atual do playhead"
                   >
                     <LocateFixed size={10} /> Playhead
@@ -423,7 +423,7 @@ export default function SubtitlesPanel() {
                 </div>
               </div>
               <div className="flex items-center justify-between gap-2">
-                <span className="text-[10px] text-gray-400">Fim</span>
+                <span className="text-[10px] text-slate-400">Fim</span>
                 <div className="flex items-center gap-1">
                   <TimeInput
                     key={`${selectedItem.id}-end`}
@@ -432,20 +432,20 @@ export default function SubtitlesPanel() {
                   />
                   <button
                     onClick={markEndAtPlayhead}
-                    className="px-1.5 py-1 rounded bg-[#1a1a28] border border-[#1e1e2e] text-gray-400 hover:text-white text-[10px] flex items-center gap-1"
+                    className="px-1.5 py-1 rounded bg-[#1a1a28] border border-[#1e293b] text-slate-400 hover:text-white text-[10px] flex items-center gap-1"
                     title="Marcar fim na posição atual do playhead"
                   >
                     <LocateFixed size={10} /> Playhead
                   </button>
                 </div>
               </div>
-              <p className="text-[9px] text-gray-600">
+              <p className="text-[9px] text-slate-600">
                 Duração: {secToStr(selectedItem.durationInFrames / fps)} · ~{selectedItem.durationInFrames} frames
               </p>
             </div>
 
-            <p className="text-[9px] text-gray-600 leading-relaxed">
-              Estilo (fonte, cor, contorno, sombra) no painel <span className="text-gray-400">Propriedades</span> à
+            <p className="text-[9px] text-slate-600 leading-relaxed">
+              Estilo (fonte, cor, contorno, sombra) no painel <span className="text-slate-400">Propriedades</span> à
               direita com a legenda selecionada.
             </p>
           </div>

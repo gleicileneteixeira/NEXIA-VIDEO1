@@ -135,6 +135,54 @@ export function extractRedTags(transcription: string, maxTags = 15): string[] {
   return tags;
 }
 
+/**
+ * Extrai a descricao completa do roteiro (seoCaption) a partir da transcricao.
+ * Retorna o texto integral limpo, com pontuacao preservada.
+ */
+export function extractDescription(transcription: string): string {
+  if (!transcription || !transcription.trim()) return "";
+  return transcription.trim();
+}
+
+/**
+ * Extrai o CTA (chamada para acao) do final da transcricao.
+ * Procura por frases tipicas de CTA nos ultimos 20% do texto.
+ */
+export function extractCta(transcription: string): string {
+  if (!transcription || !transcription.trim()) return "";
+
+  const clean = transcription.trim();
+  const sentences = clean.split(/[.!?]+/).map((s) => s.trim()).filter((s) => s.length > 3);
+  if (sentences.length === 0) return "";
+
+  const CTA_KEYWORDS = [
+    "segue", "segue me", "me segue", "segue mim",
+    "comenta", "comenta ai", "deixa o comentario", "compartilha",
+    "compartilha com", "manda pra", "envia pra", "envia para",
+    "salva", "salva esse", "salva ai",
+    "link na bio", "link aqui", "clica no link", "clique no link",
+    "inscreve", "se inscreve", "ative o sininho", "ativa o sininho",
+    "deixa o like", "curte", "curte ai", "like",
+    "compra", "adquira", "garanta", "garanta ja",
+    "chama no direct", "chama no dm", "me chama",
+    "nao perca", "nao deixe passar", "ultima chance",
+    "veja agora", "assista agora", "confira agora",
+    "saiba mais", "descubra", "descubra agora",
+    "toque aqui", "clique aqui", "aperte aqui",
+  ];
+
+  const lastSentences = sentences.slice(-Math.max(3, Math.ceil(sentences.length * 0.25)));
+
+  for (let i = lastSentences.length - 1; i >= 0; i--) {
+    const sentence = lastSentences[i].toLowerCase();
+    if (CTA_KEYWORDS.some((kw) => sentence.includes(kw))) {
+      return capitalizeFirst(lastSentences[i]);
+    }
+  }
+
+  return capitalizeFirst(lastSentences[lastSentences.length - 1]);
+}
+
 function capitalizeFirst(str: string): string {
   if (!str) return str;
   return str.charAt(0).toUpperCase() + str.slice(1);

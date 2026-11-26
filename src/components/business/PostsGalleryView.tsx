@@ -44,7 +44,7 @@ export default function PostsGalleryView({
       <div className="flex items-center gap-2">
         <FolderKanban className="w-5 h-5 text-[var(--primary)]" />
         <h2 className="text-lg font-bold text-white">Meus Posts</h2>
-        <span className="text-[11px] text-gray-500 ml-auto">{filtered.length} posts</span>
+        <span className="text-[11px] text-slate-500 ml-auto">{filtered.length} posts</span>
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
@@ -55,7 +55,7 @@ export default function PostsGalleryView({
             className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
               filter === f.id
                 ? "border-[var(--primary)] bg-[var(--primary)]/15 text-white"
-                : "border-gray-700 text-gray-400 hover:border-gray-500"
+                : "border-slate-700 text-slate-400 hover:border-slate-500"
             }`}
           >
             {f.label}
@@ -64,7 +64,7 @@ export default function PostsGalleryView({
       </div>
 
       {filtered.length === 0 ? (
-        <div className="text-center py-16 text-gray-500 text-sm">
+        <div className="text-center py-16 text-slate-500 text-sm">
           Nenhum post aqui. Gere o calendário na aba Calendário.
         </div>
       ) : (

@@ -71,15 +71,15 @@ export default function ProjectsModal({ open, onClose }: { open: boolean; onClos
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-      <div className="w-[720px] max-w-[94vw] max-h-[84vh] bg-[#0d0d16] border border-[#1e1e2e] rounded-2xl shadow-2xl flex flex-col overflow-hidden">
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[#1e1e2e]">
+      <div className="w-[720px] max-w-[94vw] max-h-[84vh] bg-[#0d0d16] border border-[#1e293b] rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-[#1e293b]">
           <h2 className="text-white font-semibold text-sm flex items-center gap-2">📁 Meus Projetos</h2>
-          <button onClick={onClose} className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400">
+          <button onClick={onClose} className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400">
             <X size={16} />
           </button>
         </div>
 
-        <div className="px-5 py-3 border-b border-[#1e1e2e]">
+        <div className="px-5 py-3 border-b border-[#1e293b]">
           <button
             onClick={handleNew}
             className="w-full flex items-center justify-center gap-2 py-2 rounded-xl bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 text-sm font-medium transition-colors"
@@ -90,7 +90,7 @@ export default function ProjectsModal({ open, onClose }: { open: boolean; onClos
 
         <div className="flex-1 overflow-y-auto p-4">
           {sorted.length === 0 ? (
-            <p className="text-center text-gray-500 text-sm py-10">
+            <p className="text-center text-slate-500 text-sm py-10">
               Nenhum rascunho ainda. Edite um vídeo e ele será salvo automaticamente aqui.
             </p>
           ) : (
@@ -103,15 +103,15 @@ export default function ProjectsModal({ open, onClose }: { open: boolean; onClos
                     key={d.id}
                     onDoubleClick={() => handleOpen(d.id)}
                     className={`rounded-xl border overflow-hidden flex flex-col cursor-pointer transition-colors ${
-                      isActive ? "border-purple-500/60 bg-purple-500/10" : "border-[#1e1e2e] bg-[#0a0a12] hover:border-[#2a2a3a]"
+                      isActive ? "border-purple-500/60 bg-purple-500/10" : "border-[#1e293b] bg-[#0a0a12] hover:border-[#2a2a3a]"
                     }`}
                   >
-                    <div className="h-28 bg-gradient-to-br from-[#1a1a2e] to-[#0a0a12] relative">
+                    <div className="h-28 bg-gradient-to-br from-[#0f172a] to-[#0a0a12] relative">
                       {d.thumbnailUrl ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={d.thumbnailUrl} alt={d.name} className="w-full h-full object-cover" />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-gray-600 text-xs">
+                        <div className="w-full h-full flex items-center justify-center text-slate-600 text-xs">
                           {itemCount} clipe{itemCount === 1 ? "" : "s"}
                         </div>
                       )}
@@ -144,7 +144,7 @@ export default function ProjectsModal({ open, onClose }: { open: boolean; onClos
                           {d.name}
                         </button>
                       )}
-                      <span className="text-[10px] text-gray-500">{relativeTime(d.updatedAt)}</span>
+                      <span className="text-[10px] text-slate-500">{relativeTime(d.updatedAt)}</span>
 
                       <div className="flex items-center gap-2 mt-1">
                         <button
@@ -169,7 +169,7 @@ export default function ProjectsModal({ open, onClose }: { open: boolean; onClos
           )}
         </div>
 
-        <div className="px-5 py-2 border-t border-[#1e1e2e] text-[10px] text-gray-600">
+        <div className="px-5 py-2 border-t border-[#1e293b] text-[10px] text-slate-600">
           Dica: clique duplo em um card também abre o projeto.
         </div>
       </div>

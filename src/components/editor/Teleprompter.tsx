@@ -149,7 +149,7 @@ export default function Teleprompter() {
 
   return (
     <div
-      className={`relative flex flex-col bg-zinc-950 overflow-hidden ${
+      className={`relative flex flex-col bg-slate-950 overflow-hidden ${
         isFullScreen ? "fixed inset-0 z-50" : "h-full w-full"
       }`}
     >
@@ -160,7 +160,7 @@ export default function Teleprompter() {
             value={script}
             onChange={(e) => setScript(e.target.value)}
             placeholder="Paste or type your script here..."
-            className="flex-1 w-full resize-none bg-transparent text-white font-mono text-lg leading-relaxed outline-none placeholder:text-zinc-600"
+            className="flex-1 w-full resize-none bg-transparent text-white font-mono text-lg leading-relaxed outline-none placeholder:text-slate-600"
             spellCheck={false}
           />
         </div>
@@ -223,7 +223,7 @@ export default function Teleprompter() {
 
           {/* Tap hint */}
           {!isPlaying && !isCountingDown && scrollPosition > 0 && (
-            <div className="absolute bottom-20 left-0 right-0 text-center text-zinc-400 text-sm pointer-events-none">
+            <div className="absolute bottom-20 left-0 right-0 text-center text-slate-400 text-sm pointer-events-none">
               Tap anywhere to resume
             </div>
           )}
@@ -232,11 +232,11 @@ export default function Teleprompter() {
 
       {/* Settings Panel */}
       {showSettings && (
-        <div className="absolute bottom-16 left-0 right-0 bg-zinc-900 border-t border-zinc-800 p-4 z-30">
+        <div className="absolute bottom-16 left-0 right-0 bg-slate-900 border-t border-slate-800 p-4 z-30">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
             {/* Background Opacity */}
             <div>
-              <label className="text-zinc-400 text-xs mb-1 block">Background</label>
+              <label className="text-slate-400 text-xs mb-1 block">Background</label>
               <input
                 type="range"
                 min={0}
@@ -245,12 +245,12 @@ export default function Teleprompter() {
                 onChange={(e) => setBgOpacity(Number(e.target.value))}
                 className="w-full accent-violet-500"
               />
-              <span className="text-zinc-500 text-xs">{bgOpacity}%</span>
+              <span className="text-slate-500 text-xs">{bgOpacity}%</span>
             </div>
 
             {/* Line Spacing */}
             <div>
-              <label className="text-zinc-400 text-xs mb-1 block">Line Spacing</label>
+              <label className="text-slate-400 text-xs mb-1 block">Line Spacing</label>
               <input
                 type="range"
                 min={1}
@@ -260,19 +260,19 @@ export default function Teleprompter() {
                 onChange={(e) => setLineSpacing(Number(e.target.value))}
                 className="w-full accent-violet-500"
               />
-              <span className="text-zinc-500 text-xs">{lineSpacing.toFixed(1)}</span>
+              <span className="text-slate-500 text-xs">{lineSpacing.toFixed(1)}</span>
             </div>
 
             {/* Font Color */}
             <div>
-              <label className="text-zinc-400 text-xs mb-1 block">Font Color</label>
+              <label className="text-slate-400 text-xs mb-1 block">Font Color</label>
               <div className="flex gap-2 mt-1">
                 {FONT_COLORS.map((c) => (
                   <button
                     key={c}
                     onClick={() => setFontColor(c)}
                     className={`w-8 h-8 rounded-full border-2 transition-all ${
-                      fontColor === c ? "border-violet-500 scale-110" : "border-zinc-700"
+                      fontColor === c ? "border-violet-500 scale-110" : "border-slate-700"
                     }`}
                     style={{ backgroundColor: c }}
                   />
@@ -282,7 +282,7 @@ export default function Teleprompter() {
 
             {/* Countdown */}
             <div>
-              <label className="text-zinc-400 text-xs mb-1 block">Countdown</label>
+              <label className="text-slate-400 text-xs mb-1 block">Countdown</label>
               <div className="flex gap-1 mt-1">
                 {COUNTDOWN_OPTIONS.map((c) => (
                   <button
@@ -291,7 +291,7 @@ export default function Teleprompter() {
                     className={`px-3 py-1 rounded text-sm transition-all ${
                       countdown === c
                         ? "bg-violet-600 text-white"
-                        : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
+                        : "bg-slate-800 text-slate-400 hover:bg-slate-700"
                     }`}
                   >
                     {c}s
@@ -304,7 +304,7 @@ export default function Teleprompter() {
       )}
 
       {/* Controls Bar */}
-      <div className="relative z-20 flex items-center gap-2 px-3 py-2 bg-zinc-900 border-t border-zinc-800">
+      <div className="relative z-20 flex items-center gap-2 px-3 py-2 bg-slate-900 border-t border-slate-800">
         {/* Play / Reset */}
         {(isPlaying || isCountingDown || scrollPosition > 0) && (
           <>
@@ -319,14 +319,14 @@ export default function Teleprompter() {
                   else startCountdown();
                 }
               }}
-              className="p-2 rounded-lg hover:bg-zinc-800 text-white transition-colors"
+              className="p-2 rounded-lg hover:bg-slate-800 text-white transition-colors"
               title={isPlaying ? "Pause" : "Play"}
             >
               {isPlaying || isCountingDown ? <Pause size={20} /> : <Play size={20} />}
             </button>
             <button
               onClick={resetScroll}
-              className="p-2 rounded-lg hover:bg-zinc-800 text-zinc-400 transition-colors"
+              className="p-2 rounded-lg hover:bg-slate-800 text-slate-400 transition-colors"
               title="Reset"
             >
               <RotateCcw size={18} />
@@ -348,8 +348,8 @@ export default function Teleprompter() {
 
         {/* Speed */}
         <div className="flex items-center gap-1 ml-2">
-          <Mic size={14} className="text-zinc-500" />
-          <span className="text-zinc-400 text-xs w-7 text-right">{speed}x</span>
+          <Mic size={14} className="text-slate-500" />
+          <span className="text-slate-400 text-xs w-7 text-right">{speed}x</span>
           <input
             type="range"
             min={SPEED_MIN}
@@ -364,17 +364,17 @@ export default function Teleprompter() {
 
         {/* Font Size */}
         <div className="flex items-center gap-1">
-          <Type size={14} className="text-zinc-500" />
+          <Type size={14} className="text-slate-500" />
           <button
             onClick={() => setFontSize((s) => Math.max(FONT_SIZE_MIN, s - 4))}
-            className="p-1 rounded hover:bg-zinc-800 text-zinc-400"
+            className="p-1 rounded hover:bg-slate-800 text-slate-400"
           >
             <ChevronDown size={14} />
           </button>
-          <span className="text-zinc-400 text-xs w-8 text-center">{fontSize}</span>
+          <span className="text-slate-400 text-xs w-8 text-center">{fontSize}</span>
           <button
             onClick={() => setFontSize((s) => Math.min(FONT_SIZE_MAX, s + 4))}
-            className="p-1 rounded hover:bg-zinc-800 text-zinc-400"
+            className="p-1 rounded hover:bg-slate-800 text-slate-400"
           >
             <ChevronUp size={14} />
           </button>
@@ -384,7 +384,7 @@ export default function Teleprompter() {
         <button
           onClick={() => setIsMirrored((m) => !m)}
           className={`p-2 rounded-lg transition-colors ${
-            isMirrored ? "bg-violet-600 text-white" : "hover:bg-zinc-800 text-zinc-400"
+            isMirrored ? "bg-violet-600 text-white" : "hover:bg-slate-800 text-slate-400"
           }`}
           title="Mirror mode"
         >
@@ -398,7 +398,7 @@ export default function Teleprompter() {
         {/* Fullscreen */}
         <button
           onClick={() => setIsFullScreen((f) => !f)}
-          className="p-2 rounded-lg hover:bg-zinc-800 text-zinc-400 transition-colors"
+          className="p-2 rounded-lg hover:bg-slate-800 text-slate-400 transition-colors"
           title="Full screen"
         >
           {isFullScreen ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
@@ -408,7 +408,7 @@ export default function Teleprompter() {
         <button
           onClick={() => setShowSettings((s) => !s)}
           className={`p-2 rounded-lg transition-colors ${
-            showSettings ? "bg-violet-600 text-white" : "hover:bg-zinc-800 text-zinc-400"
+            showSettings ? "bg-violet-600 text-white" : "hover:bg-slate-800 text-slate-400"
           }`}
           title="Settings"
         >
@@ -417,7 +417,7 @@ export default function Teleprompter() {
 
         {/* Progress Bar */}
         {(isPlaying || isCountingDown || scrollPosition > 0) && (
-          <div className="ml-auto flex-1 max-w-xs h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+          <div className="ml-auto flex-1 max-w-xs h-1.5 bg-slate-800 rounded-full overflow-hidden">
             <div
               className="h-full rounded-full transition-[width] duration-100"
               style={{

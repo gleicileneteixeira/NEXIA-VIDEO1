@@ -99,14 +99,14 @@ export default function StickersPanel() {
   };
 
   return (
-    <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col overflow-hidden">
-      <div className="px-4 py-3 border-b border-[#1e1e2e]">
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Stickers</h3>
+    <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col overflow-hidden">
+      <div className="px-4 py-3 border-b border-[#1e293b]">
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Stickers</h3>
       </div>
 
       <div className="p-2 border-b border-[#1a1a28]">
         <div className="relative">
-          <Search size={14} className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500" />
+          <Search size={14} className="absolute left-2 top-1/2 -translate-y-1/2 text-slate-500" />
           <input
             type="text"
             placeholder="🔍 Buscar stickers, emojis ou GIFs..."
@@ -126,7 +126,7 @@ export default function StickersPanel() {
               className={`px-2.5 py-1 rounded text-[10px] font-medium transition-colors ${
                 activeCategory === cat
                   ? "bg-[#8b5cf6]/20 text-[#8b5cf6]"
-                  : "text-gray-500 hover:bg-[#1e1e2e] hover:text-gray-300"
+                  : "text-slate-500 hover:bg-[#1e293b] hover:text-slate-300"
               }`}
             >
               {cat}
@@ -137,8 +137,8 @@ export default function StickersPanel() {
 
       <div className="flex-1 overflow-y-auto p-3">
         {loading ? (
-          <div className="flex items-center justify-center py-8 text-gray-500">
-            <div className="animate-spin rounded-full h-5 w-5 border border-gray-600 border-t-[#8b5cf6]"></div>
+          <div className="flex items-center justify-center py-8 text-slate-500">
+            <div className="animate-spin rounded-full h-5 w-5 border border-slate-600 border-t-[#8b5cf6]"></div>
           </div>
         ) : (
           <div className="grid grid-cols-3 gap-2">

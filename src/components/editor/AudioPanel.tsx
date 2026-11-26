@@ -180,11 +180,11 @@ export default function AudioPanel() {
 
   if (!selectedItem) {
     return (
-      <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col">
-        <div className="px-4 py-3 border-b border-[#1e1e2e]">
-          <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Áudio</h3>
+      <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col">
+        <div className="px-4 py-3 border-b border-[#1e293b]">
+          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Áudio</h3>
         </div>
-        <div className="flex-1 flex items-center justify-center text-gray-600 text-xs px-4 text-center">
+        <div className="flex-1 flex items-center justify-center text-slate-600 text-xs px-4 text-center">
           Selecione um item de áudio ou vídeo
         </div>
       </div>
@@ -198,9 +198,9 @@ export default function AudioPanel() {
   };
 
   return (
-    <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col overflow-y-auto">
-      <div className="px-4 py-3 border-b border-[#1e1e2e]">
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Áudio</h3>
+    <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col overflow-y-auto">
+      <div className="px-4 py-3 border-b border-[#1e293b]">
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Áudio</h3>
       </div>
 
       {/* Volume */}
@@ -208,8 +208,8 @@ export default function AudioPanel() {
       {!collapsed.volume && (
         <div className="p-3 border-b border-[#1a1a28]">
           <div className="flex items-center justify-between mb-1">
-            <span className="text-[10px] text-gray-500">Nível</span>
-            <span className="text-[10px] text-gray-600 font-mono">
+            <span className="text-[10px] text-slate-500">Nível</span>
+            <span className="text-[10px] text-slate-600 font-mono">
               {volumeToDb(selectedItem.transform.opacity)}
             </span>
           </div>
@@ -223,9 +223,9 @@ export default function AudioPanel() {
             min={0}
             max={2}
             step={0.01}
-            className="w-full h-1 bg-[#1e1e2e] rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+            className="w-full h-1 bg-[#1e293b] rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
           />
-          <div className="flex justify-between text-[9px] text-gray-600 mt-0.5">
+          <div className="flex justify-between text-[9px] text-slate-600 mt-0.5">
             <span>0</span>
             <span className="text-[#8b5cf6]">{volumeToDb(selectedItem.transform.opacity)}</span>
             <span>2x</span>
@@ -238,12 +238,12 @@ export default function AudioPanel() {
       {!collapsed.fade && (
         <div className="p-3 border-b border-[#1a1a28] space-y-3">
           <div>
-            <label className="text-[10px] text-gray-500 block mb-1">Fade In</label>
+            <label className="text-[10px] text-slate-500 block mb-1">Fade In</label>
             <div className="flex gap-2 items-center">
               <select
                 value={selectedItem.audio.fade.in}
                 onChange={(e) => updateFade({ in: e.target.value as FadeType })}
-                className="flex-1 bg-[#13131f] border border-[#1e1e2e] rounded px-2 py-1 text-xs text-white focus:border-[#8b5cf6] focus:outline-none"
+                className="flex-1 bg-[#13131f] border border-[#1e293b] rounded px-2 py-1 text-xs text-white focus:border-[#8b5cf6] focus:outline-none"
               >
                 <option value="none">Nenhum</option>
                 <option value="linear">Linear</option>
@@ -254,8 +254,8 @@ export default function AudioPanel() {
             {selectedItem.audio.fade.in !== "none" && (
               <div className="mt-1.5">
                 <div className="flex items-center justify-between mb-0.5">
-                  <span className="text-[10px] text-gray-500">Duração</span>
-                  <span className="text-[10px] text-gray-600 font-mono">{selectedItem.audio.fade.inDuration}ms</span>
+                  <span className="text-[10px] text-slate-500">Duração</span>
+                  <span className="text-[10px] text-slate-600 font-mono">{selectedItem.audio.fade.inDuration}ms</span>
                 </div>
                 <input
                   type="range"
@@ -264,18 +264,18 @@ export default function AudioPanel() {
                   min={0}
                   max={5000}
                   step={50}
-                  className="w-full h-1 bg-[#1e1e2e] rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+                  className="w-full h-1 bg-[#1e293b] rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
                 />
               </div>
             )}
           </div>
           <div>
-            <label className="text-[10px] text-gray-500 block mb-1">Fade Out</label>
+            <label className="text-[10px] text-slate-500 block mb-1">Fade Out</label>
             <div className="flex gap-2 items-center">
               <select
                 value={selectedItem.audio.fade.out}
                 onChange={(e) => updateFade({ out: e.target.value as FadeType })}
-                className="flex-1 bg-[#13131f] border border-[#1e1e2e] rounded px-2 py-1 text-xs text-white focus:border-[#8b5cf6] focus:outline-none"
+                className="flex-1 bg-[#13131f] border border-[#1e293b] rounded px-2 py-1 text-xs text-white focus:border-[#8b5cf6] focus:outline-none"
               >
                 <option value="none">Nenhum</option>
                 <option value="linear">Linear</option>
@@ -286,8 +286,8 @@ export default function AudioPanel() {
             {selectedItem.audio.fade.out !== "none" && (
               <div className="mt-1.5">
                 <div className="flex items-center justify-between mb-0.5">
-                  <span className="text-[10px] text-gray-500">Duração</span>
-                  <span className="text-[10px] text-gray-600 font-mono">{selectedItem.audio.fade.outDuration}ms</span>
+                  <span className="text-[10px] text-slate-500">Duração</span>
+                  <span className="text-[10px] text-slate-600 font-mono">{selectedItem.audio.fade.outDuration}ms</span>
                 </div>
                 <input
                   type="range"
@@ -296,7 +296,7 @@ export default function AudioPanel() {
                   min={0}
                   max={5000}
                   step={50}
-                  className="w-full h-1 bg-[#1e1e2e] rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+                  className="w-full h-1 bg-[#1e293b] rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
                 />
               </div>
             )}
@@ -316,7 +316,7 @@ export default function AudioPanel() {
                 className={`px-2.5 py-1 text-[10px] rounded-full border transition-colors ${
                   selectedItem.audio.voiceEffect === fx.id
                     ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                    : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                    : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
                 }`}
               >
                 {fx.label}
@@ -338,7 +338,7 @@ export default function AudioPanel() {
                 className={`px-2.5 py-1 text-[10px] rounded-full border transition-colors ${
                   selectedItem.audio.eqPreset === preset.id
                     ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                    : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                    : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
                 }`}
               >
                 {preset.label}
@@ -357,13 +357,13 @@ export default function AudioPanel() {
             className={`w-full flex items-center justify-between px-3 py-2 rounded border text-xs transition-colors ${
               selectedItem.audio.denoise
                 ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                : "bg-[#13131f] border-[#1e1e2e] text-gray-400"
+                : "bg-[#13131f] border-[#1e293b] text-slate-400"
             }`}
           >
             <span>{selectedItem.audio.denoise ? "Ativado" : "Desativado"}</span>
             <div
               className={`w-8 h-4 rounded-full transition-colors relative ${
-                selectedItem.audio.denoise ? "bg-[#8b5cf6]" : "bg-[#1e1e2e]"
+                selectedItem.audio.denoise ? "bg-[#8b5cf6]" : "bg-[#1e293b]"
               }`}
             >
               <div
@@ -386,15 +386,15 @@ export default function AudioPanel() {
               className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
                 isRecording
                   ? "bg-red-500 animate-pulse"
-                  : "bg-[#1e1e2e] hover:bg-[#2a2a3e]"
+                  : "bg-[#1e293b] hover:bg-[#1e293b]"
               }`}
             >
-              {isRecording ? <Square size={18} className="text-white" /> : <Mic size={18} className="text-gray-400" />}
+              {isRecording ? <Square size={18} className="text-white" /> : <Mic size={18} className="text-slate-400" />}
             </button>
             {isRecording && (
               <span className="text-xs text-red-400 font-mono">{formatTime(recordingTime)}</span>
             )}
-            <span className="text-[10px] text-gray-600">
+            <span className="text-[10px] text-slate-600">
               {isRecording ? "Clique para parar" : "Clique para gravar"}
             </span>
           </div>
@@ -410,15 +410,15 @@ export default function AudioPanel() {
             disabled={selectedItem.kind !== "video"}
             className={`w-full px-3 py-2 rounded border text-xs transition-colors flex items-center justify-center gap-2 ${
               selectedItem.kind === "video"
-                ? "bg-[#13131f] border-[#1e1e2e] text-gray-300 hover:border-[#8b5cf6]"
-                : "bg-[#0d0d16] border-[#1e1e2e] text-gray-600 cursor-not-allowed"
+                ? "bg-[#13131f] border-[#1e293b] text-slate-300 hover:border-[#8b5cf6]"
+                : "bg-[#0d0d16] border-[#1e293b] text-slate-600 cursor-not-allowed"
             }`}
           >
             <Download size={12} />
             Extrair Áudio do Vídeo
           </button>
           {selectedItem.kind !== "video" && (
-            <p className="text-[10px] text-gray-600 mt-1.5 text-center">
+            <p className="text-[10px] text-slate-600 mt-1.5 text-center">
               Selecione um item de vídeo
             </p>
           )}
@@ -433,11 +433,11 @@ export default function AudioPanel() {
             {SOUND_CATEGORIES.map((cat) => (
               <div
                 key={cat.label}
-                className="bg-[#13131f] border border-[#1e1e2e] rounded p-3 flex flex-col items-center gap-1.5 text-center"
+                className="bg-[#13131f] border border-[#1e293b] rounded p-3 flex flex-col items-center gap-1.5 text-center"
               >
                 <span className="text-lg">{cat.icon}</span>
-                <span className="text-[10px] text-gray-400">{cat.label}</span>
-                <span className="text-[9px] text-gray-600 italic">Em breve</span>
+                <span className="text-[10px] text-slate-400">{cat.label}</span>
+                <span className="text-[9px] text-slate-600 italic">Em breve</span>
               </div>
             ))}
           </div>
@@ -463,11 +463,11 @@ function SectionHeader({
       onClick={onToggle}
       className="w-full flex items-center justify-between px-4 py-2 hover:bg-[#13131f] transition-colors"
     >
-      <div className="flex items-center gap-2 text-gray-400">
+      <div className="flex items-center gap-2 text-slate-400">
         {icon}
-        <span className="text-[10px] text-gray-500 uppercase tracking-wider">{label}</span>
+        <span className="text-[10px] text-slate-500 uppercase tracking-wider">{label}</span>
       </div>
-      <span className="text-[10px] text-gray-600">{collapsed ? "▶" : "▼"}</span>
+      <span className="text-[10px] text-slate-600">{collapsed ? "▶" : "▼"}</span>
     </button>
   );
 }

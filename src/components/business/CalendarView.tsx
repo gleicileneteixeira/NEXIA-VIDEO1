@@ -49,13 +49,13 @@ export default function CalendarView({ posts }: { posts: StudioPost[] }) {
       <div className="flex items-center gap-2">
         <CalendarDays className="w-5 h-5 text-[var(--primary)]" />
         <h2 className="text-lg font-bold text-white capitalize">{monthLabel}</h2>
-        <span className="text-[11px] text-gray-500 ml-auto">{posts.length} posts no mês</span>
+        <span className="text-[11px] text-slate-500 ml-auto">{posts.length} posts no mês</span>
       </div>
 
-      <div className="bg-[#1c1c28] border border-gray-800 rounded-2xl overflow-hidden">
-        <div className="grid grid-cols-7 border-b border-gray-800">
+      <div className="bg-[#0f172a] border border-slate-800 rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-7 border-b border-slate-800">
           {WEEKDAYS.map((day) => (
-            <div key={day} className="py-2 text-center text-[10px] font-semibold text-gray-500 uppercase">
+            <div key={day} className="py-2 text-center text-[10px] font-semibold text-slate-500 uppercase">
               {day}
             </div>
           ))}
@@ -68,12 +68,12 @@ export default function CalendarView({ posts }: { posts: StudioPost[] }) {
             return (
               <div
                 key={date}
-                className={`aspect-square p-1.5 border-b border-r border-gray-800/50 transition-colors ${
+                className={`aspect-square p-1.5 border-b border-r border-slate-800/50 transition-colors ${
                   dayPosts.length > 0 ? "bg-[var(--primary)]/5 hover:bg-[var(--primary)]/10" : ""
                 }`}
               >
                 <div className="flex items-start justify-between">
-                  <span className="text-[10px] text-gray-400 font-medium">{d}</span>
+                  <span className="text-[10px] text-slate-400 font-medium">{d}</span>
                   {dayPosts.length > 0 && (
                     <span className="text-[8px] px-1 py-0.5 rounded-full bg-[var(--primary)]/20 text-[var(--primary)] font-bold">
                       {dayPosts.length}
@@ -100,7 +100,7 @@ export default function CalendarView({ posts }: { posts: StudioPost[] }) {
                                   : "#8b5cf6",
                         }}
                       />
-                      <span className="text-[8px] text-gray-400 truncate">
+                      <span className="text-[8px] text-slate-400 truncate">
                         D{post.dayNumber}
                       </span>
                     </div>

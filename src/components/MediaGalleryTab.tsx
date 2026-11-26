@@ -18,6 +18,7 @@ import {
   ChevronDown,
   ChevronRight,
 } from "lucide-react";
+import VideoPostInfo from "./VideoPostInfo";
 
 interface GalleryItem {
   id: string;
@@ -59,6 +60,11 @@ export default function MediaGalleryTab() {
   }, [filter]);
 
   useEffect(() => { loadItems(); }, [loadItems]);
+
+  const [postInfo, setPostInfo] = useState<{
+    videoUrl: string | null;
+    videoName: string | null;
+  } | null>(null);
 
   const toggleFavorite = async (item: GalleryItem) => {
     try {
@@ -270,6 +276,10 @@ export default function MediaGalleryTab() {
                       </button>
                     )}
                   </div>
+
+                  {item.media_type === "video" && (
+                    <VideoPostInfo videoUrl={item.media_url} videoName={item.title} />
+                  )}
                 </div>
               </div>
             );

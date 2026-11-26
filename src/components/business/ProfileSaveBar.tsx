@@ -62,14 +62,14 @@ export default function ProfileSaveBar({
       )}
 
       {/* Barra de Ação no Rodapé do Form */}
-      <div className="sticky bottom-4 z-30 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-[#121218]/95 border border-zinc-800 rounded-2xl shadow-2xl backdrop-blur-md">
+      <div className="sticky bottom-4 z-30 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-[#121218]/95 border border-slate-800 rounded-2xl shadow-2xl backdrop-blur-md">
         <div className="flex items-center gap-2 text-xs">
           {hasUnsavedChanges ? (
             <span className="flex items-center gap-1.5 text-amber-400 font-medium">
               <AlertCircle className="w-4 h-4" /> Alterações pendentes de salvamento
             </span>
           ) : (
-            <span className="flex items-center gap-1.5 text-zinc-400">
+            <span className="flex items-center gap-1.5 text-slate-400">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Perfil sincronizado no armazenamento
             </span>
           )}
@@ -81,7 +81,7 @@ export default function ProfileSaveBar({
               type="button"
               onClick={onReset}
               disabled={!hasUnsavedChanges || isSaving}
-              className="px-4 py-2.5 text-xs font-medium text-zinc-400 hover:text-white bg-zinc-900 border border-zinc-800 rounded-xl transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+              className="px-4 py-2.5 text-xs font-medium text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-xl transition-all disabled:opacity-40 disabled:cursor-not-allowed"
             >
               Descartar Alterações
             </button>

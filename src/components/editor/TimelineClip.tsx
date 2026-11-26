@@ -243,7 +243,7 @@ export default function TimelineClip({
             <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
             <span>Aplicando Recorte automático... {item.autoCutout.progress ?? 0}%</span>
           </div>
-          <div className="w-full bg-zinc-800/80 h-1 rounded-full overflow-hidden">
+          <div className="w-full bg-slate-800/80 h-1 rounded-full overflow-hidden">
             <div
               className="bg-teal-400 h-full transition-all duration-150"
               style={{ width: `${item.autoCutout.progress ?? 0}%` }}

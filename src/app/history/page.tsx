@@ -117,7 +117,7 @@ export default function HistoryPage() {
               className={`flex items-center gap-1.5 px-3.5 py-2 rounded-[8px] border transition-colors text-xs font-semibold ${
                 viewing.videoGenerated
                   ? "bg-[var(--accent-green)]/15 border-[var(--accent-green)]/30 text-[var(--accent-green)] hover:bg-[var(--accent-green)]/25"
-                  : "bg-gray-800/60 border-gray-700 text-gray-400 hover:bg-gray-800/90 hover:text-gray-300"
+                  : "bg-slate-800/60 border-slate-700 text-slate-400 hover:bg-slate-800/90 hover:text-slate-300"
               }`}
             >
               {viewing.videoGenerated ? (
@@ -288,7 +288,7 @@ export default function HistoryPage() {
                   className={`flex items-center gap-1 px-2.5 py-1.5 rounded-[8px] border transition-colors text-xs font-medium ${
                     p.videoGenerated
                       ? "bg-[var(--accent-green)]/10 border-[var(--accent-green)]/30 text-[var(--accent-green)] hover:bg-[var(--accent-green)]/20"
-                      : "bg-gray-800/40 border-gray-700/60 text-gray-400 hover:bg-gray-800/80 hover:text-gray-300"
+                      : "bg-slate-800/40 border-slate-700/60 text-slate-400 hover:bg-slate-800/80 hover:text-slate-300"
                   }`}
                   title={p.videoGenerated ? "Marcar como pendente" : "Marcar como video gerado"}
                 >

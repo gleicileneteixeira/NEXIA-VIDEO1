@@ -43,11 +43,11 @@ export default function AnimationPanel() {
 
   if (!selectedItem) {
     return (
-      <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col">
-        <div className="px-4 py-3 border-b border-[#1e1e2e]">
-          <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Animações</h3>
+      <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col">
+        <div className="px-4 py-3 border-b border-[#1e293b]">
+          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Animações</h3>
         </div>
-        <div className="flex-1 flex items-center justify-center text-gray-600 text-xs px-4 text-center">
+        <div className="flex-1 flex items-center justify-center text-slate-600 text-xs px-4 text-center">
           Selecione um item
         </div>
       </div>
@@ -75,9 +75,9 @@ export default function AnimationPanel() {
   };
 
   return (
-    <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col overflow-y-auto">
-      <div className="px-4 py-3 border-b border-[#1e1e2e]">
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Animações</h3>
+    <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col overflow-y-auto">
+      <div className="px-4 py-3 border-b border-[#1e293b]">
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Animações</h3>
       </div>
 
       {/* Animação de Entrada */}
@@ -92,7 +92,7 @@ export default function AnimationPanel() {
                 className={`px-2 py-1.5 text-[10px] rounded border transition-colors ${
                   selectedItem.animation.enter === preset.id
                     ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                    : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                    : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
                 }`}
               >
                 {preset.label}
@@ -114,7 +114,7 @@ export default function AnimationPanel() {
                 className={`px-2 py-1.5 text-[10px] rounded border transition-colors ${
                   selectedItem.animation.exit === preset.id
                     ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                    : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                    : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
                 }`}
               >
                 {preset.label}
@@ -129,8 +129,8 @@ export default function AnimationPanel() {
       {!collapsed.duration && (
         <div className="p-3 border-b border-[#1a1a28]">
           <div className="flex items-center justify-between mb-1">
-            <span className="text-[10px] text-gray-500">Duração (frames)</span>
-            <span className="text-[10px] text-gray-600 font-mono">{selectedItem.animation.durationInFrames}</span>
+            <span className="text-[10px] text-slate-500">Duração (frames)</span>
+            <span className="text-[10px] text-slate-600 font-mono">{selectedItem.animation.durationInFrames}</span>
           </div>
           <input
             type="range"
@@ -143,9 +143,9 @@ export default function AnimationPanel() {
             min={5}
             max={60}
             step={1}
-            className="w-full h-1 bg-[#1e1e2e] rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+            className="w-full h-1 bg-[#1e293b] rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
           />
-          <div className="flex justify-between text-[9px] text-gray-600 mt-0.5">
+          <div className="flex justify-between text-[9px] text-slate-600 mt-0.5">
             <span>5</span>
             <span>60</span>
           </div>
@@ -161,7 +161,7 @@ export default function AnimationPanel() {
             return (
               <div key={prop}>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[10px] text-gray-500">{label}</span>
+                  <span className="text-[10px] text-slate-500">{label}</span>
                   <button
                     onClick={() => addKeyframeForProp(prop)}
                     className="text-[9px] text-[#8b5cf6] hover:text-[#a78bfa] flex items-center gap-0.5"
@@ -175,20 +175,20 @@ export default function AnimationPanel() {
                     {kfs.map((kf) => (
                       <div
                         key={kf.frame}
-                        className="flex items-center justify-between bg-[#13131f] border border-[#1e1e2e] rounded px-2 py-1"
+                        className="flex items-center justify-between bg-[#13131f] border border-[#1e293b] rounded px-2 py-1"
                       >
                         <div className="flex items-center gap-1.5">
                           <Diamond
                             size={10}
                             className="text-[#ec4899]"
                           />
-                          <span className="text-[10px] text-gray-400 font-mono">F{kf.frame}</span>
-                          <span className="text-[10px] text-gray-500">→</span>
-                          <span className="text-[10px] text-gray-300 font-mono">{kf.value.toFixed(2)}</span>
+                          <span className="text-[10px] text-slate-400 font-mono">F{kf.frame}</span>
+                          <span className="text-[10px] text-slate-500">→</span>
+                          <span className="text-[10px] text-slate-300 font-mono">{kf.value.toFixed(2)}</span>
                         </div>
                         <button
                           onClick={() => removeKeyframe(selectedItem.id, prop, kf.frame)}
-                          className="text-[10px] text-gray-600 hover:text-red-400 px-1"
+                          className="text-[10px] text-slate-600 hover:text-red-400 px-1"
                         >
                           ×
                         </button>
@@ -196,7 +196,7 @@ export default function AnimationPanel() {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-[9px] text-gray-600 italic pl-1">Nenhum keyframe</div>
+                  <div className="text-[9px] text-slate-600 italic pl-1">Nenhum keyframe</div>
                 )}
               </div>
             );
@@ -223,11 +223,11 @@ function SectionHeader({
       onClick={onToggle}
       className="w-full flex items-center justify-between px-4 py-2 hover:bg-[#13131f] transition-colors"
     >
-      <div className="flex items-center gap-2 text-gray-400">
+      <div className="flex items-center gap-2 text-slate-400">
         {icon}
-        <span className="text-[10px] text-gray-500 uppercase tracking-wider">{label}</span>
+        <span className="text-[10px] text-slate-500 uppercase tracking-wider">{label}</span>
       </div>
-      <span className="text-[10px] text-gray-600">{collapsed ? "▶" : "▼"}</span>
+      <span className="text-[10px] text-slate-600">{collapsed ? "▶" : "▼"}</span>
     </button>
   );
 }

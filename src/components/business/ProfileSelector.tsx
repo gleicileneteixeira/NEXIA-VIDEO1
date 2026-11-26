@@ -17,11 +17,11 @@ export default function ProfileSelector() {
             className={`group flex items-center gap-2.5 rounded-xl border px-3.5 py-2 text-sm font-medium transition-all ${
               isActive
                 ? "border-[var(--primary)]/60 bg-[var(--primary)]/10 text-white shadow-lg shadow-[var(--primary)]/10"
-                : "border-zinc-700/80 bg-zinc-900 text-zinc-400 hover:border-zinc-500 hover:text-zinc-200"
+                : "border-slate-700/80 bg-slate-900 text-slate-400 hover:border-slate-500 hover:text-slate-200"
             }`}
           >
             <span
-              className={`w-2 h-2 rounded-full ${isActive ? "bg-emerald-400 animate-pulse" : "bg-zinc-600"}`}
+              className={`w-2 h-2 rounded-full ${isActive ? "bg-emerald-400 animate-pulse" : "bg-slate-600"}`}
             />
             {profile.name || "Sem nome"}
             {isActive && (

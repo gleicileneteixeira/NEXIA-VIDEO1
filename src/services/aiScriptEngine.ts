@@ -149,6 +149,35 @@ REGRA 3 — MATRIZ DE TRANSIÇÃO (PONTE DE EXPECTATIVA):
 - Início da SOLUÇÃO (Slot 3): apresenta o método/simulado como resposta DIRETA para a dor daquele assunto.
 - Início do CTA (Slot 4): chamada de ação direta e autônoma, relacionada ao tema.
 
+REGRA 3-B — CONECTORES PADRONIZADOS DE TRANSIÇÃO INTER-BLOCOS:
+Para garantir que QUALQUER combinação de Gancho[X] + Dor[Y] + Solução[Z] + CTA[W] soe como texto contínuo e fluido, TODOS os blocos DEVEM iniciar com os conectores obrigatórios abaixo:
+
+TRANSIÇÃO GANCHO ➔ DOR/DESEJO/DÚVIDA:
+- O Gancho DEVE encerrar com interrogação ou afirmação completa.
+- A Dor/DESEjo DEVE iniciar OBRIGATORIAMENTE com um dos conectores:
+  • "Você sabia que..."
+  • "A grande questão é que..."
+  • "O real problema que ninguém te conta é que..."
+  • "A verdade é que..."
+
+TRANSIÇÃO DOR/DESEJO/DÚVIDA ➔ SOLUÇÃO:
+- A Dor/DESEJO apresenta frustração sem citar produto/serviço.
+- A Solução DEVE iniciar OBRIGATORIAMENTE com um dos conectores:
+  • "E é exatamente por isso que..."
+  • "O segredo para resolver isso de forma simples é..."
+  • "A forma mais rápida de virar essa chave é..."
+  • "Para acabar com isso, a solução é..."
+
+TRANSIÇÃO SOLUÇÃO ➔ CTA:
+- A Solução evidencia resultado ou benefício do método.
+- O CTA DEVE iniciar OBRIGATORIAMENTE com um dos conectores:
+  • "Então faz o seguinte:..."
+  • "Se você quer ter acesso a isso hoje,..."
+  • "Quer aprender isso na prática?..."
+  • "Toca no botão aqui embaixo e..."
+
+⚠️ REQUISITO: Todos os blocos num mesmo lote DEVEM adotar conectores equivalentes nas fronteiras para que qualquer combinação cruzada soe fluida.
+
 REGRA 4 — VALIDAÇÃO CRUZADA OBRIGATÓRIA ANTES DE ENTREGAR:
 Antes de retornar o JSON, faça o "teste mental" das combinações cruzadas da matriz:
   • [Gancho 1] + [Dor 3] + [Solução 2] + [CTA 1]

@@ -145,16 +145,16 @@ export default function DashboardPage() {
 
   const quickActions = [
     { title: "Roteiro & IA", description: "Gere ideias, hooks e roteiros com IA", icon: Sparkles, href: "/script", tint: "from-purple-600/20 to-indigo-600/10", border: "hover:border-purple-500/50", iconCls: "bg-purple-500/15 text-purple-300" },
-    { title: "Criação em Massa", description: "Gere variações automáticas de vídeo", icon: Factory, href: "/mass-production", tint: "from-pink-600/20 to-rose-600/10", border: "hover:border-pink-500/50", iconCls: "bg-pink-500/15 text-pink-300" },
-    { title: "Editor de Vídeo", description: "Edite e refine seus clipes na timeline", icon: Video, href: "/editor", tint: "from-blue-600/20 to-cyan-600/10", border: "hover:border-blue-500/50", iconCls: "bg-cyan-500/15 text-cyan-300" },
-    { title: "Histórico", description: "Acesse roteiros e projetos salvos", icon: Clock, href: "/history", tint: "from-teal-600/20 to-emerald-600/10", border: "hover:border-teal-500/50", iconCls: "bg-emerald-500/15 text-emerald-300" },
+    { title: "Criacao em Massa", description: "Gere variacoes automaticas de video", icon: Factory, href: "/mass-production", tint: "from-pink-600/20 to-rose-600/10", border: "hover:border-pink-500/50", iconCls: "bg-pink-500/15 text-pink-300" },
+    { title: "Editor de Video", description: "Edite e refine seus clipes na timeline", icon: Video, href: "/editor", tint: "from-blue-600/20 to-cyan-600/10", border: "hover:border-blue-500/50", iconCls: "bg-cyan-500/15 text-cyan-300" },
+    { title: "Historico", description: "Acesse roteiros e projetos salvos", icon: Clock, href: "/history", tint: "from-teal-600/20 to-emerald-600/10", border: "hover:border-teal-500/50", iconCls: "bg-emerald-500/15 text-emerald-300" },
   ];
 
   if (isLoading) {
     return (
       <div className="w-full max-w-[1600px] mx-auto flex flex-col items-center justify-center py-32">
         <Loader2 className="w-10 h-10 animate-spin text-purple-400 mb-4" />
-        <p className="text-sm text-zinc-500">Carregando dashboard...</p>
+        <p className="text-sm text-slate-500">Carregando dashboard...</p>
       </div>
     );
   }
@@ -178,7 +178,7 @@ export default function DashboardPage() {
             </span>
             !
           </h1>
-          <p className="text-xs lg:text-sm text-zinc-400 mt-1">
+          <p className="text-xs lg:text-sm text-slate-400 mt-1">
             Pronto para criar e gerenciar seu conteúdo em vídeo hoje?
           </p>
         </div>
@@ -192,17 +192,17 @@ export default function DashboardPage() {
         </Link>
       </div>
 
-      {/* Grid de Métricas */}
+      {/* Grid de Metricas */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
             <div
               key={stat.label}
-              className="bg-[#101018] backdrop-blur-xl border border-zinc-800/80 shadow-xl rounded-2xl p-5 hover:border-zinc-700/80 transition-all flex items-center justify-between group"
+              className="bg-slate-900/90 backdrop-blur-xl border border-slate-800/80 shadow-xl rounded-2xl p-5 hover:border-slate-700/80 transition-all flex items-center justify-between group"
             >
               <div>
-                <span className="text-xs font-semibold text-zinc-400 tracking-wide uppercase">
+                <span className="text-xs font-semibold text-slate-400 tracking-wide uppercase">
                   {stat.label}
                 </span>
                 <div className="text-3xl font-black text-white mt-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all">{stat.value}</div>
@@ -215,9 +215,9 @@ export default function DashboardPage() {
         })}
       </div>
 
-      {/* Ações Rápidas */}
+      {/* Acoes Rapidas */}
       <div className="space-y-3">
-        <h2 className="text-sm font-bold text-zinc-300 uppercase tracking-wider">Ações Rápidas</h2>
+        <h2 className="text-sm font-bold text-slate-300 uppercase tracking-wider">Acoes Rapidas</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {quickActions.map((action) => {
             const Icon = action.icon;
@@ -225,7 +225,7 @@ export default function DashboardPage() {
               <Link
                 key={action.title}
                 href={action.href}
-                className="relative bg-[#101018] backdrop-blur-xl border border-zinc-800/80 shadow-xl rounded-2xl p-5 transition-all cursor-pointer group flex flex-col justify-between hover:border-zinc-700/80"
+                className="relative bg-slate-900/90 backdrop-blur-xl border border-slate-800/80 shadow-xl rounded-2xl p-5 transition-all cursor-pointer group flex flex-col justify-between hover:border-slate-700/80"
               >
                 <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${action.tint} opacity-40 pointer-events-none`} />
                 <div className="space-y-2 relative">
@@ -236,10 +236,10 @@ export default function DashboardPage() {
                     <h3 className="text-sm font-bold text-white group-hover:text-purple-300 transition-colors">
                       {action.title}
                     </h3>
-                    <p className="text-xs text-zinc-400 mt-1 line-clamp-2">{action.description}</p>
+                    <p className="text-xs text-slate-400 mt-1 line-clamp-2">{action.description}</p>
                   </div>
                 </div>
-                <div className="mt-4 flex items-center gap-1 text-[11px] font-semibold text-zinc-400 group-hover:text-white transition-colors">
+                <div className="mt-4 flex items-center gap-1 text-[11px] font-semibold text-slate-400 group-hover:text-white transition-colors">
                   <span>Acessar</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </div>
@@ -250,11 +250,11 @@ export default function DashboardPage() {
       </div>
 
       {/* Roteiros Recentes */}
-      <div className="bg-[#101018] backdrop-blur-md border border-zinc-800/80 rounded-2xl shadow-xl overflow-hidden">
+      <div className="bg-slate-900/90 backdrop-blur-md border border-slate-800/80 rounded-2xl shadow-xl overflow-hidden">
         <div className="flex items-center justify-between p-6 pb-4">
           <div>
             <h2 className="text-base font-bold text-white">Roteiros Recentes</h2>
-            <p className="text-xs text-zinc-400 mt-0.5">Seus últimos projetos e status de renderização</p>
+            <p className="text-xs text-slate-400 mt-0.5">Seus ultimos projetos e status de renderizacao</p>
           </div>
           <Link
             href="/history"
@@ -269,9 +269,9 @@ export default function DashboardPage() {
             <div className="w-16 h-16 rounded-2xl bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
               <Sparkles className="w-8 h-8 text-purple-400 opacity-60" />
             </div>
-            <p className="text-lg font-bold text-white mb-2">Você ainda não criou nenhum roteiro</p>
-            <p className="text-sm text-zinc-400 mb-6 max-w-md mx-auto">
-              Comece usando o Gerador de Conteúdo com IA para criar roteiros automáticos para seus vídeos.
+            <p className="text-lg font-bold text-white mb-2">Voce ainda nao criou nenhum roteiro</p>
+            <p className="text-sm text-slate-400 mb-6 max-w-md mx-auto">
+              Comece usando o Gerador de Conteudo com IA para criar roteiros automaticos para seus videos.
             </p>
               <Link
                 href="/script"
@@ -285,15 +285,15 @@ export default function DashboardPage() {
           <div className="w-full overflow-x-auto px-2 pb-2">
             <table className="w-full text-left border-collapse text-xs lg:text-sm">
               <thead>
-                 <tr className="border-b border-zinc-800/60 text-zinc-400 uppercase tracking-wider text-[11px]">
+                 <tr className="border-b border-slate-800/60 text-slate-400 uppercase tracking-wider text-[11px]">
                   <th className="py-3 px-4">Roteiro</th>
                   <th className="py-3 px-4">Status</th>
-                  <th className="py-3 px-4">Vídeos</th>
+                  <th className="py-3 px-4">Videos</th>
                   <th className="py-3 px-4">Data</th>
-                  <th className="py-3 px-4 text-right">Ações</th>
+                  <th className="py-3 px-4 text-right">Acoes</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-800/40">
+              <tbody className="divide-y divide-slate-800/40">
                 {data.recentScripts.map((script) => (
                   <tr key={script.id} className="hover:bg-white/[0.02] transition-colors group">
                     <td className="py-3.5 px-4">
@@ -301,7 +301,7 @@ export default function DashboardPage() {
                         <div className="w-8 h-6 rounded-md bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                           <Play className="w-3 h-3 text-white" fill="white" />
                         </div>
-                        <span className="font-semibold text-zinc-200 truncate max-w-[320px] lg:max-w-[520px]">
+                        <span className="font-semibold text-slate-200 truncate max-w-[320px] lg:max-w-[520px]">
                           {script.tema}
                         </span>
                       </div>
@@ -309,10 +309,10 @@ export default function DashboardPage() {
                     <td className="py-3.5 px-4">
                       <StatusBadge status={script.status} />
                     </td>
-                    <td className="py-3.5 px-4 text-zinc-300 font-medium">
+                    <td className="py-3.5 px-4 text-slate-300 font-medium">
                       {script.quantity ?? script.cards_data?.length ?? "-"}
                     </td>
-                    <td className="py-3.5 px-4 text-zinc-400">{formatDate(script.created_at)}</td>
+                    <td className="py-3.5 px-4 text-slate-400">{formatDate(script.created_at)}</td>
                     <td className="py-3.5 px-4 text-right">
                       <Link
                         href="/script"

@@ -200,10 +200,10 @@ export default function RecordModal({ open, onClose }: { open: boolean; onClose:
 
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center">
-      <div className="bg-[#0d0d16] border border-[#1e1e2e] rounded-xl w-[640px] max-w-full mx-4">
-        <div className="p-4 border-b border-[#1e1e2e] flex items-center justify-between">
+      <div className="bg-[#0d0d16] border border-[#1e293b] rounded-xl w-[640px] max-w-full mx-4">
+        <div className="p-4 border-b border-[#1e293b] flex items-center justify-between">
           <h3 className="text-sm font-semibold text-white">Gravar Vídeo</h3>
-          <button onClick={handleClose} className="p-1 text-gray-400 hover:text-white">
+          <button onClick={handleClose} className="p-1 text-slate-400 hover:text-white">
             <X size={18} />
           </button>
         </div>
@@ -212,7 +212,7 @@ export default function RecordModal({ open, onClose }: { open: boolean; onClose:
           {stage === "devices" && (
             <div className="space-y-4">
               <div>
-                <label className="text-xs text-gray-400">Câmera</label>
+                <label className="text-xs text-slate-400">Câmera</label>
                 <select
                   value={selectedCamera}
                   onChange={(e) => setSelectedCamera(e.target.value)}
@@ -224,7 +224,7 @@ export default function RecordModal({ open, onClose }: { open: boolean; onClose:
                 </select>
               </div>
               <div>
-                <label className="text-xs text-gray-400">Microfone</label>
+                <label className="text-xs text-slate-400">Microfone</label>
                 <select
                   value={selectedMic}
                   onChange={(e) => setSelectedMic(e.target.value)}
@@ -238,7 +238,7 @@ export default function RecordModal({ open, onClose }: { open: boolean; onClose:
               <div className="flex justify-end gap-2 pt-2">
                 <button
                   onClick={onClose}
-                  className="px-3 py-1 text-xs text-gray-400 hover:text-white"
+                  className="px-3 py-1 text-xs text-slate-400 hover:text-white"
                 >
                   Cancelar
                 </button>
@@ -265,13 +265,13 @@ export default function RecordModal({ open, onClose }: { open: boolean; onClose:
                 <div className="absolute bottom-2 left-2 flex gap-1">
                   <button
                     onClick={() => setCameraEnabled(!cameraEnabled)}
-                    className={`p-1.5 rounded bg-black/50 ${cameraEnabled ? "text-white" : "text-gray-500"}`}
+                    className={`p-1.5 rounded bg-black/50 ${cameraEnabled ? "text-white" : "text-slate-500"}`}
                   >
                     <Camera size={14} />
                   </button>
                   <button
                     onClick={() => setMicEnabled(!micEnabled)}
-                    className={`p-1.5 rounded bg-black/50 ${micEnabled ? "text-white" : "text-gray-500"}`}
+                    className={`p-1.5 rounded bg-black/50 ${micEnabled ? "text-white" : "text-slate-500"}`}
                   >
                     <Mic size={14} />
                   </button>
@@ -280,7 +280,7 @@ export default function RecordModal({ open, onClose }: { open: boolean; onClose:
               <div className="flex justify-end gap-2">
                 <button
                   onClick={() => setStage("devices")}
-                  className="px-3 py-1 text-xs text-gray-400 hover:text-white"
+                  className="px-3 py-1 text-xs text-slate-400 hover:text-white"
                 >
                   Voltar
                 </button>
@@ -316,7 +316,7 @@ export default function RecordModal({ open, onClose }: { open: boolean; onClose:
                   <span className="text-[10px] text-white font-medium">GRAVANDO</span>
                 </div>
               </div>
-              <div className="text-center text-xs text-gray-400">
+              <div className="text-center text-xs text-slate-400">
                 Tempo: {Math.floor(recordingTime / 60)}:{String(recordingTime % 60).padStart(2, "0")}
               </div>
               <div className="flex justify-center">

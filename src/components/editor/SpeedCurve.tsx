@@ -286,7 +286,7 @@ export default function SpeedCurve({
   }, [durationInFrames]);
 
   return (
-    <div className="flex flex-col gap-2" style={{ background: "#0d0d16", border: "1px solid #1e1e2e", borderRadius: 8, padding: 12 }}>
+    <div className="flex flex-col gap-2" style={{ background: "#0d0d16", border: "1px solid #1e293b", borderRadius: 8, padding: 12 }}>
       <div className="flex items-center gap-2 flex-wrap">
         <span className="text-xs font-medium" style={{ color: "#8b5cf6" }}>
           Curva de Velocidade
@@ -297,7 +297,7 @@ export default function SpeedCurve({
               key={name}
               onClick={() => applyPreset(name)}
               className="text-xs px-2 py-0.5 rounded"
-              style={{ background: "#1e1e2e", color: "#a0a0b0", border: "1px solid #2a2a3e" }}
+              style={{ background: "#1e293b", color: "#a0a0b0", border: "1px solid #1e293b" }}
             >
               {name}
             </button>
@@ -317,7 +317,7 @@ export default function SpeedCurve({
         onClick={handleClickSvg}
       >
         {gridLines.map((g, i) => (
-          <line key={i} x1={g.x1} y1={g.y1} x2={g.x2} y2={g.y2} stroke="#1e1e2e" strokeWidth={0.5} />
+          <line key={i} x1={g.x1} y1={g.y1} x2={g.x2} y2={g.y2} stroke="#1e293b" strokeWidth={0.5} />
         ))}
 
         <text x={PADDING.left - 2} y={speedToY(4) + 3} fill="#555" fontSize={7} textAnchor="end">4x</text>
@@ -379,7 +379,7 @@ export default function SpeedCurve({
               key={`${pt.frame}-${pt.speed}-${i}`}
               className="flex items-center gap-2 text-xs px-2 py-1 rounded cursor-pointer"
               style={{
-                background: isSelected ? "#1e1e2e" : "transparent",
+                background: isSelected ? "#1e293b" : "transparent",
                 color: isSelected ? "#ec4899" : "#a0a0b0",
               }}
               onClick={() => setSelectedIdx(globalIdx)}
@@ -389,7 +389,7 @@ export default function SpeedCurve({
               <span style={{ width: 40 }}>{pt.speed.toFixed(1)}x</span>
               <span
                 className="ml-1 text-xs px-1 rounded"
-                style={{ background: "#2a2a3e", color: "#666", fontSize: 9 }}
+                style={{ background: "#1e293b", color: "#666", fontSize: 9 }}
               >
                 {pt.easing}
               </span>
@@ -419,7 +419,7 @@ export default function SpeedCurve({
         <button
           onClick={addPoint}
           className="flex items-center gap-1 text-xs px-2 py-1 rounded"
-          style={{ background: "#1e1e2e", color: "#8b5cf6", border: "1px solid #2a2a3e" }}
+          style={{ background: "#1e293b", color: "#8b5cf6", border: "1px solid #1e293b" }}
         >
           <Plus size={12} /> Adicionar
         </button>
@@ -427,14 +427,14 @@ export default function SpeedCurve({
           onClick={deleteSelected}
           disabled={selectedIdx === null || points.length <= 2}
           className="flex items-center gap-1 text-xs px-2 py-1 rounded disabled:opacity-30"
-          style={{ background: "#1e1e2e", color: "#ef4444", border: "1px solid #2a2a3e" }}
+          style={{ background: "#1e293b", color: "#ef4444", border: "1px solid #1e293b" }}
         >
           <Trash2 size={12} /> Remover
         </button>
         <button
           onClick={resetPoints}
           className="flex items-center gap-1 text-xs px-2 py-1 rounded ml-auto"
-          style={{ background: "#1e1e2e", color: "#a0a0b0", border: "1px solid #2a2a3e" }}
+          style={{ background: "#1e293b", color: "#a0a0b0", border: "1px solid #1e293b" }}
         >
           <RotateCcw size={12} /> Resetar
         </button>

@@ -239,14 +239,14 @@ export default function MediaPanel() {
       case "video": return <Film size={14} className="text-purple-400" />;
       case "audio": return <Music size={14} className="text-green-400" />;
       case "image": return <Image size={14} className="text-blue-400" />;
-      default: return <Film size={14} className="text-gray-400" />;
+      default: return <Film size={14} className="text-slate-400" />;
     }
   };
 
   return (
-    <div className="h-full bg-[#0d0d16] border-r border-[#1e1e2e] flex flex-col">
-      <div className="px-4 py-3 border-b border-[#1e1e2e] flex items-center justify-between">
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Mídia</h3>
+    <div className="h-full bg-[#0d0d16] border-r border-[#1e293b] flex flex-col">
+      <div className="px-4 py-3 border-b border-[#1e293b] flex items-center justify-between">
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Mídia</h3>
         <div className="flex gap-1">
           <button
             onClick={addTextToTimeline}
@@ -272,7 +272,7 @@ export default function MediaPanel() {
         />
         <button
           onClick={() => inputRef.current?.click()}
-          className="w-full py-6 border-2 border-dashed border-[#1e1e2e] rounded-lg text-gray-500 hover:border-[#8b5cf6]/50 hover:text-[#8b5cf6] transition-colors flex flex-col items-center gap-2"
+          className="w-full py-6 border-2 border-dashed border-[#1e293b] rounded-lg text-slate-500 hover:border-[#8b5cf6]/50 hover:text-[#8b5cf6] transition-colors flex flex-col items-center gap-2"
         >
           <Upload size={20} />
           <span className="text-[10px]">Arraste e solte vídeos, fotos e arquivos de áudio aqui</span>
@@ -280,14 +280,14 @@ export default function MediaPanel() {
       </div>
 
       <div className="px-3 py-2 border-b border-[#1a1a28]">
-        <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Sem mídia? Crie com estas ferramentas</div>
+        <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Sem mídia? Crie com estas ferramentas</div>
         <div className="grid grid-cols-3 gap-1.5">
           <button
             onClick={() => setShowRecordModal(true)}
             className="flex flex-col items-center justify-center py-3 bg-[#1a1a28] border border-[#2a2a38] rounded-lg hover:border-[#ec4899]/50 hover:bg-[#ec4899]/5 transition-colors"
           >
             <span className="text-lg mb-0.5">📹</span>
-            <span className="text-[9px] text-gray-400">Gravar</span>
+            <span className="text-[9px] text-slate-400">Gravar</span>
           </button>
           <button
             onClick={() => {
@@ -299,7 +299,7 @@ export default function MediaPanel() {
             className="flex flex-col items-center justify-center py-3 bg-[#1a1a28] border border-[#2a2a38] rounded-lg hover:border-[#ec4899]/50 hover:bg-[#ec4899]/5 transition-colors"
           >
             <span className="text-lg mb-0.5">👤</span>
-            <span className="text-[9px] text-gray-400">Avatares</span>
+            <span className="text-[9px] text-slate-400">Avatares</span>
           </button>
           <button
             onClick={() => {
@@ -311,7 +311,7 @@ export default function MediaPanel() {
             className="flex flex-col items-center justify-center py-3 bg-[#1a1a28] border border-[#2a2a38] rounded-lg hover:border-[#ec4899]/50 hover:bg-[#ec4899]/5 transition-colors"
           >
             <span className="text-lg mb-0.5">✨</span>
-            <span className="text-[9px] text-gray-400">Gerar</span>
+            <span className="text-[9px] text-slate-400">Gerar</span>
           </button>
         </div>
       </div>
@@ -331,7 +331,7 @@ export default function MediaPanel() {
             {getIcon(media.type)}
             <span className="flex-1 text-xs text-[#a0a0b0] truncate">{media.name}</span>
             {media.duration && (
-              <span className="text-[9px] text-gray-600">
+              <span className="text-[9px] text-slate-600">
                 {Math.floor(media.duration / 60)}:{String(Math.floor(media.duration % 60)).padStart(2, "0")}
               </span>
             )}
@@ -342,7 +342,7 @@ export default function MediaPanel() {
                   e.stopPropagation();
                   extractAudioFromVideo(media);
                 }}
-                className="p-0.5 hover:bg-[#1e1e2e] rounded text-gray-500 hover:text-[#8b5cf6] transition-colors"
+                className="p-0.5 hover:bg-[#1e293b] rounded text-slate-500 hover:text-[#8b5cf6] transition-colors"
                 title="Extrair áudio"
               >
                 <Volume2 size={10} />
@@ -354,7 +354,7 @@ export default function MediaPanel() {
                 e.stopPropagation();
                 removeFile(media.id);
               }}
-              className="p-0.5 hover:bg-red-900/30 rounded text-gray-600 hover:text-red-400"
+              className="p-0.5 hover:bg-red-900/30 rounded text-slate-600 hover:text-red-400"
             >
               <Trash2 size={10} />
             </button>

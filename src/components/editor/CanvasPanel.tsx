@@ -32,16 +32,16 @@ export default function CanvasPanel() {
   };
 
   return (
-    <div className="h-full bg-[#0d0d16] border-r border-[#1e1e2e] flex flex-col">
-      <div className="px-4 py-3 border-b border-[#1e1e2e] flex items-center gap-2">
+    <div className="h-full bg-[#0d0d16] border-r border-[#1e293b] flex flex-col">
+      <div className="px-4 py-3 border-b border-[#1e293b] flex items-center gap-2">
         <Monitor size={14} className="text-[#8b5cf6]" />
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Canvas</h3>
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Canvas</h3>
       </div>
 
       <div className="flex-1 overflow-y-auto px-3 py-3 space-y-4">
         {/* Proporção do Projeto */}
         <section>
-          <h4 className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Proporção do Projeto</h4>
+          <h4 className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Proporção do Projeto</h4>
           <div className="grid grid-cols-2 gap-1">
             {aspectRatioOptions.map((option) => (
               <button
@@ -50,7 +50,7 @@ export default function CanvasPanel() {
                 className={`px-2 py-2 text-[10px] rounded border transition-colors flex items-center justify-center gap-1.5 ${
                   canvas.aspectRatio === option.ratio
                     ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                    : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                    : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
                 }`}
               >
                 {option.icon}
@@ -62,7 +62,7 @@ export default function CanvasPanel() {
 
         {/* Fundo */}
         <section>
-          <h4 className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Fundo</h4>
+          <h4 className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Fundo</h4>
           <div className="space-y-2">
             <div className="flex gap-1">
               {(["color", "blur", "image"] as const).map((mode) => (
@@ -72,7 +72,7 @@ export default function CanvasPanel() {
                   className={`flex-1 py-1.5 text-[10px] rounded border transition-colors ${
                     canvas.background === mode
                       ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                      : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                      : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
                   }`}
                 >
                   {mode === "color" ? "Cor" : mode === "blur" ? "Desfoque" : "Imagem"}
@@ -82,19 +82,19 @@ export default function CanvasPanel() {
 
             {canvas.background === "color" && (
               <div>
-                <label className="text-[9px] text-gray-600 block mb-1">Cor de Fundo</label>
+                <label className="text-[9px] text-slate-600 block mb-1">Cor de Fundo</label>
                 <div className="flex items-center gap-2">
                   <input
                     type="color"
                     value={canvas.bgColor}
                     onChange={(e) => setCanvas({ bgColor: e.target.value })}
-                    className="w-8 h-8 rounded border border-[#1e1e2e] cursor-pointer"
+                    className="w-8 h-8 rounded border border-[#1e293b] cursor-pointer"
                   />
                   <input
                     type="text"
                     value={canvas.bgColor}
                     onChange={(e) => setCanvas({ bgColor: e.target.value })}
-                    className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e1e2e] rounded-md text-[10px] text-gray-300 focus:outline-none focus:border-[#8b5cf6]"
+                    className="flex-1 px-2 py-1 bg-[#13131f] border border-[#1e293b] rounded-md text-[10px] text-slate-300 focus:outline-none focus:border-[#8b5cf6]"
                   />
                 </div>
               </div>
@@ -102,7 +102,7 @@ export default function CanvasPanel() {
 
             {canvas.background === "blur" && (
               <div>
-                <label className="text-[9px] text-gray-600 block mb-1">Quantidade de Desfoque: {canvas.bgBlurAmount}</label>
+                <label className="text-[9px] text-slate-600 block mb-1">Quantidade de Desfoque: {canvas.bgBlurAmount}</label>
                 <input
                   type="range"
                   min={0}
@@ -116,8 +116,8 @@ export default function CanvasPanel() {
 
             {canvas.background === "image" && (
               <div>
-                <label className="text-[9px] text-gray-600 block mb-1">Imagem de Fundo</label>
-                <div className="w-full py-6 border-2 border-dashed border-[#1e1e2e] rounded-lg text-gray-500 hover:border-[#8b5cf6]/50 hover:text-[#8b5cf6] transition-colors flex flex-col items-center gap-2">
+                <label className="text-[9px] text-slate-600 block mb-1">Imagem de Fundo</label>
+                <div className="w-full py-6 border-2 border-dashed border-[#1e293b] rounded-lg text-slate-500 hover:border-[#8b5cf6]/50 hover:text-[#8b5cf6] transition-colors flex flex-col items-center gap-2">
                   <Image size={20} />
                   <span className="text-[10px]">Clique para selecionar imagem</span>
                 </div>
@@ -128,30 +128,30 @@ export default function CanvasPanel() {
 
         {/* Dimensões */}
         <section>
-          <h4 className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Dimensões</h4>
+          <h4 className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Dimensões</h4>
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <div className="flex-1">
-                <label className="text-[9px] text-gray-600 block mb-1">Largura</label>
+                <label className="text-[9px] text-slate-600 block mb-1">Largura</label>
                 <input
                   type="number"
                   value={canvas.width}
                   onChange={(e) => setCanvas({ width: Number(e.target.value) })}
-                  className="w-full px-2 py-1.5 bg-[#13131f] border border-[#1e1e2e] rounded-md text-xs text-gray-300 focus:outline-none focus:border-[#8b5cf6]"
+                  className="w-full px-2 py-1.5 bg-[#13131f] border border-[#1e293b] rounded-md text-xs text-slate-300 focus:outline-none focus:border-[#8b5cf6]"
                 />
               </div>
-              <div className="text-gray-600 mt-4">×</div>
+              <div className="text-slate-600 mt-4">×</div>
               <div className="flex-1">
-                <label className="text-[9px] text-gray-600 block mb-1">Altura</label>
+                <label className="text-[9px] text-slate-600 block mb-1">Altura</label>
                 <input
                   type="number"
                   value={canvas.height}
                   onChange={(e) => setCanvas({ height: Number(e.target.value) })}
-                  className="w-full px-2 py-1.5 bg-[#13131f] border border-[#1e1e2e] rounded-md text-xs text-gray-300 focus:outline-none focus:border-[#8b5cf6]"
+                  className="w-full px-2 py-1.5 bg-[#13131f] border border-[#1e293b] rounded-md text-xs text-slate-300 focus:outline-none focus:border-[#8b5cf6]"
                 />
               </div>
             </div>
-            <div className="text-[9px] text-gray-600 text-center">
+            <div className="text-[9px] text-slate-600 text-center">
               {canvas.width} × {canvas.height}
             </div>
           </div>

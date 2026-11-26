@@ -34,11 +34,11 @@ export default function FiltersPanel() {
 
   if (!selectedItem) {
     return (
-      <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col">
-        <div className="px-4 py-3 border-b border-[#1e1e2e]">
-          <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Filtros</h3>
+      <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col">
+        <div className="px-4 py-3 border-b border-[#1e293b]">
+          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Filtros</h3>
         </div>
-        <div className="flex-1 flex items-center justify-center text-gray-600 text-xs">
+        <div className="flex-1 flex items-center justify-center text-slate-600 text-xs">
           Selecione um clipe para aplicar filtros
         </div>
       </div>
@@ -46,14 +46,14 @@ export default function FiltersPanel() {
   }
 
   return (
-    <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col">
-      <div className="px-4 py-3 border-b border-[#1e1e2e]">
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Filtros</h3>
+    <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col">
+      <div className="px-4 py-3 border-b border-[#1e293b]">
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Filtros</h3>
       </div>
 
       <div className="flex-1 overflow-y-auto p-3 space-y-3">
         <div>
-          <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Presets de Cor</div>
+          <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-2">Presets de Cor</div>
           <div className="grid grid-cols-3 gap-2">
             {FILTER_PRESETS_UI.map((f) => (
               <button
@@ -62,7 +62,7 @@ export default function FiltersPanel() {
                 className={`p-2 rounded border transition-all ${
                   selectedItem.filterPreset === f.id
                     ? "border-[#8b5cf6] bg-[#8b5cf6]/10 text-[#8b5cf6]"
-                    : "border-[#2a2a38] bg-[#1a1a28] text-gray-300 hover:border-[#8b5cf6]/50"
+                    : "border-[#2a2a38] bg-[#1a1a28] text-slate-300 hover:border-[#8b5cf6]/50"
                 }`}
               >
                 <div className="flex items-center justify-center mb-1">
@@ -77,7 +77,7 @@ export default function FiltersPanel() {
         <div>
           <button
             onClick={() => applyFilter(null)}
-            className="w-full p-2 text-[10px] text-gray-400 hover:text-white hover:bg-[#1e1e2e] rounded transition-colors"
+            className="w-full p-2 text-[10px] text-slate-400 hover:text-white hover:bg-[#1e293b] rounded transition-colors"
           >
             Remover Filtro
           </button>
@@ -85,7 +85,7 @@ export default function FiltersPanel() {
 
         {selectedItem.filterPreset !== "none" && (
           <div>
-            <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">
+            <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-1">
               Intensidade ({selectedItem.filters.brightness !== undefined ? Math.round((selectedItem.filters.brightness + 1) * 50) : 100}%)
             </div>
             <input
@@ -99,7 +99,7 @@ export default function FiltersPanel() {
                   filters: { ...selectedItem.filters, brightness: val, contrast: 1 + val * 0.5, saturation: 1 + val * 0.5 },
                 });
               }}
-              className="w-full h-1 bg-[#1e1e2e] rounded-full appearance-none"
+              className="w-full h-1 bg-[#1e293b] rounded-full appearance-none"
             />
           </div>
         )}

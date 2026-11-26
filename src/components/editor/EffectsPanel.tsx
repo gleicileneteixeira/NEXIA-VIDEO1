@@ -39,13 +39,13 @@ export default function EffectsPanel() {
 
   if (!selectedItem) {
     return (
-      <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col">
-        <div className="px-4 py-3 border-b border-[#1e1e2e]">
-          <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
+      <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col">
+        <div className="px-4 py-3 border-b border-[#1e293b]">
+          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
             <Sparkles size={12} /> Efeitos
           </h3>
         </div>
-        <div className="flex-1 flex items-center justify-center text-gray-600 text-xs px-4 text-center">
+        <div className="flex-1 flex items-center justify-center text-slate-600 text-xs px-4 text-center">
           Selecione um item na timeline
         </div>
       </div>
@@ -97,9 +97,9 @@ export default function EffectsPanel() {
   };
 
   return (
-    <div className="h-full bg-[#0d0d16] border-l border-[#1e1e2e] flex flex-col overflow-y-auto">
-      <div className="px-4 py-3 border-b border-[#1e1e2e]">
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
+    <div className="h-full bg-[#0d0d16] border-l border-[#1e293b] flex flex-col overflow-y-auto">
+      <div className="px-4 py-3 border-b border-[#1e293b]">
+        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
           <Sparkles size={12} /> Efeitos
         </h3>
       </div>
@@ -129,7 +129,7 @@ export default function EffectsPanel() {
               const adj = (selectedItem.hsl ?? {})[color] || { hue: 0, saturation: 0, luminance: 0 };
               return (
                 <div key={color}>
-                  <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1.5 capitalize">{color}</div>
+                  <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-1.5 capitalize">{color}</div>
                   <div className="space-y-1.5">
                     <Slider label="Hue" value={adj.hue} onChange={(v) => updateHSL(color, { hue: v })} min={-180} max={180} step={1} />
                     <Slider label="Sat" value={adj.saturation} onChange={(v) => updateHSL(color, { saturation: v })} min={-1} max={1} step={0.05} />
@@ -156,7 +156,7 @@ export default function EffectsPanel() {
                     className={`px-2 py-1.5 text-[10px] rounded border text-center ${
                       isActive
                         ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                        : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                        : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
                     }`}
                   >
                     {p === "none" ? "Nenhum" : p.charAt(0).toUpperCase() + p.slice(1)}
@@ -192,7 +192,7 @@ export default function EffectsPanel() {
                     className={`px-2 py-1.5 text-[10px] rounded border text-center ${
                       isActive
                         ? "bg-[#8b5cf6] border-[#8b5cf6] text-white"
-                        : "bg-[#13131f] border-[#1e1e2e] text-gray-400 hover:border-[#8b5cf6]"
+                        : "bg-[#13131f] border-[#1e293b] text-slate-400 hover:border-[#8b5cf6]"
                     }`}
                   >
                     {mode.label}
@@ -209,11 +209,11 @@ export default function EffectsPanel() {
           <div className="p-3 border-b border-[#1a1a28] space-y-2">
             <ToggleRow label="Ativar Máscara" value={(selectedItem.mask?.enabled ?? false)} onChange={(v) => setMask(selectedItem.id, { enabled: v })} />
             <div>
-              <label className="text-[10px] text-gray-500 block mb-1">Forma</label>
+              <label className="text-[10px] text-slate-500 block mb-1">Forma</label>
               <select
                 value={(selectedItem.mask?.shape ?? "circle")}
                 onChange={(e) => setMask(selectedItem.id, { shape: e.target.value as ClipMask["shape"] })}
-                className="w-full bg-[#13131f] border border-[#1e1e2e] rounded px-2 py-1 text-xs text-white focus:border-[#8b5cf6] focus:outline-none"
+                className="w-full bg-[#13131f] border border-[#1e293b] rounded px-2 py-1 text-xs text-white focus:border-[#8b5cf6] focus:outline-none"
               >
                 {MASK_SHAPES.map((s) => (
                   <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>
@@ -235,19 +235,19 @@ export default function EffectsPanel() {
         {!collapsed["bgRemove"] && (
           <div className="p-3 border-b border-[#1a1a28] space-y-2">
             {/* 1. Recorte Automático (IA) */}
-            <div className={`p-2.5 rounded-lg border transition-colors ${autoOn ? "border-[#8b5cf6]/40 bg-[#8b5cf6]/5" : "border-[#1e1e2e] bg-[#13131f]"}`}>
+            <div className={`p-2.5 rounded-lg border transition-colors ${autoOn ? "border-[#8b5cf6]/40 bg-[#8b5cf6]/5" : "border-[#1e293b] bg-[#13131f]"}`}>
               <div className="flex items-center justify-between gap-2">
                 <div className="min-w-0">
-                  <div className={`text-[11px] font-medium flex items-center gap-1.5 ${autoOn ? "text-purple-300" : "text-gray-200"}`}>
+                  <div className={`text-[11px] font-medium flex items-center gap-1.5 ${autoOn ? "text-purple-300" : "text-slate-200"}`}>
                     <Scissors size={11} /> Recorte Automático
                   </div>
-                  <div className="text-[10px] text-gray-500">Remove o fundo de pessoas via IA</div>
+                  <div className="text-[10px] text-slate-500">Remove o fundo de pessoas via IA</div>
                 </div>
                 <Switch checked={autoOn} onChange={(v) => (v ? activateCutoutMode("auto") : setAutoCutout(selectedItem.id, { enabled: false }))} />
               </div>
 
               {autoOn && (
-                <div className="mt-2.5 space-y-2 pt-2.5 border-t border-[#1e1e2e]">
+                <div className="mt-2.5 space-y-2 pt-2.5 border-t border-[#1e293b]">
                   <div className="flex items-center gap-2">
                     <div className="flex-1">
                       <Slider
@@ -261,7 +261,7 @@ export default function EffectsPanel() {
                     </div>
                     <button
                       onClick={() => setAutoCutout(selectedItem.id, { feather: (selectedItem.autoCutout?.feather ?? 0) === 0 ? 6 : 0 })}
-                      className="shrink-0 h-8 px-2.5 rounded border border-[#1e1e2e] bg-[#13131f] text-gray-400 hover:text-white text-[10px]"
+                      className="shrink-0 h-8 px-2.5 rounded border border-[#1e293b] bg-[#13131f] text-slate-400 hover:text-white text-[10px]"
                       title="Alternar pena padrão"
                     >
                       Auto
@@ -273,8 +273,8 @@ export default function EffectsPanel() {
                     onChange={(v) => setAutoCutout(selectedItem.id, { inverted: v })}
                   />
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-[10px] text-gray-400">Modelo</span>
-                    <div className="flex rounded-md overflow-hidden border border-[#1e1e2e]">
+                    <span className="text-[10px] text-slate-400">Modelo</span>
+                    <div className="flex rounded-md overflow-hidden border border-[#1e293b]">
                       {([0, 1] as const).map((m) => (
                         <button
                           key={m}
@@ -282,7 +282,7 @@ export default function EffectsPanel() {
                           className={`px-2.5 py-1 text-[10px] transition-colors ${
                             (selectedItem.autoCutout?.modelSelection ?? 0) === m
                               ? "bg-[#8b5cf6]/20 text-purple-300"
-                              : "bg-[#13131f] text-gray-400 hover:text-white"
+                              : "bg-[#13131f] text-slate-400 hover:text-white"
                           }`}
                         >
                           {m === 0 ? "Rápido" : "Detalhado"}
@@ -290,7 +290,7 @@ export default function EffectsPanel() {
                       ))}
                     </div>
                   </div>
-                  <p className="text-[10px] leading-relaxed text-gray-500">
+                  <p className="text-[10px] leading-relaxed text-slate-500">
                     Segmentação 100% local (MediaPipe, ~10 FPS no preview).{" "}
                     {selectedItem.autoCutout?.modelSelection === 1
                       ? "Modelo detalhado — melhor nas bordas, mais pesado."
@@ -301,20 +301,20 @@ export default function EffectsPanel() {
             </div>
 
             {/* 2. Recorte Personalizado (Pincel & Borracha) */}
-            <div className={`p-2.5 rounded-lg border transition-colors ${manualOn ? "border-[#22d3ee]/40 bg-[#22d3ee]/5" : "border-[#1e1e2e] bg-[#13131f]"}`}>
+            <div className={`p-2.5 rounded-lg border transition-colors ${manualOn ? "border-[#22d3ee]/40 bg-[#22d3ee]/5" : "border-[#1e293b] bg-[#13131f]"}`}>
               <div className="flex items-center justify-between gap-2">
                 <div className="min-w-0">
-                  <div className={`text-[11px] font-medium flex items-center gap-1.5 ${manualOn ? "text-cyan-300" : "text-gray-200"}`}>
+                  <div className={`text-[11px] font-medium flex items-center gap-1.5 ${manualOn ? "text-cyan-300" : "text-slate-200"}`}>
                     <Brush size={11} /> Recorte Personalizado
                   </div>
-                  <div className="text-[10px] text-gray-500">Pinte áreas manuais para manter ou apagar</div>
+                  <div className="text-[10px] text-slate-500">Pinte áreas manuais para manter ou apagar</div>
                 </div>
                 <button
                   onClick={() => (manualOn ? setManualMask(selectedItem.id, { enabled: false }) : activateCutoutMode("manual"))}
                   className={`shrink-0 px-2.5 py-1 rounded-md text-[10px] flex items-center gap-1 border transition-colors ${
                     manualOn
                       ? "bg-[#22d3ee]/20 border-[#22d3ee]/50 text-cyan-300"
-                      : "bg-[#1a1a28] border-[#1e1e2e] text-gray-300 hover:border-[#22d3ee]/50 hover:text-white"
+                      : "bg-[#1a1a28] border-[#1e293b] text-slate-300 hover:border-[#22d3ee]/50 hover:text-white"
                   }`}
                 >
                   <Brush size={11} /> {manualOn ? "Desativar" : "Pincel"}
@@ -322,7 +322,7 @@ export default function EffectsPanel() {
               </div>
 
               {manualOn && (
-                <div className="mt-2.5 space-y-2 pt-2.5 border-t border-[#1e1e2e]">
+                <div className="mt-2.5 space-y-2 pt-2.5 border-t border-[#1e293b]">
                   <Slider
                     label="Tamanho do pincel"
                     value={selectedItem.manualMask?.radius ?? 32}
@@ -332,32 +332,32 @@ export default function EffectsPanel() {
                     step={2}
                   />
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-[10px] text-gray-400">Ferramenta</span>
-                    <div className="flex rounded-md overflow-hidden border border-[#1e1e2e]">
+                    <span className="text-[10px] text-slate-400">Ferramenta</span>
+                    <div className="flex rounded-md overflow-hidden border border-[#1e293b]">
                       <button
                         onClick={() => setManualMask(selectedItem.id, { eraser: false })}
-                        className={`px-2.5 py-1 text-[10px] flex items-center gap-1 transition-colors ${eraserOn ? "bg-[#13131f] text-gray-400 hover:text-white" : "bg-[#22d3ee]/20 text-cyan-300"}`}
+                        className={`px-2.5 py-1 text-[10px] flex items-center gap-1 transition-colors ${eraserOn ? "bg-[#13131f] text-slate-400 hover:text-white" : "bg-[#22d3ee]/20 text-cyan-300"}`}
                       >
                         <Brush size={10} /> Pincel
                       </button>
                       <button
                         onClick={() => setManualMask(selectedItem.id, { eraser: true })}
-                        className={`px-2.5 py-1 text-[10px] flex items-center gap-1 transition-colors ${eraserOn ? "bg-rose-500/20 text-rose-300" : "bg-[#13131f] text-gray-400 hover:text-white"}`}
+                        className={`px-2.5 py-1 text-[10px] flex items-center gap-1 transition-colors ${eraserOn ? "bg-rose-500/20 text-rose-300" : "bg-[#13131f] text-slate-400 hover:text-white"}`}
                       >
                         <Eraser size={10} /> Borracha
                       </button>
                     </div>
                   </div>
-                  <p className="text-[10px] leading-relaxed text-gray-500">
+                  <p className="text-[10px] leading-relaxed text-slate-500">
                     Desenhe direto no clipe:
                     <span className="text-cyan-300"> pincel</span> mostra,{" "}
                     <span className="text-rose-300">borracha</span> esconde. O clipe começa inteiro visível.
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] text-gray-600">{hasManualMask ? "Máscara salva" : "Máscara em branco"}</span>
+                    <span className="text-[10px] text-slate-600">{hasManualMask ? "Máscara salva" : "Máscara em branco"}</span>
                     <button
                       onClick={() => setManualMask(selectedItem.id, { url: undefined })}
-                      className="px-2 py-1 rounded border border-[#1e1e2e] bg-[#13131f] text-gray-400 hover:text-white text-[10px]"
+                      className="px-2 py-1 rounded border border-[#1e293b] bg-[#13131f] text-slate-400 hover:text-white text-[10px]"
                     >
                       Limpar
                     </button>
@@ -367,29 +367,29 @@ export default function EffectsPanel() {
             </div>
 
             {/* 3. Chroma Key */}
-            <div className={`p-2.5 rounded-lg border transition-colors ${chromaOn ? "border-[#8b5cf6]/40 bg-[#8b5cf6]/5" : "border-[#1e1e2e] bg-[#13131f]"}`}>
+            <div className={`p-2.5 rounded-lg border transition-colors ${chromaOn ? "border-[#8b5cf6]/40 bg-[#8b5cf6]/5" : "border-[#1e293b] bg-[#13131f]"}`}>
               <div className="flex items-center justify-between gap-2">
                 <div className="min-w-0">
-                  <div className={`text-[11px] font-medium flex items-center gap-1.5 ${chromaOn ? "text-purple-300" : "text-gray-200"}`}>
+                  <div className={`text-[11px] font-medium flex items-center gap-1.5 ${chromaOn ? "text-purple-300" : "text-slate-200"}`}>
                     <Droplet size={11} /> Chroma Key
                   </div>
-                  <div className="text-[10px] text-gray-500">Remove fundo sólido por cor</div>
+                  <div className="text-[10px] text-slate-500">Remove fundo sólido por cor</div>
                 </div>
                 <Switch checked={chromaOn} onChange={(v) => (v ? activateCutoutMode("chroma") : setChromaKey(selectedItem.id, { enabled: false }))} />
               </div>
 
               {chromaOn && (
-                <div className="mt-2.5 space-y-2 pt-2.5 border-t border-[#1e1e2e]">
+                <div className="mt-2.5 space-y-2 pt-2.5 border-t border-[#1e293b]">
                   <div className="flex items-center gap-2">
                     <input
                       type="color"
                       value={selectedItem.chromaKey?.targetColor ?? "#00ff00"}
                       onChange={(e) => setChromaKey(selectedItem.id, { targetColor: e.target.value })}
-                      className="w-full h-8 bg-[#13131f] border border-[#1e1e2e] rounded cursor-pointer"
+                      className="w-full h-8 bg-[#13131f] border border-[#1e293b] rounded cursor-pointer"
                     />
                     <button
                       onClick={() => window.dispatchEvent(new CustomEvent("chroma-pick-begin", { detail: { id: selectedItem.id } }))}
-                      className="shrink-0 h-8 px-2.5 rounded border border-[#1e1e2e] bg-[#13131f] text-gray-400 hover:text-white hover:border-[#8b5cf6] text-[10px] flex items-center gap-1"
+                      className="shrink-0 h-8 px-2.5 rounded border border-[#1e293b] bg-[#13131f] text-slate-400 hover:text-white hover:border-[#8b5cf6] text-[10px] flex items-center gap-1"
                       title="Clique no vídeo para escolher a cor"
                     >
                       <Droplet size={12} /> Conta-gotas
@@ -413,7 +413,7 @@ export default function EffectsPanel() {
                 <button
                   key={effect.id}
                   onClick={() => handleAddEffect(effect.id)}
-                  className="bg-[#13131f] border border-[#1e1e2e] rounded px-2 py-1.5 text-[10px] text-gray-400 hover:border-[#8b5cf6] flex flex-col items-center gap-0.5"
+                  className="bg-[#13131f] border border-[#1e293b] rounded px-2 py-1.5 text-[10px] text-slate-400 hover:border-[#8b5cf6] flex flex-col items-center gap-0.5"
                 >
                   <span className="text-sm">{effect.icon}</span>
                   <span>{effect.label}</span>
@@ -423,15 +423,15 @@ export default function EffectsPanel() {
 
             {(selectedItem.effects?.length ?? 0) > 0 && (
               <div className="space-y-1.5">
-                <div className="text-[10px] text-gray-500 uppercase tracking-wider">Ativos</div>
+                <div className="text-[10px] text-slate-500 uppercase tracking-wider">Ativos</div>
                 {(selectedItem.effects ?? []).map((effect) => (
-                  <div key={effect.id} className="bg-[#13131f] border border-[#1e1e2e] rounded px-2 py-1.5 flex items-center justify-between">
-                    <span className="text-[10px] text-gray-300">{VIDEO_EFFECTS.find((e) => e.id === effect.type)?.label}</span>
+                  <div key={effect.id} className="bg-[#13131f] border border-[#1e293b] rounded px-2 py-1.5 flex items-center justify-between">
+                    <span className="text-[10px] text-slate-300">{VIDEO_EFFECTS.find((e) => e.id === effect.type)?.label}</span>
                     <div className="flex items-center gap-1">
-                      <button onClick={() => toggleEffect(selectedItem.id, effect.id)} className="p-0.5 text-gray-500 hover:text-white">
+                      <button onClick={() => toggleEffect(selectedItem.id, effect.id)} className="p-0.5 text-slate-500 hover:text-white">
                         {effect.enabled ? <Eye size={10} /> : <EyeOff size={10} />}
                       </button>
-                      <button onClick={() => removeEffect(selectedItem.id, effect.id)} className="p-0.5 text-gray-500 hover:text-red-400">
+                      <button onClick={() => removeEffect(selectedItem.id, effect.id)} className="p-0.5 text-slate-500 hover:text-red-400">
                         <Trash2 size={10} />
                       </button>
                     </div>
@@ -452,11 +452,11 @@ function SectionHeader({ icon, title, collapsed, onToggle }: { icon?: ReactNode;
       onClick={onToggle}
       className="w-full flex items-center justify-between px-1 py-2 hover:bg-[#13131f] rounded"
     >
-      <span className="text-[10px] text-gray-500 uppercase tracking-wider flex items-center gap-1.5">
-        {icon && <span className="text-gray-400">{icon}</span>}
+      <span className="text-[10px] text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+        {icon && <span className="text-slate-400">{icon}</span>}
         {title}
       </span>
-      <span className="text-[10px] text-gray-600">{collapsed ? "+" : "−"}</span>
+      <span className="text-[10px] text-slate-600">{collapsed ? "+" : "−"}</span>
     </button>
   );
 }
@@ -465,7 +465,7 @@ function Switch({ checked, onChange }: { checked: boolean; onChange: (v: boolean
   return (
     <button
       onClick={() => onChange(!checked)}
-      className={`w-8 h-4 rounded-full transition-colors shrink-0 ${checked ? "bg-[#8b5cf6]" : "bg-[#1e1e2e]"}`}
+      className={`w-8 h-4 rounded-full transition-colors shrink-0 ${checked ? "bg-[#8b5cf6]" : "bg-[#1e293b]"}`}
     >
       <div className={`w-3 h-3 rounded-full bg-white transition-transform ${checked ? "translate-x-4" : "translate-x-0.5"}`} />
     </button>
@@ -490,8 +490,8 @@ function Slider({
   return (
     <div>
       <div className="flex items-center justify-between mb-0.5">
-        <label className="text-[10px] text-gray-500">{label}</label>
-        <span className="text-[10px] text-gray-600 font-mono">{Math.round(value * 100) / 100}</span>
+        <label className="text-[10px] text-slate-500">{label}</label>
+        <span className="text-[10px] text-slate-600 font-mono">{Math.round(value * 100) / 100}</span>
       </div>
       <input
         type="range"
@@ -500,7 +500,7 @@ function Slider({
         min={min}
         max={max}
         step={step}
-        className="w-full h-1 bg-[#1e1e2e] rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
+        className="w-full h-1 bg-[#1e293b] rounded-lg appearance-none cursor-pointer accent-[#8b5cf6]"
       />
     </div>
   );
@@ -509,7 +509,7 @@ function Slider({
 function ToggleRow({ label, value, onChange }: { label: string; value: boolean; onChange: (v: boolean) => void }) {
   return (
     <div className="flex items-center justify-between">
-      <label className="text-[10px] text-gray-500">{label}</label>
+      <label className="text-[10px] text-slate-500">{label}</label>
       <Switch checked={value} onChange={onChange} />
     </div>
   );

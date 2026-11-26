@@ -117,15 +117,15 @@ export default function CalendarPage() {
             Calendário <span className="gradient-text">Editorial</span>
           </h1>
         </div>
-        <p className="text-gray-400">
-          30 posts prontos em 5 pilares — gerado <strong className="text-gray-200">100% offline</strong>,
+        <p className="text-slate-400">
+          30 posts prontos em 5 pilares — gerado <strong className="text-slate-200">100% offline</strong>,
           sem depender de APIs de IA.
         </p>
       </div>
 
       {/* Form (esquerda) + Resumo (direita) */}
       <div className="grid lg:grid-cols-3 gap-6 mb-8">
-        <div className="lg:col-span-2 bg-[#1c1c28] border border-gray-800 rounded-2xl p-6 space-y-4">
+        <div className="lg:col-span-2 bg-[#0f172a] border border-slate-800 rounded-2xl p-6 space-y-4">
           <div className="flex items-center gap-2">
             <Layers className="w-5 h-5 text-[var(--primary)]" />
             <h2 className="text-lg font-bold text-white">Dados do seu Conteúdo</h2>
@@ -133,56 +133,56 @@ export default function CalendarPage() {
 
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Nicho</label>
+              <label className="block text-sm text-slate-400 mb-1">Nicho</label>
               <input
                 type="text"
                 value={nicho}
                 onChange={(e) => setNicho(e.target.value)}
                 placeholder="Ex: Ginástica, Finanças, Culinária..."
-                className="w-full px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] outline-none transition-all"
               />
             </div>
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Serviço / Produto</label>
+              <label className="block text-sm text-slate-400 mb-1">Serviço / Produto</label>
               <input
                 type="text"
                 value={servico}
                 onChange={(e) => setServico(e.target.value)}
                 placeholder="Ex: Curso online, E-book, Consultoria..."
-                className="w-full px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] outline-none transition-all"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm text-gray-400 mb-1">Benefício</label>
+            <label className="block text-sm text-slate-400 mb-1">Benefício</label>
             <input
               type="text"
               value={beneficio}
               onChange={(e) => setBeneficio(e.target.value)}
               placeholder="Ex: Economizar 10h por semana, escalar vendas..."
-              className="w-full px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] outline-none transition-all"
+              className="w-full px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] outline-none transition-all"
             />
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Dor (opcional)</label>
+              <label className="block text-sm text-slate-400 mb-1">Dor (opcional)</label>
               <input
                 type="text"
                 value={dor}
                 onChange={(e) => setDor(e.target.value)}
                 placeholder="Ex: perder tempo, estagnar..."
-                className="w-full px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] outline-none transition-all"
               />
             </div>
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Data de início (vazio = hoje)</label>
+              <label className="block text-sm text-slate-400 mb-1">Data de início (vazio = hoje)</label>
               <input
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white focus:border-[var(--primary)] outline-none transition-all [color-scheme:dark]"
+                className="w-full px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white focus:border-[var(--primary)] outline-none transition-all [color-scheme:dark]"
               />
             </div>
           </div>
@@ -205,7 +205,7 @@ export default function CalendarPage() {
             )}
           </button>
           {generating && (
-            <div className="h-1.5 rounded-full bg-[#252535] overflow-hidden">
+            <div className="h-1.5 rounded-full bg-[#1e293b] overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-[var(--primary)] to-[var(--accent-pink)] transition-all"
                 style={{ width: `${progress}%` }}
@@ -215,7 +215,7 @@ export default function CalendarPage() {
         </div>
 
         {/* Resumo dos pilares */}
-        <div className="bg-[#1c1c28] border border-gray-800 rounded-2xl p-6 flex flex-col gap-3">
+        <div className="bg-[#0f172a] border border-slate-800 rounded-2xl p-6 flex flex-col gap-3">
           <div className="flex items-center gap-2">
             <Layers className="w-5 h-5 text-[var(--accent-pink)]" />
             <h2 className="text-lg font-bold text-white">Pilares</h2>
@@ -224,7 +224,7 @@ export default function CalendarPage() {
             CONTENT_PILLARS_ORDER.map((pillar) => (
               <div
                 key={pillar}
-                className="flex items-center gap-3 p-3 rounded-xl border border-gray-800 bg-[#252535]"
+                className="flex items-center gap-3 p-3 rounded-xl border border-slate-800 bg-[#1e293b]"
               >
                 <span
                   className="w-3 h-3 rounded-full flex-shrink-0"
@@ -232,7 +232,7 @@ export default function CalendarPage() {
                 />
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-white">{EDITORIAL_PILLARS[pillar].label}</p>
-                  <p className="text-[11px] text-gray-500 truncate">
+                  <p className="text-[11px] text-slate-500 truncate">
                     {EDITORIAL_PILLARS[pillar].description}
                   </p>
                 </div>
@@ -242,14 +242,14 @@ export default function CalendarPage() {
               </div>
             ))
           ) : (
-            <div className="text-center py-10 text-gray-500 text-sm">
+            <div className="text-center py-10 text-slate-500 text-sm">
               Preencha os dados e gere o calendário
             </div>
           )}
           {posts && (
             <button
               onClick={handleCopyAll}
-              className="mt-auto flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-gray-700 text-sm text-gray-300 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
+              className="mt-auto flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-slate-700 text-sm text-slate-300 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors"
             >
               Copiar todos os posts
             </button>
@@ -267,7 +267,7 @@ export default function CalendarPage() {
               className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
                 filter === "all"
                   ? "border-[var(--primary)] bg-[var(--primary)]/15 text-white"
-                  : "border-gray-700 text-gray-400 hover:border-gray-500"
+                  : "border-slate-700 text-slate-400 hover:border-slate-500"
               }`}
             >
               Todos ({posts.length})
@@ -279,7 +279,7 @@ export default function CalendarPage() {
                 className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
                   filter === pillar
                     ? "border-[var(--primary)] bg-[var(--primary)]/15 text-white"
-                    : "border-gray-700 text-gray-400 hover:border-gray-500"
+                    : "border-slate-700 text-slate-400 hover:border-slate-500"
                 }`}
               >
                 <span className="inline-block w-2 h-2 rounded-full mr-1.5 align-middle" style={{ backgroundColor: EDITORIAL_PILLARS[pillar].color }} />
@@ -295,14 +295,14 @@ export default function CalendarPage() {
           </div>
 
           {filteredPosts.length === 0 && (
-            <div className="text-center py-12 text-gray-500 text-sm">
+            <div className="text-center py-12 text-slate-500 text-sm">
               Nenhum post neste pilar.
             </div>
           )}
 
           <button
             onClick={() => setPosts(null)}
-            className="mt-6 flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+            className="mt-6 flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
           >
             <RefreshCw className="w-4 h-4" />
             Gerar novo calendário

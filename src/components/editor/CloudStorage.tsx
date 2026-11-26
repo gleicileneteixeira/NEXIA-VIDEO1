@@ -88,7 +88,7 @@ export default function CloudStorage() {
 
   return (
     <div className="h-full flex flex-col bg-[#0d0d16]">
-      <div className="p-4 border-b border-[#1e1e2e]">
+      <div className="p-4 border-b border-[#1e293b]">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Cloud className="w-5 h-5 text-[#8b5cf6]" />
@@ -127,32 +127,32 @@ export default function CloudStorage() {
           <button
             onClick={handleRefresh}
             disabled={isSavingList}
-            className="px-3 py-2.5 bg-[#1e1e2e] hover:bg-[#2a2a3e] disabled:opacity-50 text-gray-300 rounded-lg transition-colors"
+            className="px-3 py-2.5 bg-[#1e293b] hover:bg-[#1e293b] disabled:opacity-50 text-slate-300 rounded-lg transition-colors"
           >
             <RefreshCw className={`w-4 h-4 ${isSavingList ? "animate-spin" : ""}`} />
           </button>
         </div>
       </div>
 
-      <div className="p-4 border-b border-[#1e1e2e]">
+      <div className="p-4 border-b border-[#1e293b]">
         <div className="flex items-center justify-between mb-3">
-          <span className="text-[10px] text-gray-500 uppercase tracking-wider">Status de Sincronização</span>
-          <span className="text-xs text-gray-400">{lastSyncTime}</span>
+          <span className="text-[10px] text-slate-500 uppercase tracking-wider">Status de Sincronização</span>
+          <span className="text-xs text-slate-400">{lastSyncTime}</span>
         </div>
         <div className="flex items-center justify-between">
-          <span className="text-xs text-gray-400">Alterações pendentes</span>
+          <span className="text-xs text-slate-400">Alterações pendentes</span>
           <span className={`text-xs ${pendingChanges > 0 ? "text-yellow-400" : "text-green-400"}`}>
             {pendingChanges > 0 ? `${pendingChanges} pendente(s)` : "Sincronizado"}
           </span>
         </div>
       </div>
 
-      <div className="p-4 border-b border-[#1e1e2e]">
+      <div className="p-4 border-b border-[#1e293b]">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-[10px] text-gray-500 uppercase tracking-wider">Armazenamento</span>
-          <span className="text-xs text-gray-400">{storageUsed} / {storageTotal}</span>
+          <span className="text-[10px] text-slate-500 uppercase tracking-wider">Armazenamento</span>
+          <span className="text-xs text-slate-400">{storageUsed} / {storageTotal}</span>
         </div>
-        <div className="w-full h-1.5 bg-[#1e1e2e] rounded-full overflow-hidden">
+        <div className="w-full h-1.5 bg-[#1e293b] rounded-full overflow-hidden">
           <div 
             className="h-full bg-gradient-to-r from-[#8b5cf6] to-[#a78bfa] rounded-full transition-all duration-500"
             style={{ width: `${(parseFloat(storageUsed) / parseFloat(storageTotal)) * 100}%` }}
@@ -160,12 +160,12 @@ export default function CloudStorage() {
         </div>
       </div>
 
-      <div className="p-4 border-b border-[#1e1e2e]">
+      <div className="p-4 border-b border-[#1e293b]">
         <div className="flex items-center justify-between">
-          <span className="text-[10px] text-gray-500 uppercase tracking-wider">Auto-save (5 min)</span>
+          <span className="text-[10px] text-slate-500 uppercase tracking-wider">Auto-save (5 min)</span>
           <button
             onClick={() => setAutoSave(!autoSave)}
-            className={`relative w-10 h-5 rounded-full transition-colors ${autoSave ? "bg-[#8b5cf6]" : "bg-[#1e1e2e]"}`}
+            className={`relative w-10 h-5 rounded-full transition-colors ${autoSave ? "bg-[#8b5cf6]" : "bg-[#1e293b]"}`}
           >
             <div
               className={`absolute top-0.5 w-4 h-4 bg-white rounded-full transition-transform ${autoSave ? "translate-x-5" : "translate-x-0.5"}`}
@@ -176,15 +176,15 @@ export default function CloudStorage() {
 
       <div className="flex-1 overflow-y-auto p-4">
         <div className="flex items-center justify-between mb-3">
-          <span className="text-[10px] text-gray-500 uppercase tracking-wider">Projetos Recentes</span>
-          <span className="text-xs text-gray-500">{loadedList.length} projeto(s)</span>
+          <span className="text-[10px] text-slate-500 uppercase tracking-wider">Projetos Recentes</span>
+          <span className="text-xs text-slate-500">{loadedList.length} projeto(s)</span>
         </div>
 
         <div className="space-y-2">
           {loadedList.map((cloudProject) => (
             <div
               key={cloudProject.id}
-              className="bg-[#13131f] border border-[#1e1e2e] rounded-lg p-3 hover:border-[#8b5cf6]/30 transition-colors"
+              className="bg-[#13131f] border border-[#1e293b] rounded-lg p-3 hover:border-[#8b5cf6]/30 transition-colors"
             >
               <div className="flex items-start gap-3">
                 <div
@@ -194,15 +194,15 @@ export default function CloudStorage() {
                 <div className="flex-1 min-w-0">
                   <h3 className="text-sm font-medium text-white truncate">{cloudProject.name}</h3>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="text-xs text-gray-500">{cloudProject.updatedAt}</span>
-                    <span className="text-xs text-gray-600">•</span>
-                    <span className="text-xs text-gray-500">{cloudProject.size}</span>
+                    <span className="text-xs text-slate-500">{cloudProject.updatedAt}</span>
+                    <span className="text-xs text-slate-600">•</span>
+                    <span className="text-xs text-slate-500">{cloudProject.size}</span>
                   </div>
                   <div className="flex items-center gap-1 mt-2">
                     {cloudProject.devices.map((device) => (
                       <span
                         key={device}
-                        className="p-1 bg-[#1e1e2e] rounded text-gray-400"
+                        className="p-1 bg-[#1e293b] rounded text-slate-400"
                       >
                         {getDeviceIcon(device)}
                       </span>
@@ -213,7 +213,7 @@ export default function CloudStorage() {
                   <button
                     onClick={() => handleLoadProject(cloudProject)}
                     disabled={loadLoading === cloudProject.id}
-                    className="p-1.5 text-gray-400 hover:text-[#8b5cf6] hover:bg-[#1e1e2e] rounded transition-colors"
+                    className="p-1.5 text-slate-400 hover:text-[#8b5cf6] hover:bg-[#1e293b] rounded transition-colors"
                   >
                     {loadLoading === cloudProject.id ? (
                       <Loader2 className="w-4 h-4 animate-spin" />
@@ -224,7 +224,7 @@ export default function CloudStorage() {
                   <button
                     onClick={() => handleDeleteProject(cloudProject)}
                     disabled={deleteLoading === cloudProject.id}
-                    className="p-1.5 text-gray-400 hover:text-red-400 hover:bg-[#1e1e2e] rounded transition-colors"
+                    className="p-1.5 text-slate-400 hover:text-red-400 hover:bg-[#1e293b] rounded transition-colors"
                   >
                     {deleteLoading === cloudProject.id ? (
                       <Loader2 className="w-4 h-4 animate-spin" />
@@ -240,9 +240,9 @@ export default function CloudStorage() {
 
         {loadedList.length === 0 && (
           <div className="flex flex-col items-center justify-center py-12 text-center">
-            <CloudOff className="w-12 h-12 text-gray-600 mb-3" />
-            <p className="text-sm text-gray-500">Nenhum projeto salvo na nuvem</p>
-            <p className="text-xs text-gray-600 mt-1">Salve seu primeiro projeto acima</p>
+            <CloudOff className="w-12 h-12 text-slate-600 mb-3" />
+            <p className="text-sm text-slate-500">Nenhum projeto salvo na nuvem</p>
+            <p className="text-xs text-slate-600 mt-1">Salve seu primeiro projeto acima</p>
           </div>
         )}
       </div>

@@ -170,6 +170,10 @@ interface RenderedVideo {
   transcription?: string;
   /** Headline extraida da transcricao */
   headline?: string;
+  /** Descricao completa do roteiro (seoCaption) extraida da transcricao */
+  scriptDescription?: string;
+  /** CTA (chamada para acao) extraido da transcricao */
+  ctaText?: string;
   /** Redtags/hashtags extraidas da transcricao */
   redTags?: string[];
 }
@@ -224,7 +228,7 @@ function GalleryVideoPlayer({ video, aspectClass }: { video: RenderedVideo; aspe
   if (!url) {
     return (
       <div className={`w-full ${aspectClass} rounded-lg bg-black flex items-center justify-center`}>
-        <span className="text-xs text-gray-500">Midia indisponivel</span>
+        <span className="text-xs text-slate-500">Midia indisponivel</span>
       </div>
     );
   }
@@ -308,39 +312,39 @@ function UploadBox({
       onClick={() => !isAtLimit && fileInputRef.current?.click()}
       className={`rounded-2xl border-2 border-dashed transition-all ${
         isDragOver ? `${borderColor} ${bgColor} scale-[1.02]`
-          : isAtLimit ? "border-gray-600 bg-[#1c1c28] opacity-75 cursor-not-allowed"
-          : "border-gray-700 bg-[#1c1c28] hover:border-gray-600 cursor-pointer"
+          : isAtLimit ? "border-slate-600 bg-[#0f172a] opacity-75 cursor-not-allowed"
+          : "border-slate-700 bg-[#0f172a] hover:border-slate-600 cursor-pointer"
       }`}
     >
-      <div className={`p-4 border-b border-gray-800 ${isAtLimit ? "bg-gray-800/30" : bgColor}`}>
+      <div className={`p-4 border-b border-slate-800 ${isAtLimit ? "bg-slate-800/30" : bgColor}`}>
         <div className="flex items-center justify-between">
-          <h3 className={`font-bold ${isAtLimit ? "text-gray-400" : textColor}`}>{title}</h3>
+          <h3 className={`font-bold ${isAtLimit ? "text-slate-400" : textColor}`}>{title}</h3>
           <div className="flex items-center gap-2">
             {optional && videos.length === 0 && (
-              <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-gray-700 text-gray-400">Opcional</span>
+              <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-slate-700 text-slate-400">Opcional</span>
             )}
             <span className={`text-sm font-medium px-2 py-0.5 rounded-full ${isAtLimit ? "bg-amber-500/20 text-amber-400" : `${bgColor} ${textColor}`}`}>
               {videos.length} / {limit}
             </span>
           </div>
         </div>
-        <p className="text-xs text-gray-500 mt-1">{description}</p>
+        <p className="text-xs text-slate-500 mt-1">{description}</p>
       </div>
 
       <div className="p-4 min-h-[200px] max-h-[300px] overflow-y-auto">
         {videos.length > 0 ? (
           <div className="space-y-2">
             {videos.map((video) => (
-              <div key={video.id} onClick={(e) => e.stopPropagation()} className="flex items-center gap-3 p-2 rounded-xl bg-[#252535] hover:bg-[#2a2a3a] transition-colors group">
+              <div key={video.id} onClick={(e) => e.stopPropagation()} className="flex items-center gap-3 p-2 rounded-xl bg-[#1e293b] hover:bg-[#2a2a3a] transition-colors group">
                 <button onClick={() => onPlay(video.file)} className="w-12 h-8 rounded-lg bg-gradient-to-br from-[var(--primary)]/30 to-[var(--accent-pink)]/30 flex items-center justify-center shrink-0 hover:from-[var(--primary)]/50 hover:to-[var(--accent-pink)]/50 transition-all">
                   <Play className="w-4 h-4 text-white" />
                 </button>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium truncate">{video.name}</p>
-                  <p className="text-xs text-gray-500">{video.durationFormatted}</p>
+                  <p className="text-xs text-slate-500">{video.durationFormatted}</p>
                 </div>
                 <button onClick={() => onRemove(video.id)} className="p-1.5 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-red-500/20 transition-all">
-                  <X className="w-4 h-4 text-gray-400 hover:text-red-400" />
+                  <X className="w-4 h-4 text-slate-400 hover:text-red-400" />
                 </button>
               </div>
             ))}
@@ -350,8 +354,8 @@ function UploadBox({
             <div className={`w-12 h-12 rounded-xl ${bgColor} flex items-center justify-center mb-3`}>
               <Upload className={`w-6 h-6 ${textColor}`} />
             </div>
-            <p className="text-sm text-gray-400 mb-2">Arraste videos aqui</p>
-            <p className={`text-xs ${isAtLimit ? "text-gray-500" : `${textColor} hover:underline`}`}>
+            <p className="text-sm text-slate-400 mb-2">Arraste videos aqui</p>
+            <p className={`text-xs ${isAtLimit ? "text-slate-500" : `${textColor} hover:underline`}`}>
               {isAtLimit ? "Limite atingido" : "ou clique para selecionar"}
             </p>
           </div>
@@ -366,7 +370,7 @@ function UploadBox({
           </div>
         ) : (
           <button onClick={(e) => { e.stopPropagation(); if (!isAtLimit) fileInputRef.current?.click(); }} disabled={isAtLimit}
-            className={`w-full py-2 rounded-xl border-2 border-dashed ${isAtLimit ? "border-gray-600 bg-gray-800/30 text-gray-500 cursor-not-allowed" : `${borderColor} ${bgColor} ${textColor} hover:opacity-80`} text-sm font-medium flex items-center justify-center gap-2 transition-all`}>
+            className={`w-full py-2 rounded-xl border-2 border-dashed ${isAtLimit ? "border-slate-600 bg-slate-800/30 text-slate-500 cursor-not-allowed" : `${borderColor} ${bgColor} ${textColor} hover:opacity-80`} text-sm font-medium flex items-center justify-center gap-2 transition-all`}>
             <Plus className="w-4 h-4" />
             {isAtLimit ? "Limite Atingido" : "Adicionar Video"}
           </button>
@@ -399,6 +403,8 @@ export default function MassProductionPage() {
   const [transitionDuration, setTransitionDuration] = useState(0.5);
   const [cloudSaveEnabled, setCloudSaveEnabled] = useState(false);
   const [autoDownloadEnabled, setAutoDownloadEnabled] = useState(false);
+  const [narrationEnabled, setNarrationEnabled] = useState(false);
+  const [aiEnabled, setAiEnabled] = useState(false);
   const [lotTitle, setLotTitle] = useState("");
   const [desiredVariations, setDesiredVariations] = useState(0);
 
@@ -787,8 +793,8 @@ export default function MassProductionPage() {
             supabaseId: supabaseId || undefined, videoUrl: cloudUrl ?? undefined, isCloud: !!cloudUrl } : v
         ));
 
-        // Transcricao em background: extrai audio, transcreve, gera headline e redtags
-        if (!signal.aborted) {
+        // Transcricao em background (conforme opcoes selecionadas)
+        if (!signal.aborted && (narrationEnabled || aiEnabled)) {
           void (async () => {
             try {
               const audioFile = new File([result.blob], "audio.wav", { type: "audio/wav" });
@@ -799,11 +805,17 @@ export default function MassProductionPage() {
                 signal
               );
               if (transcription && !signal.aborted) {
-                const headline = extractHeadline(transcription);
-                const redTags = extractRedTags(transcription);
-                setRenderedVideos((prev) => prev.map((v) =>
-                  v.id === videoId ? { ...v, transcription, headline, redTags } : v
-                ));
+                if (aiEnabled) {
+                  const headline = extractHeadline(transcription);
+                  const redTags = extractRedTags(transcription);
+                  setRenderedVideos((prev) => prev.map((v) =>
+                    v.id === videoId ? { ...v, transcription, headline, redTags } : v
+                  ));
+                } else {
+                  setRenderedVideos((prev) => prev.map((v) =>
+                    v.id === videoId ? { ...v, transcription } : v
+                  ));
+                }
               }
             } catch (err) {
               console.warn(`[MassProduction] Transcricao falhou para video ${videoId}:`, err);
@@ -1101,15 +1113,15 @@ export default function MassProductionPage() {
           </span>
           <div>
             <h1 className="text-2xl font-bold text-white tracking-tight">Criacao em <span className="gradient-text">Massa</span></h1>
-            <p className="text-sm text-zinc-400 mt-0.5">Envie clips, classifique e gere variacoes automaticamente</p>
+            <p className="text-sm text-slate-400 mt-0.5">Envie clips, classifique e gere variacoes automaticamente</p>
           </div>
         </div>
-        <div className="flex items-center gap-1 p-1 bg-[#111118] rounded-xl border border-zinc-800/80">
-          <button onClick={() => setActiveView("upload")} className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${activeView === "upload" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-zinc-400 hover:text-white"}`}>
+        <div className="flex items-center gap-1 p-1 bg-[bg-slate-900/90] rounded-xl border border-slate-800/80">
+          <button onClick={() => setActiveView("upload")} className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${activeView === "upload" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-slate-400 hover:text-white"}`}>
             Upload
           </button>
           <button onClick={() => setActiveView("results")} disabled={renderedVideos.length === 0}
-            className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all disabled:opacity-50 ${activeView === "results" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-zinc-400 hover:text-white"}`}>
+            className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all disabled:opacity-50 ${activeView === "results" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-slate-400 hover:text-white"}`}>
             Resultados ({renderedVideos.length})
           </button>
         </div>
@@ -1119,10 +1131,10 @@ export default function MassProductionPage() {
       {activeView === "upload" && (
         <>
           {/* ========== CARD: Estrutura + Uploads ========== */}
-          <div className="bg-[#111118] border border-zinc-800/80 rounded-2xl p-6 md:p-8 space-y-6">
+          <div className="bg-[bg-slate-900/90] border border-slate-800/80 rounded-2xl p-6 md:p-8 space-y-6">
             {/* Estrutura do Video */}
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider shrink-0">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider shrink-0">
                 Estrutura do Video:
               </span>
               <div className="flex flex-wrap items-center gap-2">
@@ -1134,7 +1146,7 @@ export default function MassProductionPage() {
                     className={`px-4 py-2.5 text-xs font-semibold rounded-xl transition-all ${
                       structureMode === mode
                         ? "bg-pink-950/40 text-pink-300 border-2 border-pink-500 shadow-md shadow-pink-500/20"
-                        : "bg-zinc-900/80 text-zinc-400 border border-zinc-800 hover:bg-zinc-800 hover:text-white"
+                        : "bg-slate-900/80 text-slate-400 border border-slate-800 hover:bg-slate-800 hover:text-white"
                     }`}
                   >
                     {mode === "2-slots"
@@ -1166,15 +1178,15 @@ export default function MassProductionPage() {
             </div>
 
             {/* Limite info */}
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-[#161622] border border-zinc-800/60">
-              <HardDrive className="w-5 h-5 text-zinc-400 shrink-0" />
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-[#161622] border border-slate-800/60">
+              <HardDrive className="w-5 h-5 text-slate-400 shrink-0" />
               <div className="flex-1">
-                <p className="text-sm text-zinc-300"><span className="font-semibold text-white">Limite por categoria:</span> {MAX_VIDEOS_PER_CATEGORY} videos</p>
-                <p className="text-xs text-zinc-500">Cada variacao combina 1 trecho de cada slot ativo ({activeSlotIds.length} slots)</p>
+                <p className="text-sm text-slate-300"><span className="font-semibold text-white">Limite por categoria:</span> {MAX_VIDEOS_PER_CATEGORY} videos</p>
+                <p className="text-xs text-slate-500">Cada variacao combina 1 trecho de cada slot ativo ({activeSlotIds.length} slots)</p>
               </div>
               <div className="text-right shrink-0">
                 <p className="text-sm font-semibold text-white">{totalLoaded} / {MAX_VIDEOS_PER_CATEGORY * activeSlotIds.length}</p>
-                <p className="text-xs text-zinc-500">arquivos carregados</p>
+                <p className="text-xs text-slate-500">arquivos carregados</p>
               </div>
             </div>
           </div>
@@ -1182,7 +1194,7 @@ export default function MassProductionPage() {
           {/* ========== GRID 2 COLUNAS: Configuracoes ========== */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Card Esquerda: Renderizacao & Formato */}
-            <div className="bg-[#111118] border border-zinc-800/80 rounded-2xl p-6 space-y-5">
+            <div className="bg-[bg-slate-900/90] border border-slate-800/80 rounded-2xl p-6 space-y-5">
               <h3 className="text-base font-bold text-white flex items-center gap-2">
                 <span className="p-2 rounded-xl bg-pink-500/10 border border-pink-500/20">⚙️</span>
                 Renderizacao & Formato
@@ -1190,10 +1202,10 @@ export default function MassProductionPage() {
 
               {/* Modo de Renderizacao */}
               <div className="space-y-2">
-                <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider block">Modo</label>
-                <div className="inline-flex rounded-xl bg-[#161622] p-1 border border-zinc-800 w-full">
-                  <button onClick={() => setRenderMode("fast")} className={`flex-1 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${renderMode === "fast" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-zinc-400 hover:text-white"}`}>⚡ Rapido</button>
-                  <button onClick={() => setRenderMode("compatibility")} className={`flex-1 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${renderMode === "compatibility" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-zinc-400 hover:text-white"}`}>🛠️ Compativel</button>
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Modo</label>
+                <div className="inline-flex rounded-xl bg-[#161622] p-1 border border-slate-800 w-full">
+                  <button onClick={() => setRenderMode("fast")} className={`flex-1 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${renderMode === "fast" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-slate-400 hover:text-white"}`}>⚡ Rapido</button>
+                  <button onClick={() => setRenderMode("compatibility")} className={`flex-1 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${renderMode === "compatibility" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-slate-400 hover:text-white"}`}>🛠️ Compativel</button>
                 </div>
               </div>
 
@@ -1205,10 +1217,10 @@ export default function MassProductionPage() {
 
               {/* Formato do Video */}
               <div className="space-y-2">
-                <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider block">Formato</label>
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Formato</label>
                 <div className="grid grid-cols-3 gap-2">
                   {VIDEO_FORMATS.map((fmt) => (
-                    <button key={fmt.value} onClick={() => setVideoFormat(fmt)} className={`flex flex-col items-center gap-1 p-3 rounded-xl text-xs font-semibold transition-all ${videoFormat.value === fmt.value ? "bg-pink-950/40 text-pink-300 border-2 border-pink-500 shadow-md shadow-pink-500/20" : "bg-zinc-900/80 text-zinc-400 border border-zinc-800 hover:bg-zinc-800 hover:text-white"}`}>
+                    <button key={fmt.value} onClick={() => setVideoFormat(fmt)} className={`flex flex-col items-center gap-1 p-3 rounded-xl text-xs font-semibold transition-all ${videoFormat.value === fmt.value ? "bg-pink-950/40 text-pink-300 border-2 border-pink-500 shadow-md shadow-pink-500/20" : "bg-slate-900/80 text-slate-400 border border-slate-800 hover:bg-slate-800 hover:text-white"}`}>
                       <span className="text-lg">{fmt.value === "9:16" ? "📱" : fmt.value === "16:9" ? "🖥️" : "⬜"}</span>
                       <span>{fmt.label}</span>
                     </button>
@@ -1218,17 +1230,17 @@ export default function MassProductionPage() {
 
               {/* Transicao */}
               <div className="space-y-2">
-                <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider block">Transicao</label>
-                <div className="inline-flex rounded-xl bg-[#161622] p-1 border border-zinc-800 w-full">
-                  <button onClick={() => setTransition("none")} className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${transition === "none" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-zinc-400 hover:text-white"}`}>Nenhuma</button>
-                  <button onClick={() => setTransition("fade")} className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${transition === "fade" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-zinc-400 hover:text-white"}`}>Fade</button>
-                  <button onClick={() => setTransition("wipe")} className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${transition === "wipe" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-zinc-400 hover:text-white"}`}>Wipe</button>
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Transicao</label>
+                <div className="inline-flex rounded-xl bg-[#161622] p-1 border border-slate-800 w-full">
+                  <button onClick={() => setTransition("none")} className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${transition === "none" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-slate-400 hover:text-white"}`}>Nenhuma</button>
+                  <button onClick={() => setTransition("fade")} className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${transition === "fade" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-slate-400 hover:text-white"}`}>Fade</button>
+                  <button onClick={() => setTransition("wipe")} className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-all ${transition === "wipe" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-slate-400 hover:text-white"}`}>Wipe</button>
                 </div>
               </div>
 
               {transition !== "none" && (
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider block">Duracao da Transicao</label>
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Duracao da Transicao</label>
                   <div className="flex items-center gap-3">
                     <input
                       type="range"
@@ -1237,16 +1249,16 @@ export default function MassProductionPage() {
                       step="0.1"
                       value={transitionDuration}
                       onChange={(e) => setTransitionDuration(Number(e.target.value))}
-                      className="flex-1 accent-pink-500 h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer"
+                      className="flex-1 accent-pink-500 h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer"
                     />
-                    <span className="text-sm font-mono text-white bg-[#161622] px-3 py-1 rounded-lg border border-zinc-800">{transitionDuration}s</span>
+                    <span className="text-sm font-mono text-white bg-[#161622] px-3 py-1 rounded-lg border border-slate-800">{transitionDuration}s</span>
                   </div>
                 </div>
               )}
             </div>
 
             {/* Card Direita: Opcoes & Acoes */}
-            <div className="bg-[#111118] border border-zinc-800/80 rounded-2xl p-6 space-y-5">
+            <div className="bg-[bg-slate-900/90] border border-slate-800/80 rounded-2xl p-6 space-y-5">
               <h3 className="text-base font-bold text-white flex items-center gap-2">
                 <span className="p-2 rounded-xl bg-pink-500/10 border border-pink-500/20">🎯</span>
                 Opcoes & Acoes
@@ -1254,26 +1266,51 @@ export default function MassProductionPage() {
 
               {/* Toggles */}
               <div className="space-y-3">
-                <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider block">Preferencias</label>
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Preferencias</label>
                 <div className="space-y-3">
-                  <label className="flex items-center justify-between p-3 rounded-xl bg-[#161622] border border-zinc-800/60 cursor-pointer group hover:border-zinc-700 transition-colors">
+                  <label className="flex items-center justify-between p-3 rounded-xl bg-[#161622] border border-slate-800/60 cursor-pointer group hover:border-slate-700 transition-colors">
                     <div>
-                      <span className="text-sm font-semibold text-zinc-200 group-hover:text-white transition-colors block">Salvar na Nuvem</span>
-                      <span className="text-xs text-zinc-500">Upload automatico para o Supabase Storage</span>
+                      <span className="text-sm font-semibold text-slate-200 group-hover:text-white transition-colors block">Salvar na Nuvem</span>
+                      <span className="text-xs text-slate-500">Upload automatico para o Supabase Storage</span>
                     </div>
                     <div className="relative">
                       <input type="checkbox" checked={cloudSaveEnabled} onChange={(e) => setCloudSaveEnabled(e.target.checked)} className="sr-only peer" />
-                      <div className="w-10 h-5 bg-zinc-700 rounded-full peer peer-checked:bg-pink-600 transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-5"></div>
+                      <div className="w-10 h-5 bg-slate-700 rounded-full peer peer-checked:bg-pink-600 transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-5"></div>
                     </div>
                   </label>
-                  <label className="flex items-center justify-between p-3 rounded-xl bg-[#161622] border border-zinc-800/60 cursor-pointer group hover:border-zinc-700 transition-colors">
+                  <label className="flex items-center justify-between p-3 rounded-xl bg-[#161622] border border-slate-800/60 cursor-pointer group hover:border-slate-700 transition-colors">
                     <div>
-                      <span className="text-sm font-semibold text-zinc-200 group-hover:text-white transition-colors block">Auto-Download</span>
-                      <span className="text-xs text-zinc-500">Baixar .mp4 automaticamente ao concluir</span>
+                      <span className="text-sm font-semibold text-slate-200 group-hover:text-white transition-colors block">Auto-Download</span>
+                      <span className="text-xs text-slate-500">Baixar .mp4 automaticamente ao concluir</span>
                     </div>
                     <div className="relative">
                       <input type="checkbox" checked={autoDownloadEnabled} onChange={(e) => setAutoDownloadEnabled(e.target.checked)} className="sr-only peer" />
-                      <div className="w-10 h-5 bg-zinc-700 rounded-full peer peer-checked:bg-pink-600 transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-5"></div>
+                      <div className="w-10 h-5 bg-slate-700 rounded-full peer peer-checked:bg-pink-600 transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-5"></div>
+                    </div>
+                  </label>
+                </div>
+
+                {/* Extracao de Audio */}
+                <div className="space-y-3">
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Extracao de Audio</label>
+                  <label className="flex items-center justify-between p-3 rounded-xl bg-[#161622] border border-slate-800/60 cursor-pointer group hover:border-slate-700 transition-colors">
+                    <div>
+                      <span className="text-sm font-semibold text-slate-200 group-hover:text-white transition-colors block">Narração</span>
+                      <span className="text-xs text-slate-500">Transcricao completa do audio embaixo de cada video</span>
+                    </div>
+                    <div className="relative">
+                      <input type="checkbox" checked={narrationEnabled} onChange={(e) => setNarrationEnabled(e.target.checked)} className="sr-only peer" />
+                      <div className="w-10 h-5 bg-slate-700 rounded-full peer peer-checked:bg-blue-600 transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-5"></div>
+                    </div>
+                  </label>
+                  <label className="flex items-center justify-between p-3 rounded-xl bg-[#161622] border border-slate-800/60 cursor-pointer group hover:border-slate-700 transition-colors">
+                    <div>
+                      <span className="text-sm font-semibold text-slate-200 group-hover:text-white transition-colors block">IA (Motor de IA)</span>
+                      <span className="text-xs text-slate-500">Gera Headline + Descricao + CTA via inteligencia artificial</span>
+                    </div>
+                    <div className="relative">
+                      <input type="checkbox" checked={aiEnabled} onChange={(e) => setAiEnabled(e.target.checked)} className="sr-only peer" />
+                      <div className="w-10 h-5 bg-slate-700 rounded-full peer peer-checked:bg-purple-600 transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-5"></div>
                     </div>
                   </label>
                 </div>
@@ -1281,16 +1318,16 @@ export default function MassProductionPage() {
 
               {/* Nome do Lote */}
               <div className="space-y-2">
-                <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider block">Nome do Lote (Opcional)</label>
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Nome do Lote (Opcional)</label>
                 <input
                   type="text"
                   value={lotTitle}
                   onChange={(e) => setLotTitle(e.target.value)}
                   placeholder="Ex: campanha_junho, lote1, promocao_verao..."
-                  className="w-full px-4 py-2.5 rounded-xl bg-[#161622] border border-zinc-800 text-sm text-white placeholder-zinc-500 focus:border-pink-500 focus:outline-none transition-colors"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#161622] border border-slate-800 text-sm text-white placeholder-slate-500 focus:border-pink-500 focus:outline-none transition-colors"
                   maxLength={50}
                 />
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-slate-500">
                   {lotTitle.trim()
                     ? `Os arquivos serao salvos como: Video_01_${lotTitle.trim().replace(/\s+/g, "_")}.mp4`
                     : "Os arquivos serao salvos como: Video_01.mp4"}
@@ -1299,27 +1336,27 @@ export default function MassProductionPage() {
 
               {/* Resumo de Combinacoes */}
               <div className="space-y-3">
-                <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider block">Combinacoes</label>
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Combinacoes</label>
                 <div className="flex items-center gap-2 flex-wrap">
                   {activeColumns.map((col, i) => (
                     <span key={col.key} className="flex items-center gap-2">
-                      {i > 0 && <span className="text-zinc-500">×</span>}
+                      {i > 0 && <span className="text-slate-500">×</span>}
                       <span className={`px-3 py-1.5 rounded-lg text-sm font-semibold border ${SLOT_CHIP_COLOR[col.key as TagType]}`}>{col.count} {col.label}</span>
                     </span>
                   ))}
                   {activeColumns.length > 0 && (
                     <>
-                      <span className="text-zinc-500">=</span>
+                      <span className="text-slate-500">=</span>
                       <span className="px-3 py-1.5 rounded-lg text-sm font-bold bg-pink-950/40 text-pink-300 border border-pink-500/20">{totalCombinations} Videos</span>
                     </>
                   )}
-                  {!activeColumns.length && <span className="text-sm text-zinc-500">Adicione videos para ver o calculo</span>}
+                  {!activeColumns.length && <span className="text-sm text-slate-500">Adicione videos para ver o calculo</span>}
                 </div>
               </div>
 
               {/* Campo: Quantas variacoes gerar */}
               <div className="space-y-2">
-                <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider block">Quantidade a gerar</label>
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Quantidade a gerar</label>
                 <div className="flex items-center gap-3">
                   <input
                     type="number"
@@ -1333,9 +1370,9 @@ export default function MassProductionPage() {
                       if (!isNaN(val) && val > 0) setDesiredVariations(Math.min(val, totalCombinations));
                       else setDesiredVariations(0);
                     }}
-                    className="w-28 px-3 py-2 rounded-xl bg-[#151520] border border-zinc-800/80 text-white text-sm font-semibold focus:outline-none focus:border-pink-500/50 transition-all disabled:opacity-40"
+                    className="w-28 px-3 py-2 rounded-xl bg-[#151520] border border-slate-800/80 text-white text-sm font-semibold focus:outline-none focus:border-pink-500/50 transition-all disabled:opacity-40"
                   />
-                  <span className="text-xs text-zinc-500">
+                  <span className="text-xs text-slate-500">
                     {totalCombinations > 0 ? `de ${totalCombinations} disponiveis` : "adicione videos primeiro"}
                   </span>
                 </div>
@@ -1364,22 +1401,22 @@ export default function MassProductionPage() {
           <button
             type="button"
             onClick={() => setActiveView("upload")}
-            className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-zinc-300 bg-[#111118] hover:bg-zinc-800 border border-zinc-800 rounded-xl transition-all cursor-pointer mb-4"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-300 bg-[bg-slate-900/90] hover:bg-slate-800 border border-slate-800 rounded-xl transition-all cursor-pointer mb-4"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             Voltar para Upload
           </button>
 
           {queueStatus.isProcessing && (
-            <div className="bg-[#111118] border border-pink-500/30 rounded-2xl p-5 mb-6 shadow-lg shadow-pink-500/5">
+            <div className="bg-[bg-slate-900/90] border border-pink-500/30 rounded-2xl p-5 mb-6 shadow-lg shadow-pink-500/5">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-sm font-semibold flex items-center gap-2 text-white"><Loader className="w-4 h-4 animate-spin text-pink-400" /> Fila de Processamento</span>
-                <span className="text-sm text-zinc-400">Variacao {queueStatus.current} de {queueStatus.total}</span>
+                <span className="text-sm text-slate-400">Variacao {queueStatus.current} de {queueStatus.total}</span>
               </div>
-              <div className="w-full h-3 bg-zinc-800 rounded-full overflow-hidden mb-2">
+              <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden mb-2">
                 <div className="h-full bg-gradient-to-r from-pink-600 to-rose-600 transition-all duration-500" style={{ width: `${queueStatus.percentage}%` }} />
               </div>
-              <div className="flex items-center justify-between text-xs text-zinc-500">
+              <div className="flex items-center justify-between text-xs text-slate-500">
                 <span>{queueStatus.percentage}% concluido</span>
                 <span>ETA: {queueStatus.eta}</span>
               </div>
@@ -1395,11 +1432,11 @@ export default function MassProductionPage() {
           )}
 
           {/* Tabs */}
-          <div className="flex items-center gap-1 p-1 bg-[#111118] rounded-xl border border-zinc-800/80 w-fit mb-6">
-            <button onClick={() => setResultsTab("generated")} className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${resultsTab === "generated" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-zinc-400 hover:text-white"}`}>
+          <div className="flex items-center gap-1 p-1 bg-[bg-slate-900/90] rounded-xl border border-slate-800/80 w-fit mb-6">
+            <button onClick={() => setResultsTab("generated")} className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${resultsTab === "generated" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-slate-400 hover:text-white"}`}>
               <Film className="w-4 h-4" /> Videos Gerados ({renderedVideos.filter((v) => v.status === "ready").length}/{renderedVideos.length})
             </button>
-            <button onClick={() => setResultsTab("media")} className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${resultsTab === "media" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-zinc-400 hover:text-white"}`}>
+            <button onClick={() => setResultsTab("media")} className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${resultsTab === "media" ? "bg-pink-600 text-white shadow-lg shadow-pink-600/25" : "text-slate-400 hover:text-white"}`}>
               <FileVideo className="w-4 h-4" /> Midias Usadas
             </button>
           </div>
@@ -1411,14 +1448,14 @@ export default function MassProductionPage() {
               <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
                 <div className="flex items-center gap-3 flex-wrap">
                   {/* Filter */}
-                  <div className="flex items-center bg-[#111118] border border-zinc-800/80 rounded-xl p-0.5">
-                    <button onClick={() => setVideoFilter("all")} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${videoFilter === "all" ? "bg-pink-950/40 text-pink-300" : "text-zinc-400 hover:text-white"}`}>
+                  <div className="flex items-center bg-[bg-slate-900/90] border border-slate-800/80 rounded-xl p-0.5">
+                    <button onClick={() => setVideoFilter("all")} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${videoFilter === "all" ? "bg-pink-950/40 text-pink-300" : "text-slate-400 hover:text-white"}`}>
                       <Eye className="w-3.5 h-3.5" /> Todos ({renderedVideos.length})
                     </button>
-                    <button onClick={() => setVideoFilter("not_posted")} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${videoFilter === "not_posted" ? "bg-emerald-500/15 text-emerald-400" : "text-zinc-400 hover:text-white"}`}>
+                    <button onClick={() => setVideoFilter("not_posted")} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${videoFilter === "not_posted" ? "bg-emerald-500/15 text-emerald-400" : "text-slate-400 hover:text-white"}`}>
                       <Rocket className="w-3.5 h-3.5" /> Nao Postados ({notPostedCount})
                     </button>
-                    <button onClick={() => setVideoFilter("posted")} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${videoFilter === "posted" ? "bg-blue-500/15 text-blue-400" : "text-zinc-400 hover:text-white"}`}>
+                    <button onClick={() => setVideoFilter("posted")} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${videoFilter === "posted" ? "bg-blue-500/15 text-blue-400" : "text-slate-400 hover:text-white"}`}>
                       <CheckCircle className="w-3.5 h-3.5" /> Postados ({postedCount})
                     </button>
                   </div>
@@ -1432,13 +1469,13 @@ export default function MassProductionPage() {
                   ) : (
                     <>
                       <button onClick={toggleSelectionMode}
-                        className="bg-[#111118] border border-zinc-700 text-zinc-300 text-sm py-2 px-4 rounded-xl hover:bg-zinc-800 transition-colors">
+                        className="bg-[bg-slate-900/90] border border-slate-700 text-slate-300 text-sm py-2 px-4 rounded-xl hover:bg-slate-800 transition-colors">
                         ✕ Cancelar Selecao
                       </button>
-                      <button onClick={selectAll} className="bg-[#111118] border border-zinc-800 text-zinc-300 text-sm py-2 px-4 rounded-xl hover:bg-zinc-800 transition-colors">
+                      <button onClick={selectAll} className="bg-[bg-slate-900/90] border border-slate-800 text-slate-300 text-sm py-2 px-4 rounded-xl hover:bg-slate-800 transition-colors">
                         {renderedVideos.every((v) => v.selected) ? "Desmarcar Todos" : "Selecionar Todos"}
                       </button>
-                      <span className="text-sm text-zinc-400 font-medium">({selectedCount} selecionado{selectedCount === 1 ? "" : "s"})</span>
+                      <span className="text-sm text-slate-400 font-medium">({selectedCount} selecionado{selectedCount === 1 ? "" : "s"})</span>
                     </>
                   )}
                 </div>
@@ -1464,7 +1501,7 @@ export default function MassProductionPage() {
                     <Archive className="w-4 h-4" /> ZIP
                   </button>
                   <button onClick={downloadAll} disabled={!renderedVideos.some((v) => v.status === "ready")}
-                    className="bg-zinc-600/20 hover:bg-zinc-600/40 text-zinc-300 text-sm py-2 px-4 rounded-xl flex items-center gap-2 transition-colors disabled:opacity-50 font-medium">
+                    className="bg-slate-600/20 hover:bg-slate-600/40 text-slate-300 text-sm py-2 px-4 rounded-xl flex items-center gap-2 transition-colors disabled:opacity-50 font-medium">
                     <Download className="w-4 h-4" /> Baixar Todos
                   </button>
                 </div>
@@ -1473,30 +1510,30 @@ export default function MassProductionPage() {
               {/* Video Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredVideos.map((video) => (
-                  <div key={video.id} className={`bg-[#111118] border rounded-2xl p-4 flex flex-col gap-3 transition-all ${video.selected ? "border-pink-500/60 ring-1 ring-pink-500/30 shadow-lg shadow-pink-500/10" : video.is_posted ? "border-blue-500/30 opacity-70" : "border-zinc-800/80"}`}>
+                  <div key={video.id} className={`bg-[bg-slate-900/90] border rounded-2xl p-4 flex flex-col gap-3 transition-all ${video.selected ? "border-pink-500/60 ring-1 ring-pink-500/30 shadow-lg shadow-pink-500/10" : video.is_posted ? "border-blue-500/30 opacity-70" : "border-slate-800/80"}`}>
                     {/* Player */}
                     <div className="relative">
                       {/* Selecao individual — checkbox puro, sem texto (modo selecao) */}
                       {isSelectionMode && (
-                        <label className="absolute top-2 left-2 z-10 flex items-center justify-center p-1 rounded-md bg-black/60 backdrop-blur-sm border border-gray-700/60 cursor-pointer hover:border-[var(--primary)] transition-colors">
+                        <label className="absolute top-2 left-2 z-10 flex items-center justify-center p-1 rounded-md bg-black/60 backdrop-blur-sm border border-slate-700/60 cursor-pointer hover:border-[var(--primary)] transition-colors">
                           <input
                             type="checkbox"
                             checked={video.selected}
                             onChange={() => toggleSelect(video.id)}
-                            className="w-4 h-4 rounded border-gray-600 accent-[var(--primary)] bg-zinc-900 cursor-pointer"
+                            className="w-4 h-4 rounded border-slate-600 accent-[var(--primary)] bg-slate-900 cursor-pointer"
                           />
                         </label>
                       )}
                       {video.status === "pending" || video.status === "concatenating" ? (
-                        <div className={`w-full ${getAspectClass(videoFormat)} rounded-lg bg-[#252535] flex flex-col items-center justify-center gap-2`}>
+                        <div className={`w-full ${getAspectClass(videoFormat)} rounded-lg bg-[#1e293b] flex flex-col items-center justify-center gap-2`}>
                           <Loader className="w-8 h-8 text-[var(--primary)] animate-spin" />
-                          <p className="text-xs text-gray-400">{video.status === "concatenating" ? "Concatenando..." : "Na fila..."}</p>
+                          <p className="text-xs text-slate-400">{video.status === "concatenating" ? "Concatenando..." : "Na fila..."}</p>
                           {video.status === "concatenating" && (
-                            <div className="w-32 h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                            <div className="w-32 h-1.5 bg-slate-700 rounded-full overflow-hidden">
                               <div className="h-full bg-[var(--primary)] transition-all duration-300" style={{ width: `${video.progress}%` }} />
                             </div>
                           )}
-                          <p className="text-[10px] text-gray-500">{video.progress}%</p>
+                          <p className="text-[10px] text-slate-500">{video.progress}%</p>
                         </div>
                       ) : video.status === "error" ? (
                         <div className={`w-full ${getAspectClass(videoFormat)} rounded-lg bg-red-900/20 flex flex-col items-center justify-center gap-2 border border-red-500/30`}>
@@ -1514,24 +1551,32 @@ export default function MassProductionPage() {
                         <h4 className="text-white font-semibold">Vídeo #{String(video.id).padStart(2, "0")}</h4>
                         <button
                           onClick={() => void removeFromGallery(video)}
-                          className="p-1 rounded text-gray-500 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                          className="p-1 rounded text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-colors"
                           title="Excluir da galeria"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>
                       </div>
-                      <p className="text-xs text-gray-400">{video.variation.blocks.map((b) => b.id).join(" + ")}</p>
+                      <p className="text-xs text-slate-400">{video.variation.blocks.map((b) => b.id).join(" + ")}</p>
 
-                      {/* Headline extraida do audio */}
-                      {video.headline && (
+                      {/* Headline extraida do audio (so quando IA ligada) */}
+                      {aiEnabled && video.headline && (
                         <div className="mt-2 px-2 py-1.5 rounded-lg bg-pink-950/30 border border-pink-500/15">
                           <p className="text-[10px] font-bold text-pink-400 uppercase tracking-wider mb-0.5">Headline</p>
                           <p className="text-xs text-pink-200 leading-snug">{video.headline}</p>
                         </div>
                       )}
 
-                      {/* Redtags extraidas do audio */}
-                      {video.redTags && video.redTags.length > 0 && (
+                      {/* Narracao completa do video (transcricao) */}
+                      {narrationEnabled && video.transcription && (
+                        <div className="mt-2 px-2 py-1.5 rounded-lg bg-blue-950/30 border border-blue-500/15">
+                          <p className="text-[10px] font-bold text-blue-400 uppercase tracking-wider mb-0.5">Narração</p>
+                          <p className="text-[11px] text-blue-200/80 leading-snug line-clamp-4">{video.transcription}</p>
+                        </div>
+                      )}
+
+                      {/* Redtags extraidas do audio (so quando IA ligada) */}
+                      {aiEnabled && video.redTags && video.redTags.length > 0 && (
                         <div className="mt-1.5 flex flex-wrap gap-1">
                           {video.redTags.slice(0, 8).map((tag, i) => (
                             <span key={i} className="text-[10px] px-1.5 py-0.5 rounded-full bg-purple-950/40 text-purple-300 border border-purple-500/15">
@@ -1539,16 +1584,16 @@ export default function MassProductionPage() {
                             </span>
                           ))}
                           {video.redTags.length > 8 && (
-                            <span className="text-[10px] text-gray-500">+{video.redTags.length - 8}</span>
+                            <span className="text-[10px] text-slate-500">+{video.redTags.length - 8}</span>
                           )}
                         </div>
                       )}
 
                       {/* Loading transcricao */}
-                      {video.status === "ready" && !video.transcription && !video.headline && (
+                      {(narrationEnabled || aiEnabled) && video.status === "ready" && !video.transcription && (
                         <div className="mt-2 flex items-center gap-1.5">
-                          <Loader className="w-3 h-3 animate-spin text-gray-500" />
-                          <span className="text-[10px] text-gray-500">Extraindo audio...</span>
+                          <Loader className="w-3 h-3 animate-spin text-slate-500" />
+                          <span className="text-[10px] text-slate-500">Extraindo audio...</span>
                         </div>
                       )}
                       <div className="flex items-center gap-2 mt-1 flex-wrap">
@@ -1561,8 +1606,8 @@ export default function MassProductionPage() {
                             ☁ Nuvem
                           </span>
                         )}
-                        <Clock className="w-3 h-3 text-gray-500" />
-                        <span className="text-xs text-gray-500">{video.durationFormatted}</span>
+                        <Clock className="w-3 h-3 text-slate-500" />
+                        <span className="text-xs text-slate-500">{video.durationFormatted}</span>
                         {video.createdAt && (
                           <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
                             ⏳ {galleryRemainingLabel(video.createdAt)}
@@ -1572,7 +1617,7 @@ export default function MassProductionPage() {
                     </div>
 
                     {/* Actions */}
-                    <div className="grid grid-cols-3 gap-2 pt-2 border-t border-gray-800">
+                    <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-800">
                       <button onClick={() => downloadVideo(video)} disabled={video.status !== "ready"}
                         className="bg-blue-600/20 hover:bg-blue-600/40 text-blue-300 text-xs py-2 px-1 rounded flex items-center justify-center gap-1 transition-colors disabled:opacity-30">
                         ⬇️ Baixar
@@ -1598,7 +1643,7 @@ export default function MassProductionPage() {
               </div>
 
               {filteredVideos.length === 0 && (
-                <div className="text-center py-12 text-gray-500">
+                <div className="text-center py-12 text-slate-500">
                   <p className="text-sm">Nenhum video encontrado para este filtro.</p>
                 </div>
               )}
@@ -1616,24 +1661,24 @@ export default function MassProductionPage() {
                   category: slot.id as TagType,
                 }))
                 .map((section) => (
-                <div key={section.category} className="bg-[#1c1c28] border border-gray-800 rounded-xl overflow-hidden">
-                  <div className={`p-4 border-b border-gray-800 ${section.accent}`}>
+                <div key={section.category} className="bg-[#0f172a] border border-slate-800 rounded-xl overflow-hidden">
+                  <div className={`p-4 border-b border-slate-800 ${section.accent}`}>
                     <h3 className="font-bold">{section.title} ({section.videos.length})</h3>
                   </div>
                   <div className="p-4 space-y-2 max-h-[400px] overflow-y-auto">
                     {section.videos.map((video) => (
-                      <div key={video.id} className="flex items-center gap-3 p-2 rounded-lg bg-[#252535] group">
+                      <div key={video.id} className="flex items-center gap-3 p-2 rounded-lg bg-[#1e293b] group">
                         <VideoThumb file={video.file} />
                         <div className="flex-1 min-w-0">
                           <p className="text-sm truncate">{video.name}</p>
-                          <p className="text-xs text-gray-500">{video.durationFormatted}</p>
+                          <p className="text-xs text-slate-500">{video.durationFormatted}</p>
                         </div>
                         <button onClick={() => handleRemove(section.category, video.id)} className="p-1 rounded opacity-0 group-hover:opacity-100 hover:bg-red-500/20 transition-all">
-                          <Trash2 className="w-4 h-4 text-gray-400 hover:text-red-400" />
+                          <Trash2 className="w-4 h-4 text-slate-400 hover:text-red-400" />
                         </button>
                       </div>
                     ))}
-                    {section.videos.length === 0 && <p className="text-xs text-gray-500 text-center py-4">Nenhum video</p>}
+                    {section.videos.length === 0 && <p className="text-xs text-slate-500 text-center py-4">Nenhum video</p>}
                   </div>
                 </div>
               ))}
@@ -1645,14 +1690,14 @@ export default function MassProductionPage() {
       {/* Modal de confirmacao de exclusao em massa */}
       {confirmDelete && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={() => setConfirmDelete(null)}>
-          <div className="bg-[#1c1c28] border border-gray-700 rounded-2xl p-6 w-full max-w-sm space-y-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-[#0f172a] border border-slate-700 rounded-2xl p-6 w-full max-w-sm space-y-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 rounded-[12px] bg-red-500/15 flex items-center justify-center shrink-0">
                 <AlertTriangle className="w-5 h-5 text-red-400" />
               </div>
               <div>
                 <h3 className="text-base font-bold text-white">Excluir videos?</h3>
-                <p className="text-sm text-gray-400 mt-1">
+                <p className="text-sm text-slate-400 mt-1">
                   {confirmDelete.length === 1
                     ? "Este video sera removido da galeria e do banco de dados."
                     : `${confirmDelete.length} videos serao removidos da galeria e do banco de dados.`}
@@ -1662,7 +1707,7 @@ export default function MassProductionPage() {
             <div className="flex items-center justify-end gap-2 pt-2">
               <button
                 onClick={() => setConfirmDelete(null)}
-                className="px-4 py-2 rounded-[10px] text-sm font-medium bg-[#252535] border border-gray-700 text-gray-400 hover:text-white transition-colors"
+                className="px-4 py-2 rounded-[10px] text-sm font-medium bg-[#1e293b] border border-slate-700 text-slate-400 hover:text-white transition-colors"
               >
                 Cancelar
               </button>

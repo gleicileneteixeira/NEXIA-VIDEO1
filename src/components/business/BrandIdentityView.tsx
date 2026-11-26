@@ -83,24 +83,24 @@ export default function BrandIdentityView({ profile }: { profile: StudioProfile 
       </div>
 
       {/* Cores da marca */}
-      <div className="bg-[#252535] border border-gray-800 rounded-xl p-5 space-y-4">
+      <div className="bg-[#1e293b] border border-slate-800 rounded-xl p-5 space-y-4">
         <h3 className="text-sm font-medium text-white">Cores da Marca</h3>
         <div className="grid sm:grid-cols-3 gap-4">
           {colorFields.map((field) => (
             <label key={field.key} className="block">
-              <span className="block text-[11px] text-gray-400 mb-1">{field.label}</span>
+              <span className="block text-[11px] text-slate-400 mb-1">{field.label}</span>
               <div className="flex items-center gap-2">
                 <input
                   type="color"
                   value={draft[field.key]}
                   onChange={(e) => setBrandField(field.key, e.target.value)}
-                  className="w-10 h-10 rounded-lg border border-gray-700 cursor-pointer bg-transparent"
+                  className="w-10 h-10 rounded-lg border border-slate-700 cursor-pointer bg-transparent"
                 />
                 <input
                   type="text"
                   value={draft[field.key]}
                   onChange={(e) => setBrandField(field.key, e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-[#1c1c28] border border-gray-700 text-white text-xs font-mono uppercase focus:border-[var(--primary)] outline-none"
+                  className="w-full px-3 py-2 rounded-lg bg-[#0f172a] border border-slate-700 text-white text-xs font-mono uppercase focus:border-[var(--primary)] outline-none"
                 />
               </div>
             </label>
@@ -108,7 +108,7 @@ export default function BrandIdentityView({ profile }: { profile: StudioProfile 
         </div>
 
         <div>
-          <span className="block text-[11px] text-gray-400 mb-2">Temas pré-definidos</span>
+          <span className="block text-[11px] text-slate-400 mb-2">Temas pré-definidos</span>
           <div className="flex flex-wrap gap-2">
             {PRESET_THEMES.map((theme) => (
               <button
@@ -118,14 +118,14 @@ export default function BrandIdentityView({ profile }: { profile: StudioProfile 
                   setBrandField("textColor", theme.text);
                   setBrandField("accentColor", theme.accent);
                 }}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-700 hover:border-[var(--primary)] transition-colors"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-700 hover:border-[var(--primary)] transition-colors"
                 title={theme.name}
               >
                 <span className="flex -space-x-1">
                   <span className="w-4 h-4 rounded-full border border-black/30" style={{ backgroundColor: theme.primary }} />
                   <span className="w-4 h-4 rounded-full border border-black/30" style={{ backgroundColor: theme.accent }} />
                 </span>
-                <span className="text-[11px] text-gray-300">{theme.name}</span>
+                <span className="text-[11px] text-slate-300">{theme.name}</span>
               </button>
             ))}
           </div>
@@ -133,14 +133,14 @@ export default function BrandIdentityView({ profile }: { profile: StudioProfile 
       </div>
 
       {/* Fonte */}
-      <div className="bg-[#252535] border border-gray-800 rounded-xl p-5">
+      <div className="bg-[#1e293b] border border-slate-800 rounded-xl p-5">
         <label className="block text-sm font-medium text-white mb-1 flex items-center gap-2">
           <Type className="w-4 h-4 text-[var(--primary)]" /> Fonte principal
         </label>
         <select
           value={draft.fontFamily}
           onChange={(e) => setBrandField("fontFamily", e.target.value)}
-          className="w-full px-3 py-2.5 rounded-lg bg-[#1c1c28] border border-gray-700 text-white text-sm focus:border-[var(--primary)] outline-none"
+          className="w-full px-3 py-2.5 rounded-lg bg-[#0f172a] border border-slate-700 text-white text-sm focus:border-[var(--primary)] outline-none"
         >
           {FONT_FAMILIES.map((font) => (
             <option key={font} value={font}>
@@ -151,13 +151,13 @@ export default function BrandIdentityView({ profile }: { profile: StudioProfile 
       </div>
 
       {/* Logo */}
-      <div className="bg-[#252535] border border-gray-800 rounded-xl p-5 space-y-3">
+      <div className="bg-[#1e293b] border border-slate-800 rounded-xl p-5 space-y-3">
         <h3 className="text-sm font-medium text-white flex items-center gap-2">
           <Upload className="w-4 h-4 text-[var(--primary)]" /> Logo com remoção instantânea de fundo
         </h3>
         <label className="block">
           <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
-          <span className="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-lg border border-dashed border-gray-600 text-xs text-gray-300 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors cursor-pointer">
+          <span className="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-lg border border-dashed border-slate-600 text-xs text-slate-300 hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors cursor-pointer">
             {processing ? (
               <>
                 <Loader2 className="w-3.5 h-3.5 animate-spin" /> Processando...
@@ -175,11 +175,11 @@ export default function BrandIdentityView({ profile }: { profile: StudioProfile 
             <div className="grid grid-cols-2 gap-2">
               <div className="rounded-lg overflow-hidden bg-black/40 p-2 flex flex-col items-center gap-1">
                 <img src={draft.logoOriginalUrl} alt="Logo original" className="max-h-16 object-contain" />
-                <span className="text-[9px] text-gray-500">Original</span>
+                <span className="text-[9px] text-slate-500">Original</span>
               </div>
               <div className="rounded-lg overflow-hidden bg-[repeating-conic-gradient(#1a1a2a_0%_25%,#0d0d16_0%_50%)] bg-[length:12px_12px] p-2 flex flex-col items-center gap-1">
                 <img src={draft.logoDataUrl} alt="Logo sem fundo" className="max-h-16 object-contain" />
-                <span className="text-[9px] text-gray-500">
+                <span className="text-[9px] text-slate-500">
                   Sem fundo{" "}
                   {detectedColor ? (
                     <span className="inline-flex items-center gap-1">
@@ -190,7 +190,7 @@ export default function BrandIdentityView({ profile }: { profile: StudioProfile 
                 </span>
               </div>
             </div>
-            <label className="block text-[11px] text-gray-400 mb-1">
+            <label className="block text-[11px] text-slate-400 mb-1">
               Tolerância do recorte: {draft.tolerance}
             </label>
             <input
@@ -208,7 +208,7 @@ export default function BrandIdentityView({ profile }: { profile: StudioProfile 
                 setBrandField("logoName", undefined);
                 setDetectedColor(null);
               }}
-              className="flex items-center gap-1.5 text-[11px] text-gray-500 hover:text-red-400 transition-colors"
+              className="flex items-center gap-1.5 text-[11px] text-slate-500 hover:text-red-400 transition-colors"
             >
               <Trash2 className="w-3 h-3" /> Remover logo
             </button>
@@ -217,7 +217,7 @@ export default function BrandIdentityView({ profile }: { profile: StudioProfile 
       </div>
 
       {/* Perfil do Instagram */}
-      <div className="bg-[#252535] border border-gray-800 rounded-xl p-5">
+      <div className="bg-[#1e293b] border border-slate-800 rounded-xl p-5">
         <label className="block text-sm font-medium text-white mb-1 flex items-center gap-2">
           <AtSign className="w-4 h-4 text-[var(--primary)]" /> Perfil do Instagram
         </label>
@@ -226,9 +226,9 @@ export default function BrandIdentityView({ profile }: { profile: StudioProfile 
           value={draft.handle}
           onChange={(e) => setBrandField("handle", e.target.value)}
           placeholder="@seu.perfil"
-          className="w-full px-4 py-3 rounded-xl bg-[#1c1c28] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] outline-none transition-all"
+          className="w-full px-4 py-3 rounded-xl bg-[#0f172a] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] outline-none transition-all"
         />
-        <p className="text-[11px] text-gray-500 mt-1">
+        <p className="text-[11px] text-slate-500 mt-1">
           Esse @ aparece estilizado no rodapé de todas as artes.
         </p>
       </div>

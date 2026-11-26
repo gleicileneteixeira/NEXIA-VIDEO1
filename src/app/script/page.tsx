@@ -486,8 +486,8 @@ export default function ScriptPage() {
   if (!isMounted) {
     return (
       <div className="max-w-7xl mx-auto p-6 space-y-6 animate-pulse">
-        <div className="h-8 bg-zinc-800 rounded w-1/3"></div>
-        <div className="h-64 bg-zinc-900 rounded-[var(--radius)]"></div>
+        <div className="h-8 bg-slate-800 rounded w-1/3"></div>
+        <div className="h-64 bg-slate-900 rounded-[var(--radius)]"></div>
       </div>
     );
   }
@@ -550,7 +550,7 @@ export default function ScriptPage() {
       ═══════════════════════════════════════════════════════════════ */}
       {step === "profile" && (
         <div className="max-w-xl animate-slide-up">
-          <div className="bg-[#101018] border border-zinc-800/80 rounded-2xl p-6 space-y-6 shadow-xl">
+          <div className="bg-[bg-slate-900/90] border border-slate-800/80 rounded-2xl p-6 space-y-6 shadow-xl">
             <div className="flex items-center gap-2">
               <User className="w-5 h-5 text-[var(--primary)]" />
               <h2 className="text-lg font-bold">Perfil de Negocio</h2>
@@ -682,7 +682,7 @@ export default function ScriptPage() {
               className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                 subTab === "create"
                   ? "bg-[var(--primary)] text-white shadow-lg shadow-[var(--primary)]/20"
-                  : "bg-[#101018] border border-zinc-800/80 text-[var(--text-secondary)] hover:text-white"
+                  : "bg-[bg-slate-900/90] border border-slate-800/80 text-[var(--text-secondary)] hover:text-white"
               }`}
             >
               <Sparkles className="w-4 h-4" />
@@ -693,7 +693,7 @@ export default function ScriptPage() {
               className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                 subTab === "transcribe"
                   ? "bg-[var(--primary)] text-white shadow-lg shadow-[var(--primary)]/20"
-                  : "bg-[#101018] border border-zinc-800/80 text-[var(--text-secondary)] hover:text-white"
+                  : "bg-[bg-slate-900/90] border border-slate-800/80 text-[var(--text-secondary)] hover:text-white"
               }`}
             >
               <Mic className="w-4 h-4" />
@@ -704,7 +704,7 @@ export default function ScriptPage() {
               className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                 subTab === "download"
                   ? "bg-[var(--primary)] text-white shadow-lg shadow-[var(--primary)]/20"
-                  : "bg-[#101018] border border-zinc-800/80 text-[var(--text-secondary)] hover:text-white"
+                  : "bg-[bg-slate-900/90] border border-slate-800/80 text-[var(--text-secondary)] hover:text-white"
               }`}
             >
               <Download className="w-4 h-4" />
@@ -715,7 +715,7 @@ export default function ScriptPage() {
               className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                 subTab === "gallery"
                   ? "bg-[var(--primary)] text-white shadow-lg shadow-[var(--primary)]/20"
-                  : "bg-[#101018] border border-zinc-800/80 text-[var(--text-secondary)] hover:text-white"
+                  : "bg-[bg-slate-900/90] border border-slate-800/80 text-[var(--text-secondary)] hover:text-white"
               }`}
             >
               <LayoutGrid className="w-4 h-4" />
@@ -726,7 +726,7 @@ export default function ScriptPage() {
               className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                 subTab === "history"
                   ? "bg-[var(--primary)] text-white shadow-lg shadow-[var(--primary)]/20"
-                  : "bg-[#101018] border border-zinc-800/80 text-[var(--text-secondary)] hover:text-white"
+                  : "bg-[bg-slate-900/90] border border-slate-800/80 text-[var(--text-secondary)] hover:text-white"
               }`}
             >
               <History className="w-4 h-4" />
@@ -739,7 +739,7 @@ export default function ScriptPage() {
           {/* Left — Controls */}
           <div className="lg:col-span-1 space-y-4">
             {/* Active Profile Banner */}
-            <div className="bg-[#101018] border border-zinc-800/80 rounded-2xl p-4 shadow-lg">
+            <div className="bg-[bg-slate-900/90] border border-slate-800/80 rounded-2xl p-4 shadow-lg">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5 min-w-0">
                   <div className="w-8 h-8 rounded-[8px] bg-[var(--accent-green)]/15 flex items-center justify-center flex-shrink-0">
@@ -761,14 +761,14 @@ export default function ScriptPage() {
             </div>
 
             {/* Theme */}
-            <div className="bg-[#101018] border border-zinc-800/80 rounded-2xl p-5 shadow-lg">
+            <div className="bg-[bg-slate-900/90] border border-slate-800/80 rounded-2xl p-5 shadow-lg">
               <div className="flex items-center gap-2 mb-4">
                 <Lightbulb className="w-4 h-4 text-[var(--accent-orange)]" />
                 <h2 className="text-sm font-bold text-white">Tema / Ideia Central</h2>
               </div>
 
               {/* Origem do conteúdo: roteiro livre vs remodelagem de vídeo viral */}
-              <div className="flex items-center gap-1 p-1 bg-[#151520] border border-zinc-800/80 rounded-[10px] mb-3">
+              <div className="flex items-center gap-1 p-1 bg-[#151520] border border-slate-800/80 rounded-[10px] mb-3">
                 <button
                   type="button"
                   onClick={() => setScriptMode("idea")}
@@ -824,7 +824,7 @@ export default function ScriptPage() {
                       ? "bg-red-500 text-white pulse-rec"
                       : speech.isSupported
                         ? "bg-[var(--surface)] border border-[var(--border)] text-[var(--text-secondary)] hover:text-red-400 hover:border-red-400/50"
-                        : "bg-[var(--surface)] border border-[var(--border)] text-zinc-600 cursor-not-allowed"
+                        : "bg-[var(--surface)] border border-[var(--border)] text-slate-600 cursor-not-allowed"
                   }`}
                 >
                   <Mic className="w-4 h-4" />
@@ -848,14 +848,14 @@ export default function ScriptPage() {
                 <div>
                   <strong className="text-purple-300">Dica de Criacao:</strong>
                   <p className="mt-1 leading-relaxed">
-                    <span className="text-zinc-300">• <strong>Com IA:</strong> pode colar textos longos, comentarios ou desabafos completos. Quanto mais contexto, mais coerente fica o roteiro.</span>
+                    <span className="text-slate-300">• <strong>Com IA:</strong> pode colar textos longos, comentarios ou desabafos completos. Quanto mais contexto, mais coerente fica o roteiro.</span>
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Settings */}
-            <div className="bg-[#101018] border border-zinc-800/80 rounded-2xl p-5 shadow-lg">
+            <div className="bg-[bg-slate-900/90] border border-slate-800/80 rounded-2xl p-5 shadow-lg">
               <div className="flex items-center gap-2 mb-4">
                 <FileText className="w-4 h-4 text-[var(--primary)]" />
                 <h2 className="text-sm font-bold text-white">Configuracoes</h2>
@@ -886,7 +886,7 @@ export default function ScriptPage() {
                         className={`flex flex-col items-center gap-0.5 px-2 py-2.5 rounded-xl border text-center transition-all duration-200 ${
                           duracao === d.value
                             ? "bg-[var(--primary)]/15 border-[var(--primary)]/35 text-white shadow-sm shadow-[var(--primary)]/8"
-                            : "bg-[#151520] border-zinc-800/80 text-[var(--text-secondary)] hover:border-zinc-700/80"
+                            : "bg-[#151520] border-slate-800/80 text-[var(--text-secondary)] hover:border-slate-700/80"
                         }`}
                       >
                         <span className="text-base">{d.emoji}</span>
@@ -914,7 +914,7 @@ export default function ScriptPage() {
                           className={`text-left px-3 py-2 rounded-full border text-xs transition-all duration-200 ${
                             isSelected
                               ? "bg-[var(--primary)]/15 border-[var(--primary)]/35 text-white shadow-sm shadow-[var(--primary)]/8"
-                              : "bg-[#151520] border-zinc-800/80 text-[var(--text-secondary)] hover:border-zinc-700/80"
+                              : "bg-[#151520] border-slate-800/80 text-[var(--text-secondary)] hover:border-slate-700/80"
                           }`}
                         >
                           <span className="mr-1">{obj.emoji}</span> {obj.label}
@@ -999,7 +999,7 @@ export default function ScriptPage() {
                 <div className="flex items-center justify-between gap-3 flex-wrap">
                   <h2 className="text-lg font-bold text-white">{variations.length} Variacoes Geradas</h2>
                   <div className="flex items-center gap-2">
-                    <div className="flex items-center bg-[#151520] border border-zinc-800/80 rounded-full p-0.5">
+                    <div className="flex items-center bg-[#151520] border border-slate-800/80 rounded-full p-0.5">
                       <button
                         onClick={() => setViewMode("video")}
                         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${

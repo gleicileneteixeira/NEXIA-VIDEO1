@@ -945,64 +945,64 @@ const trimGestureRef = useRef(false);
   return (
     <div
       ref={containerRef}
-      className="flex flex-col h-full w-full bg-[#0a0a12] border-t border-[#1e1e2e] select-none"
+      className="flex flex-col h-full w-full bg-[#0a0a12] border-t border-[#1e293b] select-none"
       onMouseMove={isDraggingPlayhead ? handlePlayheadDrag : undefined}
       onMouseUp={() => setIsDraggingPlayhead(false)}
       onContextMenu={(e) => e.preventDefault()}
     >
-      <div className="flex items-center gap-1 px-3 py-1.5 bg-[#0d0d16] border-b border-[#1e1e2e]">
-        <button onClick={togglePlayback} className="p-1.5 hover:bg-[#1e1e2e] rounded text-white" title={isPlaying ? "Pausar" : "Reproduzir"}>
+      <div className="flex items-center gap-1 px-3 py-1.5 bg-[#0d0d16] border-b border-[#1e293b]">
+        <button onClick={togglePlayback} className="p-1.5 hover:bg-[#1e293b] rounded text-white" title={isPlaying ? "Pausar" : "Reproduzir"}>
           {isPlaying ? <Pause size={16} /> : <Play size={16} />}
         </button>
-        <button onClick={() => { window.dispatchEvent(new Event("timeline-user-seek")); seekTo(0); }} className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400" title="Início">
+        <button onClick={() => { window.dispatchEvent(new Event("timeline-user-seek")); seekTo(0); }} className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400" title="Início">
           <SkipBack size={14} />
         </button>
-        <button onClick={() => { window.dispatchEvent(new Event("timeline-user-seek")); seekTo(totalDuration); }} className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400" title="Fim">
+        <button onClick={() => { window.dispatchEvent(new Event("timeline-user-seek")); seekTo(totalDuration); }} className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400" title="Fim">
           <SkipForward size={14} />
         </button>
 
-        <div className="w-px h-5 bg-[#1e1e2e] mx-1" />
+        <div className="w-px h-5 bg-[#1e293b] mx-1" />
 
         <span className="text-xs text-[#a0a0b0] font-mono min-w-[80px]">
           {formatTime(currentTime)}
         </span>
 
-        <div className="w-px h-5 bg-[#1e1e2e] mx-1" />
+        <div className="w-px h-5 bg-[#1e293b] mx-1" />
 
         <button
           onClick={() => setVoiceoverOpen(true)}
-          className="p-1.5 hover:bg-[#1e1e2e] rounded text-[#f472b6] hover:text-pink-300"
+          className="p-1.5 hover:bg-[#1e293b] rounded text-[#f472b6] hover:text-pink-300"
           title="Gravar narração (voz)"
         >
           <Mic size={14} />
         </button>
 
-        <div className="w-px h-5 bg-[#1e1e2e] mx-1" />
+        <div className="w-px h-5 bg-[#1e293b] mx-1" />
 
-        <button onClick={undo} disabled={!canUndo()} className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400 disabled:opacity-30" title="Desfazer (Ctrl+Z)">
+        <button onClick={undo} disabled={!canUndo()} className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400 disabled:opacity-30" title="Desfazer (Ctrl+Z)">
           <Undo2 size={14} />
         </button>
-        <button onClick={redo} disabled={!canRedo()} className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400 disabled:opacity-30" title="Refazer (Ctrl+Y / Ctrl+Shift+Z)">
+        <button onClick={redo} disabled={!canRedo()} className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400 disabled:opacity-30" title="Refazer (Ctrl+Y / Ctrl+Shift+Z)">
           <Redo2 size={14} />
         </button>
 
-        <div className="w-px h-5 bg-[#1e1e2e] mx-1" />
+        <div className="w-px h-5 bg-[#1e293b] mx-1" />
 
         <button
           onClick={() => withHistory("Fechar espaços em branco", () => compactTrackGaps())}
           disabled={project.timeline.items.length === 0}
-          className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400 disabled:opacity-30"
+          className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400 disabled:opacity-30"
           title="Fechar espaços em branco (une os clipes, sem vãos)"
         >
           <Magnet size={14} />
         </button>
 
-        <div className="w-px h-5 bg-[#1e1e2e] mx-1" />
+        <div className="w-px h-5 bg-[#1e293b] mx-1" />
 
         <button
           onClick={() => selectedIds.forEach((id: string) => { splitItem(id, currentTime); clearSelection(); })}
           disabled={selectedIds.size === 0}
-          className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400 disabled:opacity-30"
+          className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400 disabled:opacity-30"
           title="Cortar no playhead (Dividir) (S / Ctrl+B)"
         >
           <Scissors size={14} />
@@ -1010,7 +1010,7 @@ const trimGestureRef = useRef(false);
         <button
           onClick={() => handleDuplicateSelection("sequential")}
           disabled={selectedIds.size === 0}
-          className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400 disabled:opacity-30"
+          className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400 disabled:opacity-30"
           title="Duplicar clipes selecionados (Ctrl+D)"
         >
           <Copy size={14} />
@@ -1018,7 +1018,7 @@ const trimGestureRef = useRef(false);
         <button
           onClick={() => handleDuplicateSelection("overlay")}
           disabled={selectedIds.size === 0}
-          className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400 disabled:opacity-30"
+          className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400 disabled:opacity-30"
           title="Duplicar em nova camada acima (sobreposição/3D) (Ctrl+Shift+D)"
         >
           <Layers size={14} />
@@ -1026,7 +1026,7 @@ const trimGestureRef = useRef(false);
         <button
           onClick={() => withHistory("Excluir trecho à esquerda", () => trimStartToPlayhead())}
           disabled={!selectedItem || currentTime <= selectedItem.startFrame || currentTime >= selectedItem.startFrame + selectedItem.durationInFrames}
-          className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400 disabled:opacity-30"
+          className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400 disabled:opacity-30"
           title="Excluir trecho à Esquerda do playhead (Q)"
         >
           <AlignLeft size={14} />
@@ -1034,7 +1034,7 @@ const trimGestureRef = useRef(false);
         <button
           onClick={() => withHistory("Excluir trecho à direita", () => trimEndToPlayhead())}
           disabled={!selectedItem || currentTime <= selectedItem.startFrame || currentTime >= selectedItem.startFrame + selectedItem.durationInFrames}
-          className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400 disabled:opacity-30"
+          className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400 disabled:opacity-30"
           title="Excluir trecho à Direita do playhead (W)"
         >
           <AlignRight size={14} />
@@ -1056,7 +1056,7 @@ const trimGestureRef = useRef(false);
             className={`p-1.5 rounded-md transition-colors flex items-center justify-center ${
               isCutoutActive
                 ? "bg-[#8b5cf6]/20 text-purple-400 border border-[#8b5cf6]/50"
-                : "text-gray-400 hover:text-white hover:bg-[#1e1e2e] disabled:opacity-30 disabled:hover:bg-transparent"
+                : "text-slate-400 hover:text-white hover:bg-[#1e293b] disabled:opacity-30 disabled:hover:bg-transparent"
             }`}
             aria-label="Remover plano de fundo"
             title="Remover plano de fundo"
@@ -1067,19 +1067,19 @@ const trimGestureRef = useRef(false);
               <path d="M19 8v6M22 11h-6" strokeLinecap="round" />
             </svg>
           </button>
-          <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 hidden group-hover:flex flex-col bg-[#1e1e24] text-white text-xs rounded-md py-1.5 px-2.5 shadow-xl border border-zinc-700 w-52 pointer-events-none z-50">
-            <span className="font-semibold text-zinc-100">Remover plano de fundo</span>
-            <span className="text-[11px] text-zinc-400 mt-0.5 leading-tight">
+          <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 hidden group-hover:flex flex-col bg-[#1e1e24] text-white text-xs rounded-md py-1.5 px-2.5 shadow-xl border border-slate-700 w-52 pointer-events-none z-50">
+            <span className="font-semibold text-slate-100">Remover plano de fundo</span>
+            <span className="text-[11px] text-slate-400 mt-0.5 leading-tight">
               Detecte automaticamente pessoas e remova o plano de fundo.
             </span>
           </div>
         </div>
 
-        <div className="w-px h-5 bg-[#1e1e2e] mx-1" />
+        <div className="w-px h-5 bg-[#1e293b] mx-1" />
 
         <button
           onClick={() => addBeatMarker(currentTime)}
-          className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400"
+          className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400"
           title="Adicionar Marcador (M)"
         >
           <Bookmark size={14} />
@@ -1087,27 +1087,27 @@ const trimGestureRef = useRef(false);
         <button
           onClick={() => selectedItem && updateItem(selectedItem.id, { crop: { ...selectedItem.crop, enabled: !selectedItem.crop.enabled } })}
           disabled={!selectedItem}
-          className={`p-1.5 rounded disabled:opacity-30 ${selectedItem?.crop?.enabled ? "bg-purple-500/20 text-purple-400 border border-purple-500/50" : "text-gray-400 hover:bg-[#1e1e2e]"}`}
+          className={`p-1.5 rounded disabled:opacity-30 ${selectedItem?.crop?.enabled ? "bg-purple-500/20 text-purple-400 border border-purple-500/50" : "text-slate-400 hover:bg-[#1e293b]"}`}
           title="Recortar (Crop)"
         >
           <Crop size={14} />
         </button>
         <button
           onClick={() => setShowVlogCutModal(true)}
-          className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400 flex items-center gap-1"
+          className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400 flex items-center gap-1"
           title="Corte Intervalado / Vlog Cut (Corte Automático)"
         >
           <Zap size={14} className="text-yellow-500" />
-          <span className="text-[10px] font-semibold text-gray-300">Vlog Cut</span>
+          <span className="text-[10px] font-semibold text-slate-300">Vlog Cut</span>
         </button>
         <button
           onClick={handleRemoveSilence}
           disabled={!selectedItem}
-          className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400 flex items-center gap-1 disabled:opacity-30"
+          className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400 flex items-center gap-1 disabled:opacity-30"
           title="Remover silêncio nas pontas do clipe (corte automático de áudio)"
         >
           <VolumeX size={14} className="text-emerald-400" />
-          <span className="text-[10px] font-semibold text-gray-300">Remover Silêncio</span>
+          <span className="text-[10px] font-semibold text-slate-300">Remover Silêncio</span>
         </button>
         <button
           onClick={handleMainKeyframeToggle}
@@ -1115,20 +1115,20 @@ const trimGestureRef = useRef(false);
           className={`p-1.5 rounded transition-all flex items-center justify-center ${
             hasAnyKeyframeAtPlayhead
               ? "bg-yellow-500/20 text-yellow-400 border border-yellow-500/50 hover:bg-yellow-500/30"
-              : "text-gray-400 hover:bg-[#1e1e2e] disabled:opacity-30 border border-transparent"
+              : "text-slate-400 hover:bg-[#1e293b] disabled:opacity-30 border border-transparent"
           }`}
           title={hasAnyKeyframeAtPlayhead ? "Remover Keyframe" : "Adicionar Keyframe"}
         >
           <span className="text-sm leading-none font-bold">◆</span>
         </button>
 
-        <div className="w-px h-5 bg-[#1e1e2e] mx-1" />
+        <div className="w-px h-5 bg-[#1e293b] mx-1" />
 
         <div className="relative">
           <button
             onClick={() => setShowTransformMenu(!showTransformMenu)}
             disabled={selectedIds.size === 0}
-            className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400 disabled:opacity-30 flex items-center gap-0.5"
+            className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400 disabled:opacity-30 flex items-center gap-0.5"
             title="Transformar"
           >
             <RotateCw size={14} />
@@ -1180,11 +1180,11 @@ const trimGestureRef = useRef(false);
           )}
         </div>
 
-        <div className="w-px h-5 bg-[#1e1e2e] mx-1" />
+        <div className="w-px h-5 bg-[#1e293b] mx-1" />
 
         <button
           onClick={() => addTrack("video")}
-          className="p-1.5 hover:bg-[#1e1e2e] rounded text-gray-400"
+          className="p-1.5 hover:bg-[#1e293b] rounded text-slate-400"
           title="Adicionar camada de vídeo"
         >
           <Plus size={14} />
@@ -1193,11 +1193,11 @@ const trimGestureRef = useRef(false);
         <div className="flex-1" />
 
         <div className="flex items-center gap-1">
-          <button onClick={() => zoomOut()} className="p-1 hover:bg-[#1e1e2e] rounded text-gray-400" title="Zoom -">
+          <button onClick={() => zoomOut()} className="p-1 hover:bg-[#1e293b] rounded text-slate-400" title="Zoom -">
             <ZoomOut size={14} />
           </button>
-          <span className="text-[10px] text-gray-500 w-8 text-center">{Math.round(zoom * 100)}%</span>
-          <button onClick={() => zoomIn()} className="p-1 hover:bg-[#1e1e2e] rounded text-gray-400" title="Zoom +">
+          <span className="text-[10px] text-slate-500 w-8 text-center">{Math.round(zoom * 100)}%</span>
+          <button onClick={() => zoomIn()} className="p-1 hover:bg-[#1e293b] rounded text-slate-400" title="Zoom +">
             <ZoomIn size={14} />
           </button>
         </div>
@@ -1205,9 +1205,9 @@ const trimGestureRef = useRef(false);
       </div>
 
       <div className="flex flex-1 overflow-hidden">
-        <div className="w-[180px] flex-shrink-0 bg-[#0d0d16] border-r border-[#1e1e2e] flex flex-col">
-          <div className="h-8 border-b border-[#1e1e2e] flex items-center px-3">
-            <span className="text-[10px] text-gray-500 uppercase tracking-wider">Faixas</span>
+        <div className="w-[180px] flex-shrink-0 bg-[#0d0d16] border-r border-[#1e293b] flex flex-col">
+          <div className="h-8 border-b border-[#1e293b] flex items-center px-3">
+            <span className="text-[10px] text-slate-500 uppercase tracking-wider">Faixas</span>
           </div>
           <div ref={trackHeadersRef} className="flex-1 overflow-y-auto overscroll-contain" onScroll={(e) => {
             const v = (e.target as HTMLDivElement).scrollTop;
@@ -1220,7 +1220,7 @@ const trimGestureRef = useRef(false);
                 <div
                   key={trackId}
                   className={`flex items-center gap-2 px-3 border-b border-[#1a1a28] cursor-grab active:cursor-grabbing hover:bg-[#1a1a28]/50 transition-colors ${
-                    draggedTrackIndex === idx ? "opacity-40 bg-[#1e1e2e]" : ""
+                    draggedTrackIndex === idx ? "opacity-40 bg-[#1e293b]" : ""
                   }`}
                   style={{ height: TRACK_HEIGHT }}
                   draggable
@@ -1241,19 +1241,19 @@ const trimGestureRef = useRef(false);
                   </span>
                   <button
                     onClick={() => updateTrack(trackId, { hidden: !track.hidden })}
-                    className="p-0.5 hover:bg-[#1e1e2e] rounded text-gray-500"
+                    className="p-0.5 hover:bg-[#1e293b] rounded text-slate-500"
                   >
                     {track.hidden ? <EyeOff size={12} /> : <Eye size={12} />}
                   </button>
                   <button
                     onClick={() => updateTrack(trackId, { muted: !track.muted })}
-                    className="p-0.5 hover:bg-[#1e1e2e] rounded text-gray-500"
+                    className="p-0.5 hover:bg-[#1e293b] rounded text-slate-500"
                   >
                     {track.muted ? <VolumeX size={12} /> : <Volume2 size={12} />}
                   </button>
                   <button
                     onClick={() => updateTrack(trackId, { locked: !track.locked })}
-                    className="p-0.5 hover:bg-[#1e1e2e] rounded text-gray-500"
+                    className="p-0.5 hover:bg-[#1e293b] rounded text-slate-500"
                   >
                     {track.locked ? <Lock size={12} /> : <Unlock size={12} />}
                   </button>
@@ -1264,7 +1264,7 @@ const trimGestureRef = useRef(false);
                         itemsToRemove.forEach((i: TimelineItem) => removeItem(i.id));
                         removeTrack(trackId);
                       }}
-                      className="p-0.5 hover:bg-red-900/30 rounded text-gray-600 hover:text-red-400"
+                      className="p-0.5 hover:bg-red-900/30 rounded text-slate-600 hover:text-red-400"
                     >
                       <Trash2 size={10} />
                     </button>
@@ -1273,7 +1273,7 @@ const trimGestureRef = useRef(false);
                     <button
                       onClick={() => withHistory("Trazer p/ frente", () => bringTrackToFront(trackId))}
                       title="Trazer para a frente"
-                      className="p-0.5 hover:bg-white/10 rounded text-gray-600 hover:text-[#8b5cf6]"
+                      className="p-0.5 hover:bg-white/10 rounded text-slate-600 hover:text-[#8b5cf6]"
                     >
                       <BringToFront size={10} />
                     </button>
@@ -1282,7 +1282,7 @@ const trimGestureRef = useRef(false);
                     <button
                       onClick={() => withHistory("Mandar p/ trás", () => sendTrackToBack(trackId))}
                       title="Mandar para trás"
-                      className="p-0.5 hover:bg-white/10 rounded text-gray-600 hover:text-[#8b5cf6]"
+                      className="p-0.5 hover:bg-white/10 rounded text-slate-600 hover:text-[#8b5cf6]"
                     >
                       <SendToBack size={10} />
                     </button>
@@ -1294,11 +1294,11 @@ const trimGestureRef = useRef(false);
         </div>
 
         {/* ── Slot fixo de "Capa" (à esquerda do 00:00, alinhado à faixa principal de vídeo) ── */}
-        <div className="w-16 shrink-0 bg-[#0d0d16] border-r border-[#1e1e2e]">
+        <div className="w-16 shrink-0 bg-[#0d0d16] border-r border-[#1e293b]">
           <button
             ref={coverBtnRef}
             onClick={() => setCoverOpen(true)}
-            className="w-full flex flex-col items-center justify-center gap-1 border-b border-[#1e1e2e] hover:bg-[#1a1a28]/60 transition-colors"
+            className="w-full flex flex-col items-center justify-center gap-1 border-b border-[#1e293b] hover:bg-[#1a1a28]/60 transition-colors"
             style={{ height: TRACK_HEIGHT, marginTop: RULER_HEIGHT + mainVideoTrackIndex * TRACK_HEIGHT }}
             title="Definir capa do projeto"
           >
@@ -1309,7 +1309,7 @@ const trimGestureRef = useRef(false);
                 <Clapperboard size={14} className="text-[#8b5cf6]" />
               )}
             </span>
-            <span className="text-[9px] uppercase tracking-wide text-gray-400 font-semibold">Capa</span>
+            <span className="text-[9px] uppercase tracking-wide text-slate-400 font-semibold">Capa</span>
           </button>
         </div>
 
@@ -1331,7 +1331,7 @@ const trimGestureRef = useRef(false);
           <div data-timeline-content className="relative" style={{ width: totalWidth, minHeight: "100%" }}>
             <div
               data-ruler
-              className="sticky top-0 z-[25] h-8 bg-[#0d0d16] border-b border-[#1e1e2e] cursor-pointer touch-none"
+              className="sticky top-0 z-[25] h-8 bg-[#0d0d16] border-b border-[#1e293b] cursor-pointer touch-none"
               onClick={handleRulerClick}
               onPointerDown={(e) => {
                 try { (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); } catch { /* noop */ }
@@ -1457,7 +1457,7 @@ const trimGestureRef = useRef(false);
           {contextMenuActions.map(({ label, icon: Icon, action }) => (
             <button
               key={label}
-              className={`flex items-center gap-2 w-full px-3 py-1.5 text-xs text-left hover:bg-[#2a2a3a] ${label === "Excluir" ? "text-red-400 hover:bg-red-900/30" : "text-gray-300"}`}
+              className={`flex items-center gap-2 w-full px-3 py-1.5 text-xs text-left hover:bg-[#2a2a3a] ${label === "Excluir" ? "text-red-400 hover:bg-red-900/30" : "text-slate-300"}`}
               onClick={() => { action(); closeContextMenu(); }}
             >
               <Icon size={13} />
@@ -1477,7 +1477,7 @@ const trimGestureRef = useRef(false);
               </span>
               <button
                 onClick={() => setShowVlogCutModal(false)}
-                className="text-gray-400 hover:text-white transition-colors text-sm"
+                className="text-slate-400 hover:text-white transition-colors text-sm"
               >
                 ✕
               </button>
@@ -1486,14 +1486,14 @@ const trimGestureRef = useRef(false);
             <div className="flex flex-col gap-3">
               {/* Alvo */}
               <div className="flex flex-col gap-1">
-                <label className="text-[10px] text-gray-400 uppercase font-semibold">Aplicar Em</label>
+                <label className="text-[10px] text-slate-400 uppercase font-semibold">Aplicar Em</label>
                 <div className="grid grid-cols-2 gap-2 mt-1">
                   <button
                     onClick={() => setVlogTarget("selected")}
                     className={`py-1.5 px-3 rounded border text-center transition-all ${
                       vlogTarget === "selected"
                         ? "bg-purple-600/20 border-purple-500 text-purple-200"
-                        : "bg-white/5 border-white/5 text-gray-400 hover:bg-white/10"
+                        : "bg-white/5 border-white/5 text-slate-400 hover:bg-white/10"
                     }`}
                   >
                     Clipe Selecionado
@@ -1503,7 +1503,7 @@ const trimGestureRef = useRef(false);
                     className={`py-1.5 px-3 rounded border text-center transition-all ${
                       vlogTarget === "track"
                         ? "bg-purple-600/20 border-purple-500 text-purple-200"
-                        : "bg-white/5 border-white/5 text-gray-400 hover:bg-white/10"
+                        : "bg-white/5 border-white/5 text-slate-400 hover:bg-white/10"
                     }`}
                   >
                     Trilha a partir do Playhead
@@ -1514,7 +1514,7 @@ const trimGestureRef = useRef(false);
               {/* Keep Duration */}
               <div className="flex flex-col gap-1.5">
                 <div className="flex justify-between items-center">
-                  <label className="text-[10px] text-gray-400 uppercase font-semibold">
+                  <label className="text-[10px] text-slate-400 uppercase font-semibold">
                     Intervalo de Manutenção (Clipe)
                   </label>
                   <span className="text-yellow-400 font-mono font-semibold">{vlogKeepSeconds.toFixed(2)}s</span>
@@ -1544,7 +1544,7 @@ const trimGestureRef = useRef(false);
               {/* Discard Duration */}
               <div className="flex flex-col gap-1.5">
                 <div className="flex justify-between items-center">
-                  <label className="text-[10px] text-gray-400 uppercase font-semibold">
+                  <label className="text-[10px] text-slate-400 uppercase font-semibold">
                     Intervalo de Descarte (Cortar)
                   </label>
                   <span className="text-red-400 font-mono font-semibold">{vlogDiscardSeconds.toFixed(2)}s</span>
@@ -1573,14 +1573,14 @@ const trimGestureRef = useRef(false);
 
               {/* Modo de Aplicação */}
               <div className="flex flex-col gap-1">
-                <label className="text-[10px] text-gray-400 uppercase font-semibold">Modo de Aplicação</label>
+                <label className="text-[10px] text-slate-400 uppercase font-semibold">Modo de Aplicação</label>
                 <div className="grid grid-cols-2 gap-2 mt-1">
                   <button
                     onClick={() => setVlogMode("split")}
                     className={`py-1.5 px-3 rounded border text-center transition-all ${
                       vlogMode === "split"
                         ? "bg-purple-600/20 border-purple-500 text-purple-200"
-                        : "bg-white/5 border-white/5 text-gray-400 hover:bg-white/10"
+                        : "bg-white/5 border-white/5 text-slate-400 hover:bg-white/10"
                     }`}
                   >
                     Apenas Fatiar (Split All)
@@ -1590,7 +1590,7 @@ const trimGestureRef = useRef(false);
                     className={`py-1.5 px-3 rounded border text-center transition-all ${
                       vlogMode === "delete"
                         ? "bg-purple-600/20 border-purple-500 text-purple-200"
-                        : "bg-white/5 border-white/5 text-gray-400 hover:bg-white/10"
+                        : "bg-white/5 border-white/5 text-slate-400 hover:bg-white/10"
                     }`}
                   >
                     Fatiar e Deletar (Jump Cut)

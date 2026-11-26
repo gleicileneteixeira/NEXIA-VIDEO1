@@ -76,7 +76,7 @@ export default function BusinessProfileView({ profile }: { profile: StudioProfil
       <div className="flex items-center gap-2">
         <Briefcase className="w-5 h-5 text-[var(--primary)]" />
         <h2 className="text-lg font-bold text-white">DNA do seu Negócio</h2>
-        <span className="text-[11px] text-gray-500 ml-auto">
+        <span className="text-[11px] text-slate-500 ml-auto">
           Essas informações alimentam os textos de todos os posts
         </span>
       </div>
@@ -84,14 +84,14 @@ export default function BusinessProfileView({ profile }: { profile: StudioProfil
       <div className="grid sm:grid-cols-2 gap-4">
         {fields.map((field) => (
           <div key={field.key} className={field.rows ? "sm:col-span-2" : ""}>
-            <label className="block text-sm text-gray-300 mb-1">{field.label}</label>
+            <label className="block text-sm text-slate-300 mb-1">{field.label}</label>
             {field.rows ? (
               <textarea
                 value={draft[field.key]}
                 onChange={(e) => setField(field.key, e.target.value)}
                 placeholder={field.placeholder}
                 rows={field.rows}
-                className="w-full px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] outline-none transition-all resize-none"
+                className="w-full px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] outline-none transition-all resize-none"
               />
             ) : (
               <input
@@ -99,10 +99,10 @@ export default function BusinessProfileView({ profile }: { profile: StudioProfil
                 value={draft[field.key]}
                 onChange={(e) => setField(field.key, e.target.value)}
                 placeholder={field.placeholder}
-                className="w-full px-4 py-3 rounded-xl bg-[#252535] border border-gray-700 text-white placeholder-gray-500 focus:border-[var(--primary)] outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-[#1e293b] border border-slate-700 text-white placeholder-slate-500 focus:border-[var(--primary)] outline-none transition-all"
               />
             )}
-            <p className="text-[11px] text-gray-500 mt-1">{field.hint}</p>
+            <p className="text-[11px] text-slate-500 mt-1">{field.hint}</p>
           </div>
         ))}
       </div>
