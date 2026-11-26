@@ -6,6 +6,9 @@ import { createClient } from "@/lib/supabase/client";
 import { triggerWebhook } from "@/services/webhookService";
 import { Eye, EyeOff, Loader2, Mail, Sparkles } from "lucide-react";
 
+// Cadastro desativado temporariamente. Troque para true para reativar.
+const REGISTRATION_ENABLED = false;
+
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,6 +42,9 @@ export default function LoginPage() {
 
     try {
       const supabase = createClient();
+      if (isRegister && !REGISTRATION_ENABLED) {
+        throw new Error("Criação de novas contas desativada no momento.");
+      }
       if (isRegister) {
         const { error } = await supabase.auth.signUp({
           email,
@@ -165,17 +171,19 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-6 text-center space-y-2">
-            <button
-              onClick={() => {
-                setIsRegister(!isRegister);
-                setError("");
-              }}
-              className="text-sm text-slate-400 hover:text-[var(--primary)] transition-colors block"
-            >
-              {isRegister
-                ? "Já tem conta? Faça login"
-                : "Não tem conta? Cadastre-se"}
-            </button>
+            {REGISTRATION_ENABLED && (
+              <button
+                onClick={() => {
+                  setIsRegister(!isRegister);
+                  setError("");
+                }}
+                className="text-sm text-slate-400 hover:text-[var(--primary)] transition-colors block"
+              >
+                {isRegister
+                  ? "Já tem conta? Faça login"
+                  : "Não tem conta? Cadastre-se"}
+              </button>
+            )}
             {!isRegister && (
               <button
                 onClick={handlePasswordReset}
