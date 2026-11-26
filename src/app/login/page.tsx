@@ -14,13 +14,13 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
-  const supabase = createClient();
 
   const handlePasswordReset = async () => {
     setLoading(true);
     setError("");
     try {
       await triggerWebhook("PASSWORD_RESET_REQUESTED", { email });
+      const supabase = createClient();
       const { error } = await supabase.auth.resetPasswordForEmail(email);
       if (error) throw error;
       alert("Email de redefinição de senha enviado!");
@@ -38,6 +38,7 @@ export default function LoginPage() {
     setError("");
 
     try {
+      const supabase = createClient();
       if (isRegister) {
         const { error } = await supabase.auth.signUp({
           email,
