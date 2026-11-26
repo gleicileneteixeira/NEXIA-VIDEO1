@@ -1,11 +1,26 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
+// Modo aberto: quando false, o app não exige login (útil enquanto não há usuários).
+// Troque para true para reativar a autenticação.
+const AUTH_ENABLED = false;
+
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
   // API routes bypass auth check (they handle auth themselves)
   if (request.nextUrl.pathname.startsWith("/api/")) {
+    return supabaseResponse;
+  }
+
+  // Modo aberto: sem login obrigatório
+  if (!AUTH_ENABLED) {
+    const { pathname } = request.nextUrl;
+    if (pathname === "/login" || pathname === "/register") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/dashboard";
+      return NextResponse.redirect(url);
+    }
     return supabaseResponse;
   }
 
